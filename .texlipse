@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Thu Jan 28 09:52:49 EST 2016
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=MahniShayganfar-IJCAI2016.tex
+outputFile=MahniShayganfar-IJCAI2016.pdf
+langSpell=en
+markDer=true
+srcDir=
