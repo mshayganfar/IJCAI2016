@@ -12,14 +12,6 @@ Philip Cohen and Hector~J. Levesque.
 \newblock {\em Teamwork}.
 \newblock SRI International, 1991.
 
-\bibitem[\protect\citeauthoryear{Cooke and
-  Sheeran}{2004}]{cooke:intention-behavior-consistency}
-Richard Cooke and Paschal Sheeran.
-\newblock Moderation of cognition-intention and cognition-behaviour relations:
-  A meta-analysis of properties of variables from the theory of planned
-  behaviour.
-\newblock {\em British Journal of Social Psychology}, 43:159--186, 2004.
-
 \bibitem[\protect\citeauthoryear{Gonzalez \bgroup \em et al.\egroup
   }{2013}]{castro:autonomous-robot-fear}
 Alvaro~Castro Gonzalez, Maria Malfaz, and Miguel~Angel Salichs.
@@ -125,10 +117,12 @@ Klaus~R. Scherer.
   from a recognition task.
 \newblock {\em Cognition \& Emotion}, 13(6):763--793, 1999.
 
-\bibitem[\protect\citeauthoryear{Sloman}{1987}]{sloman:motivation}
-Aaron Sloman.
-\newblock Motives, mechanisms, and emotions.
-\newblock {\em Cognition \& Emotion}, 1(3):217--233, 1987.
+\bibitem[\protect\citeauthoryear{Shayganfar \bgroup \em et al.\egroup
+  }{2016}]{shayganfar:appraisal-short}
+Mahni Shayganfar, Charles Rich, and Candace~L. Sidner.
+\newblock An overview of appraisal in human-robot collaboration.
+\newblock In {\em Proceedings of International Conference on Autonomous Agents
+  and Multiagent Systems -- AAMAS (Extended Abstract)}, 2016.
 
 \bibitem[\protect\citeauthoryear{Sousa}{1990}]{sousa:rationality-emotion}
 Ronald~De Sousa.

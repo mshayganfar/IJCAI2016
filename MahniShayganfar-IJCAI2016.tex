@@ -127,29 +127,34 @@ our work. We believe a systematic integration of collaboration theories and
 appraisal theory can help us describe the underlying collaboration processes
 leading to the existing collaboration structures.
 
-\section{Affective Motivational Collaboration Theory}
+\section{{\fontsize{11.85}{12}\selectfont Affective Motivational Collaboration
+Theory}}
 
 Affective Motivational Collaboration Theory deals with the interpretation and
-prediction of observable behaviors in a dyadic collaboration. The theory focuses
-on the processes regulated by emotional states. The observable behaviors
-represent the outcome of reactive and deliberative processes related to the
-interpretation of the self's relationship to the environment. Affective
-Motivational Collaboration Theory aims to explain both rapid emotional reactions
-to events as well as slower, more deliberative responses. The reactive and
-deliberative processes are triggered by two types of events: \textit{external}
-events, such as the other's \textit{utterances} and \textit{primitive actions},
-and \textit{internal} events, comprising changes in the self's mental states,
-such as belief formation and emotional changes. The theory explains how emotions
-regulate the underlying processes when these events occur. It also elucidates
-the role of \textit{motives} as goal-driven emotion-regulated constructs with
-which a robot can form new intentions to cope with events.
+prediction of observable behaviors in a dyadic collaboration
+\cite{shayganfar:appraisal-short}. The theory focuses on the processes regulated
+by emotional states. The observable behaviors represent the outcome of reactive
+and deliberative processes related to the interpretation of the self's
+relationship to the environment. Affective Motivational Collaboration Theory
+aims to explain both rapid emotional reactions to events as well as slower, more
+deliberative responses. The reactive and deliberative processes are triggered by
+two types of events: \textit{external} events, such as the other's
+\textit{utterances} and \textit{primitive actions}, and \textit{internal}
+events, comprising changes in the self's mental states, such as belief formation
+and emotional changes. The theory explains how emotions regulate the underlying
+processes when these events occur. It also elucidates the role of
+\textit{motives} as goal-driven emotion-regulated constructs with which a robot
+can form new intentions to cope with events.
 
+\vspace*{-3mm}
 \begin{figure}[tbh]
   \centering
   \includegraphics[width=0.45\textwidth]{figure/theory-general-croped.pdf}
+  \vspace*{-3mm}
   \caption{{\fontsize{9}{9}\selectfont Computational framework based on
   Affective Motivational Collaboration Theory (arrows indicate primary
   influences between mechanisms).}}
+  \vspace*{-3mm}
   \label{fig:cpm}
 \end{figure}
 
@@ -184,102 +189,66 @@ A brief description of mental states is provided as prerequisite knowledge for
 understanding the appraisal processes. The mental states shown in Figure
 \ref{fig:cpm} comprise the knowledge base required for all the mechanisms in the
 overall model. Mental states are conscious states of mind providing the content
-for cognitive processes. Affective Motivational Collaboration Theory operates
-with the following mental states: beliefs, intentions, motives, goals and
-emotion instances. These mental states possess attributes, each of which
-provides a discriminating and unique interpretation of the related cognitive
-entities. The self uses these attributes whenever there is an arbitration in the
-internal cognitive processes. We only describe the attributes of beliefs and
-motives in this paper, since they are used in our appraisal algorithms. We
-briefly provide the way we compute the attributes' values, due to the limited
-space.
+for cognitive processes. These mental states possess attributes, each of which
+provides a unique interpretation of the related cognitive entities. The self
+uses these attributes whenever there is an arbitration in the internal cognitive
+processes. We only describe some of the attributes of beliefs and motives in
+this paper, since they are used in our appraisal algorithms.
 
-\subsubsection{Belief}
-\label{sec:belief}
-
-\textit{Beliefs} are a crucial part of the mental states. We have two different
-perspectives on categorization of beliefs. In one perspective, we categorize
-beliefs based on whether they are shared between the collaborators. In the
-second perspective, beliefs are categorized based on who or what they are about.
-In this categorization, beliefs can be about the self, the other, or the
-environment. Beliefs can be created and updated by different processes. They
-also affect how these processes function as time passes.
-
-The attributes of a belief are involved in arbitration procedures within
-different processes in Affective Motivational Collaboration Theory. They impact
-a range of these processes from the formation of new beliefs, the evaluation of
-an external event by the Appraisal mechanism, the generation of new motives and
-updates to the collaboration plan, to the activation of coping strategies and
-ultimately the self's behavior. We use six belief attributes in our framework.
+\textit{Beliefs} are a crucial part of the mental states. Beliefs have
+attributes and they impact different processes of the framework such as the
+evaluation of an external event by the Appraisal mechanism, and updates to the
+collaboration plan. We use three belief attributes in in Appraisal mechanism.
 Belief \textit{strength} is about how strongly the self holds salient beliefs
-about an object, an entity, or an anticipated behavior. \textit{Accuracy} of a
-belief is the relation between that belief and the truth which that belief is
-about. The \textit{frequency} of a belief is related to how regularly it appears
-as the result of an internal or an external event. The \textit{recency} of a
-belief refers to how temporally close a particular belief is to the current
-state of collaboration. The \textit{saliency} of a belief is a cognitive
-attribute that pertains to how easily the self becomes aware of a belief. The
-\textit{persistence} of a belief refers to how resistant the belief is to
-changes.
-
-\subsubsection{Motive}
-\label{sec:motive}
+about an object, an entity, or an anticipated behavior. The \textit{saliency} of
+a belief is a cognitive attribute that pertains to how easily the self becomes
+aware of a belief. The \textit{persistence} of a belief refers to how resistant
+the belief is to changes.
 
 \textit{Motives} are mental constructs which can initiate, direct and maintain
 goal-directed behaviors. They are created by the emotion-regulated Motivation
 mechanism. Motives can cause the formation of a new intention for the robot
-according to: a) its own emotional states (how the robot appraises the
-environment), b) its own private goal (how an action helps the robot to make
-progress), c) the collaboration goal (how an action helps to achieve the shared
-goal), and d) other's anticipated beliefs (how an action helps the other).
-Motives can be compared on various dimensions \cite{sloman:motivation}, and
-they possess a set of attributes. The Motivation mechanism compares motives
-based on the quality of these attributes and chooses the one which is the most
-related to the current state of the collaboration. We have the following five
-motive attributes in our framework. The \textit{insistence} of a motive defines
-the ``interrupt priority level'' of the motive, and how much that motive can
-attract the self's focus of attention. The \textit{importance} of a motive is
-determined by the corresponding beliefs about the effects of achieving or not
-achieving the associated goal. The \textit{urgency} of a motive defines how much
-time the self has to acknowledge and address that motive before it is too late.
-The \textit{intensity} of a motive determines how actively and vigorously that
-motive can help the self to pursue the goal if adopted, rather than abandoning
-the goal and ultimately the collaboration. The \textit{failure disruptiveness}
-attribute of a motive determines how disruptive failure is to achieving the
-corresponding goal.
-
-\subsubsection{Intention}
+according to: a) its own emotional states, b) its own private goal, c) the
+collaboration (shared) goal, and d) other's anticipated beliefs. Motives possess
+a set of attributes. The Motivation mechanism compares motives based on the
+quality of these attributes and chooses the one which is the most related to the
+current state of the collaboration. We use two motive attributes in Appraisal
+mechanisms. The \textit{importance} of a motive is determined by the
+corresponding beliefs about the effects of achieving or not achieving the
+associated goal. The \textit{urgency} of a motive defines how much time the self
+has to acknowledge and address that motive before it is too late.
 
 \textit{Intentions} are mental constructs directed at goals and future actions.
 They play an essential role in taking actions according to the collaboration
 plan as well as behavior selection in the Coping mechanism. Intentions are
 also involved in selecting intention-related strategies, e.g., planning, seeking
-instrumental support and procrastination. Intentions possess a set of
-attributes, i.e., \textit{Temporal Status, Direct Experience, Certainty,
-Ambivalence, Affective-Deliberative Consistency} which moderate the consistency
-between intention and behavior \cite{cooke:intention-behavior-consistency}. The
-details about these attributes are beyond the scope of this paper.
+instrumental support and procrastination. 
 
-\subsubsection{Goal}
+% Intentions possess a set of
+% attributes, i.e., \textit{Temporal Status, Direct Experience, Certainty,
+% Ambivalence, Affective-Deliberative Consistency} which moderate the consistency
+% between intention and behavior \cite{cooke:intention-behavior-consistency}. The
+% details about these attributes are beyond the scope of this paper.
 
 \textit{Goals} help the robot to create and update its collaboration plan
-according to the current private and shared goal content and structure, i.e.,
-the \textit{Specificity, Proximity} and \textit{Difficulty} of the goal. Goals
+according to the current private and shared goal content and structure. Goals
 direct the formation of intentions to take appropriate corresponding actions
-during collaboration. Goals also drive the Motivation mechanism to generate
-required motive(s). The details about goal's attributes are beyond the scope of
-this paper.
+during collaboration. 
 
-\subsubsection{Emotion Instance}
+% Goals also drive the Motivation mechanism to generate
+% required motive(s). The details about goal's attributes are beyond the scope of
+% this paper.
 
 \textit{Emotions} in mental states are emotion instances that are elicited by
 the Appraisal mechanism, e.g., \textit{Joy, Anger, Hope, Worry}. These emotion
 instances include the robot's own emotions as well as the anticipated emotions
 of the other which are created with the help of the processes in the Theory of
-Mind mechanism. Each emotion has its own functionality in either the
-intrapersonal or interpersonal level. These emotions not only regulate the
-self's internal processes, but also assist the self to anticipate the other's
-mental states.
+Mind mechanism. 
+
+% Each emotion has its own functionality in either the
+% intrapersonal or interpersonal level. These emotions not only regulate the
+% self's internal processes, but also assist the self to anticipate the other's
+% mental states.
 
 \section{Example Scenario}
 
@@ -451,7 +420,6 @@ goal, without dedicating all resources to every single event. The relevance
 process also benefits from the information that the collaboration structure
 contains, e.g., shared goal.
 
-\vspace*{-2mm}
 \begin{algorithm}
 	\caption{(Relevance)}
 	\label{alg:relevance}
@@ -472,7 +440,6 @@ contains, e.g., shared goal.
 	\end{algorithmic}
 \end{algorithm}
 
-\vspace*{-3mm}
 After perceiving an event, it is the belief about that event which represents
 the event in the robot's mental state. Also, \textit{recognizeGoal} returns
 the goal ($g_{t}$) to which the current event contributes, unless it is
