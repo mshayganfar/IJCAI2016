@@ -253,7 +253,7 @@ Mind mechanism.
 \begin{figure*}
   \centering
   \vspace*{-5mm}
-  \includegraphics[width=16cm,height=5.25cm]{figure/taskModel-croped.pdf}
+  \includegraphics[width=16.5cm,height=6cm]{figure/taskModel-croped.pdf}
   \vspace*{-3mm}
   \caption{Collaboration Task Model for the Evaluation.}
   \label{fig:taskModel}
@@ -439,12 +439,12 @@ the shared goal, without dedicating all resources to every single event.
 	\label{alg:relevance}
 	\begin{algorithmic}[1]
 		\Function{IsEventRelevant}{Event $\varepsilon_t$}
-			\Statex
+% 			\Statex
 			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
-			\Statex
+% 			\Statex
 			\State $\mathcal{U} \gets \Call{getEventUtility}{\mathit{g}_{t}}$ 
 			\State $\tau_{t} \gets \Call{getEmotionalThreshold}{\mathit{g}_{t}}$
-			\Statex
+% 			\Statex
 			\If {$( |\mathcal{U}| \geq \tau_{t} )$}
 				\State \Return {{\fontsize{7}{8}\selectfont RELEVANT}}
 			\Else
@@ -454,6 +454,7 @@ the shared goal, without dedicating all resources to every single event.
 	\end{algorithmic}
 \end{algorithm}
 
+\vspace*{-3mm}
 After perceiving an event, it is the belief about that event which represents
 the event in the robot's mental state. Also, \textit{recognizeGoal} returns
 the goal ($g_{t}$) to which the current event contributes, unless it is
@@ -570,13 +571,13 @@ events as \textsc{neutral}.
 	\label{alg:desirability}
 	\begin{algorithmic}[1]
 		\Function{IsEventDesirable}{Event $\varepsilon_t$}
-			\Statex
+% 			\Statex
 			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
-			\Statex
+% 			\Statex
 			\If {$(\mathit{g}_{t} =$ {\fontsize{7}{8}\selectfont AMBIGUOUS}$)$} 
 				\State \Return {\fontsize{7}{8}\selectfont UNDESIRABLE}
 			\EndIf
-			\Statex
+% 			\Statex
 			\If {{\fontsize{8}{9}\selectfont(\textit{topLevelGoalStatus($g_{t}$)} =
 			{\fontsize{7}{8}\selectfont ACHIEVED})}} 
 			\State \Return {{\fontsize{7}{8}\selectfont MOST-DESIRABLE}} 
@@ -594,7 +595,7 @@ events as \textsc{neutral}.
 			\hspace{1mm}{\fontsize{8}{9}\selectfont
 			\hspace*{4mm}(\textit{topLevelGoalStatus($g_{t}$)}} =
 			{\fontsize{7}{8}\selectfont INPROGRESS})}
-				\Statex
+% 				\Statex
 				\If {{\fontsize{8}{9}\selectfont (\textit{currGoalStatus($g_{t}$)}} =
 				{\fontsize{7}{8}\selectfont ACHIEVED})}
 				\State \Return {{\fontsize{7}{8}\selectfont DESIRABLE}}
@@ -618,6 +619,7 @@ events as \textsc{neutral}.
 	\end{algorithmic}
 \end{algorithm}
 
+\vspace*{-5mm}
 \subsection{Expectedness}
 
 Expectedness is the extent to which the truth value of a state could have been
@@ -639,10 +641,10 @@ goal. The robot will also be able to respond to unexpected but relevant events.
 	\label{alg:expectedness}
 	\begin{algorithmic}[1]
 		\Function{IsEventExpected}{Event $\varepsilon_t$}
-			\Statex
+% 			\Statex
 			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
 			\State $\mathit{g}_{top} \gets \textit{getTopLevelGoal}{(\mathit{g}_{t})}$
-			\Statex
+% 			\Statex
 			\If {$(\textit{isLive}{(\mathit{g}_{t})})$}
 				\If {$(\neg \textit{isFocusShift}{(\mathit{g}_{t})}\hspace*{2mm}\OR$ \\
 				\hspace*{13mm}$\textit{isNeccessaryFocusShift}{(\mathit{g}_{t})})$}
@@ -698,20 +700,20 @@ event.
 	\label{alg:controllability}
 	\begin{algorithmic}[1]
 		\Function{IsEventControllable}{Event $\varepsilon_t$}
-			\Statex
+% 			\Statex
 			\State $\alpha \gets \Call{GetAgencyRatio}{\varepsilon_t}$ 
 			\State $\beta \gets \Call{GetAutonomyRatio}{\varepsilon_t}$
-			\Statex
+% 			\Statex
 			\State $\lambda \gets \Call{GetSucPredecessorsRatio}{\varepsilon_t}$
 			\State $\mu \gets \Call{GetAvailableInput}{\varepsilon_t}$
-			\Statex
+% 			\Statex
 			\State $\mathcal{U} \gets
 			\frac{\omega_{0}\cdot \alpha + \omega_{1}\cdot \beta + \omega_{2}\cdot
 			\lambda + \omega_{3}\cdot \mu}{\omega_{0} + \omega_{1} + \omega_{2} +
 			\omega_{3}}$
-			\Statex
+% 			\Statex
 			\State $\tau_{t} \gets \Call{getEmotionalThreshold}{ }$
-			\Statex
+% 			\Statex
 			\If {$(\mathcal{U} \geq \tau_t)$}
 				\State \Return {{\fontsize{7}{8}\selectfont CONTROLLABLE}}
 			\Else
@@ -721,6 +723,7 @@ event.
 	\end{algorithmic}
 \end{algorithm}
 
+\vspace*{-3mm}
 Controllability is also important for the overall architecture. For instance,
 the robot can choose to ask or negotiate about a collaborative task which is
 not controllable, or the robot can interpret or predict the other's emotional
