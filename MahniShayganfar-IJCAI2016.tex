@@ -250,6 +250,16 @@ Mind mechanism.
 % self's internal processes, but also assist the self to anticipate the other's
 % mental states.
 
+\begin{figure*}
+  \centering
+  \vspace*{-5mm}
+  \includegraphics[width=16cm,height=5.25cm]{figure/taskModel-croped.pdf}
+  \vspace*{-3mm}
+  \caption{Collaboration Task Model for the Evaluation.}
+  \label{fig:taskModel}
+  \vspace*{-4mm}
+\end{figure*}
+
 \section{Example Scenario}
 
 The example scenario is part of a much larger interaction we are implementing to
@@ -288,15 +298,15 @@ successful). Collaboration also keeps track of the focus of attention, which
 determines the salient objects, properties and relations at each point, and
 shifts the focus of attention during the interaction.
 
-\vspace*{-2mm}
-\begin{figure}[tbh]
-  \centering
-  \includegraphics[width=0.474\textwidth]{figure/collaborationStructure-croped.pdf}
-  \vspace*{-4mm}
-  \caption{{\fontsize{9}{9}\selectfont Collaboration structure (shared plan).}}
-  \label{fig:cs}
-  \vspace*{-2mm}
-\end{figure}
+% \vspace*{-2mm}
+% \begin{figure}[tbh]
+%   \centering
+%   \includegraphics[width=0.474\textwidth]{figure/collaborationStructure-croped.pdf}
+%   \vspace*{-4mm}
+%   \caption{{\fontsize{9}{9}\selectfont Collaboration structure (shared plan).}}
+%   \label{fig:cs}
+%   \vspace*{-2mm}
+% \end{figure}
 
 Here, we briefly describe the methods which retrieve information about the
 collaboration structure, and are used in our algorithms to compute the values of
@@ -383,15 +393,16 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
 \label{sec:appraisal-process}
 
 We consider four appraisal variables to be the most important appraisal
-variables in a collaboration context, i.e., \textit{Relevance} (Algorithm
-\ref{alg:relevance}), \textit{Desirability} (Algorithm \ref{alg:desirability}),
-\textit{Expectedness} (Algorithm \ref{alg:expectedness}), and
-\textit{Controllability} (Algorithm \ref{alg:controllability}). There are other
-appraisal variables introduced in psychological
-\cite{scherer:appraisal-processes} and computational literature
+variables in a collaboration context, i.e., \textit{Relevance} (since other
+appraisals are only derived for relevant events), \textit{Desirability}
+(since it categorically separates certain emotions and can be used as an intensity
+variable), \textit{Expectedness} (since it captures causality based on the past
+knowledge of the tasks), and \textit{Controllability} (since it is associated
+with the agent's coping ability). There are other appraisal variables introduced
+in psychological \cite{scherer:appraisal-processes} and computational literature
 \cite{gratch:domain-independent}. We believe most of these variables can be
 straightforwardly added to our appraisal mechanism later. All of the algorithms
-in this section use mental states of the robot (discussed in Section
+in this section use mental states of the robot (see Section
 \ref{sec:mental-states}) which are formed based on the collaboration structure.
 These algorithms use the corresponding recognized goal of the most recent event
 at each turn.
@@ -399,26 +410,29 @@ at each turn.
 \subsection{Relevance}
 
 Relevance as an appraisal variable measures the significance of an event for the
-robot. An event can be evaluated to be relevant if it has a positive utility or
-it can causally impact a state with a positive utility
+robot. An event can be evaluated to be relevant if it has a non-zero utility
 \cite{marsella:ema-process-model}. Relevance is an important appraisal variable
 since the other appraisal variables are more meaningful only for relevant
-events.
+events. However, the utility of an event during collaboration is influenced by
+the other collaborator's actions and mental states while there is a commitment
+between collaborators to achieve the shared goal based on the shared plan.
+Whereas, other appraisal models only consider the utlity of an event only based
+on the self's (robot's) goal and plan. 
 
 Algorithm \ref{alg:relevance} determines the relevance of the given event with
 respect to the current mental state. The relevance of the event depends on the
 significance of the event with respect to the current collaboration status.
 The significance of an event is determined based on the utility of the event as
 it is also presented in
-\cite{gratch:domain-independent,marsella:ema-process-model}. We believe although
-the utility of the event represents the significance of the event, the other
-collaborator's expressed emotion also plays a role by influencing the
-significance of the utility through a threshold value. As a result, evaluating
-the relevance of the events can cause a collaborative robot to respond
-effectively to the events which can positively impact the status of the shared
-goal, without dedicating all resources to every single event. The relevance
-process also benefits from the information that the collaboration structure
-contains, e.g., shared goal.
+\cite{gratch:domain-independent,marsella:ema-process-model}. We believe
+computing relevance of an event during collaboration involves some other factors
+of which other appraisal models do not consider. For instance, the human's
+perceived emotion (whether it is positive or negative), recurrence of a belief,
+or occurrance of a belief about an unrelated goal by human also play an
+important role by influencing the utility of an event during collaboration. As a
+result, evaluating the relevance of the events can cause a collaborative robot
+to respond effectively to the events which can positively impact the status of
+the shared goal, without dedicating all resources to every single event.
 
 \begin{algorithm}
 	\caption{(Relevance)}
@@ -431,7 +445,7 @@ contains, e.g., shared goal.
 			\State $\mathcal{U} \gets \Call{getEventUtility}{\mathit{g}_{t}}$ 
 			\State $\tau_{t} \gets \Call{getEmotionalThreshold}{\mathit{g}_{t}}$
 			\Statex
-			\If {$( \mathcal{U} \geq \tau_{t} )$}
+			\If {$( |\mathcal{U}| \geq \tau_{t} )$}
 				\State \Return {{\fontsize{7}{8}\selectfont RELEVANT}}
 			\Else
 				\State \Return {{\fontsize{7}{8}\selectfont IRRELEVANT}}
@@ -444,13 +458,13 @@ After perceiving an event, it is the belief about that event which represents
 the event in the robot's mental state. Also, \textit{recognizeGoal} returns
 the goal ($g_{t}$) to which the current event contributes, unless it is
 \textit{ambiguous}; $g_{t}$ represents the shared goal at time (turn) $t$ within
-the shared plan. We compute the utility ($0 \leq \mathcal{U} \leq 1$) of the
-event based on the values of the attributes associated with the existing beliefs
-in the mental state, as well as the attributes of the motive associated with the
-recognized goal. We use three of the belief attributes discussed in Section
-\ref{sec:belief} to compute the belief related part of the utility: 
+the shared plan. We compute the utility ($-1 \leq \mathcal{U} \leq 1$) of the
+event based on the values of the attributes associated with the existing
+beliefs, as well as the attributes of the motive associated with the recognized
+goal. We use three of the belief attributes discussed in Section
+\ref{sec:mental-states} to compute the belief related part of the utility:
 
-\vspace*{-2mm}
+\vspace*{-1mm}
 \begin{itemize}[leftmargin=2pt]
   \setlength\itemsep{0.2mm}
   \item \textit{Strength}: The extent to which the pre and postconditions of a
@@ -468,7 +482,7 @@ recognized goal. We use three of the belief attributes discussed in Section
 \end{itemize}
 
 \noindent We also use two of the motive attributes discussed in Section
-\ref{sec:motive} to compute the motive related part of the utility
+\ref{sec:mental-states} to compute the motive related part of the utility
 ($\mathcal{U}$):
 
 \begin{itemize}[leftmargin=2pt]
@@ -484,10 +498,10 @@ recognized goal. We use three of the belief attributes discussed in Section
 \end{itemize}
 
 We compute the utility of an event based on these five attributes. The value of
-each attribute is between 0 and 1, and we consider the same weight for each
+each attribute is between -1 and 1, and we consider the same weight for each
 attribute. These weights can be learned or modified when our framework is fully
 implemented. The value of the overall utility is computed using a simple
-weighted averaging function which results in an overall value between 0 and 1.
+weighted averaging function which results in an overall value between -1 and 1.
 
 The significance of an event in a collaborative environment is based not
 only on the utility of the event, but it is also influenced by the perceived
@@ -804,16 +818,6 @@ robot to carry out proper collaborative behaviors.
 \section{Evaluation}
 \label{sec:user-study}
 
-\begin{figure*}
-  \centering
-  \vspace*{-5mm}
-  \includegraphics[width=16cm,height=5.25cm]{figure/taskModel-croped.pdf}
-  \vspace*{-3mm}
-  \caption{Collaboration Task Model for the Evaluation.}
-  \label{fig:taskModel}
-  \vspace*{-4mm}
-\end{figure*}
-
 We developed our user study to test our hypothesis that humans will provide
 similar answers as our algorithms to questions related to different factors used
 to compute four appraisal variables. We conducted a between subject user study
@@ -831,8 +835,8 @@ acquired the highest confidence level on the crowdsourcing website. Our
 questionnaires included 2 or 3 test questions (depending on the length) to check
 the sanity of the answers. We eliminated subjects providing wrong answers to our
 sanity questions. We also eliminated subjects with an answering time less than 2
-minutes. The final number of accepted subjects in each group is provided in
-Table \ref{tbl:statistics}.
+minutes. The number of accepted subjects in each group is provided in Table
+\ref{tbl:statistics}.
 
 \begin{table}[htbp]
 \centering
@@ -845,18 +849,18 @@ mean} & {\fontsize{7.5}{8}\selectfont stdev} &
 {\fontsize{7.5}{8}\selectfont\textit{p}-value}\\ \hline 
 {\fontsize{7.5}{8}\selectfont Relevance} & {\fontsize{7.5}{8}\selectfont 29} &
 {\fontsize{7.5}{8}\selectfont 0.713} & {\fontsize{7.5}{8}\selectfont 0.107} &
-{\fontsize{7.5}{8}\selectfont <0.001}\\ \hline {\fontsize{7.5}{8}\selectfont
+{\fontsize{7.5}{8}\selectfont \textless0.001}\\ \hline {\fontsize{7.5}{8}\selectfont
 Desirability} & {\fontsize{7.5}{8}\selectfont 35} &
 {\fontsize{7.5}{8}\selectfont 0.778} & {\fontsize{7.5}{8}\selectfont 0.150} &
-{\fontsize{7.5}{8}\selectfont <0.001}\\
+{\fontsize{7.5}{8}\selectfont \textless0.001}\\
 \hline 
 {\fontsize{7.5}{8}\selectfont Expectedness} & {\fontsize{7.5}{8}\selectfont 33}
 & {\fontsize{7.5}{8}\selectfont 0.785} & {\fontsize{7.5}{8}\selectfont 0.120} &
-{\fontsize{7.5}{8}\selectfont <0.001}\\
+{\fontsize{7.5}{8}\selectfont \textless0.001}\\
 \hline 
 {\fontsize{7.5}{8}\selectfont Controllability} & {\fontsize{7.5}{8}\selectfont
 33} & {\fontsize{7.5}{8}\selectfont 0.743} & {\fontsize{7.5}{8}\selectfont
-0.158} & {\fontsize{7.5}{8}\selectfont <0.001}\\
+0.158} & {\fontsize{7.5}{8}\selectfont \textless0.001}\\
 \hline
 \end{tabular}
 \vspace*{-2mm}
@@ -885,11 +889,11 @@ expectedness} and \textit{controllability}. Note that the collaboration
 structure and the instructions were the same for all four questionnaires.
 
 Each question was designed based on different factors that we use in our
-algorithms (see Section \ref{sec:appraisal-process}). Here, we present three
-example questions from the expectedness, controllability, and desirability
-questionnaires, and describe how each question relates to a specific factor
-within the corresponding algorithm. The input for our algorithms was the task
-model depicted in Figure \ref{fig:taskModel}.
+algorithms (see Section \ref{sec:appraisal-process}). Here, we present one
+example question from the relevance questionnaire, and describe how this
+question relates to a specific factor within the corresponding algorithm. The
+input for our algorithms was the task model depicted in Figure
+\ref{fig:taskModel}.
 
 \begin{figure}[tbh]
   \vspace{-1mm}
@@ -901,58 +905,61 @@ model depicted in Figure \ref{fig:taskModel}.
   \vspace{-2mm}
 \end{figure}
 
-Figure \ref{fig:qs1} shows the example question from the expectedness
-questionnaire. In this example, with respect to Algorithm
-\ref{alg:expectedness} (line 6), option A is more expected because the task
-related to this option provides the next available task in the focus stack (see
-the task model in Figure \ref{fig:taskModel}). Although the task in option B is
-part of the existing task model, it is considered as unexpected by our
-algorithm, since it is not live in the plan. We provided option C to determine
-whether the human subjects will similarly differentiate between these two
-options. This question was presented to the human subjects to determine whether
-their decision for the expectedness of this event is similar to the output of
-the expectedness algorithm. For this question, the human decision was 97\%
-similar to the algorithm's output. Average results for the expectedness
-questionnaire are presented in Table \ref{tbl:statistics}.
+Figure \ref{fig:qs1} shows the example question from the relevance
+questionnaire. In this example, with respect to Algorithm \ref{alg:relevance}
+(line 6), option A is relevant because {\color{red}the task related to this
+option provides the next available task in the focus stack (see the task model in
+Figure \ref{fig:taskModel}). Although the task in option B is part of the
+existing task model, it is considered as irrelevant by our algorithm, since it
+is not live in the plan.} We provided option C to determine whether the human
+subjects will similarly differentiate between these two options. This question
+was presented to the human subjects to determine whether their decision for the
+relevance of this event is similar to the output of the relevance algorithm. For
+this question, the human decision was {\color{red}97\%} similar to the
+algorithm's output. Average results for the relevance questionnaire are
+presented in Table \ref{tbl:statistics}.
 
-\begin{figure}[tbh]
-  \vspace{-1mm}
-  \centering
-  \includegraphics[width=0.48\textwidth]{figure/question-sample2-croped.pdf}
-  \vspace*{-7mm}
-  \caption{{\fontsize{9}{9}\selectfont Example Controllability Question.}}
-  \label{fig:qs2}
-  \vspace{-2mm}
-\end{figure}
+% \begin{figure}[tbh]
+%   \vspace{-1mm}
+%   \centering
+%   \includegraphics[width=0.48\textwidth]{figure/question-sample2-croped.pdf}
+%   \vspace*{-7mm}
+%   \caption{{\fontsize{9}{9}\selectfont Example Controllability Question.}}
+%   \label{fig:qs2}
+%   \vspace{-2mm}
+% \end{figure}
+% 
+% Figure \ref{fig:qs2} shows an example question from the controllability
+% questionnaire. The algorithm's output is option B, and is determined by
+% Algorithm \ref{alg:controllability} (line 3), similarly to the expectedness
+% example above. In this example, option B is more controllable than option A,
+% because the self over total ratio of the responsibility of the predecessors of
+% the given task (see \textit{Autonomy} in Section \ref{sec:controllability}) is
+% higher than the ratio in option A; i.e., self is responsible to spread peanut
+% butter on one slice of bread and strawberry jam on another slice of bread. In
+% this question, the humans decision was 90\% in agreement with the algorithm's
+% output.
 
-Figure \ref{fig:qs2} shows an example question from the controllability
-questionnaire. The algorithm's output is option B, and is determined by
-Algorithm \ref{alg:controllability} (line 3), similarly to the expectedness
-example above. In this example, option B is more controllable than option A,
-because the self over total ratio of the responsibility of the predecessors of
-the given task (see \textit{Autonomy} in Section \ref{sec:controllability}) is
-higher than the ratio in option A; i.e., self is responsible to spread peanut
-butter on one slice of bread and strawberry jam on another slice of bread. In
-this question, the humans decision was 90\% in agreement with the algorithm's
-output.
+% \begin{figure}[tbh]
+%   \vspace{-1mm}
+%   \centering
+%   \includegraphics[width=0.48\textwidth]{figure/question-sample3-croped.pdf}
+%   \vspace*{-7mm}
+%   \caption{{\fontsize{9}{9}\selectfont Example Desirability Question.}}
+%   \label{fig:qs3}
+%   \vspace{-2mm}
+% \end{figure}
+% 
+% Figure \ref{fig:qs3} shows an example question from the desirability
+% questionnaire. The output based on the Algorithm \ref{alg:desirability}
+% (line 14) is option C, since in both option A and option B, the focus goal
+% has been achieved successfully. Therefore, in this example, both options A and B
+% are desirable. The humans decision was 77\% in agreement with the algorithm's
+% output in this question.
 
-\begin{figure}[tbh]
-  \vspace{-1mm}
-  \centering
-  \includegraphics[width=0.48\textwidth]{figure/question-sample3-croped.pdf}
-  \vspace*{-7mm}
-  \caption{{\fontsize{9}{9}\selectfont Example Desirability Question.}}
-  \label{fig:qs3}
-  \vspace{-2mm}
-\end{figure}
-
-Figure \ref{fig:qs3} shows an example question from the desirability
-questionnaire. The output based on the Algorithm \ref{alg:desirability}
-(line 14) is option C, since in both option A and option B, the focus goal
-has been achieved successfully. Therefore, in this example, both options A and B
-are desirable. The humans decision was 77\% in agreement with the algorithm's
-output in this question.
-
+\vspace{-3mm}
+\section{Discussion}
+\vspace{-1mm}
 We conducted the user study to compare the results with the implemented
 algorithms discussed in Section \ref{sec:appraisal-process}. As we mentioned,
 each question had 3 answers. Therefore, a totally random distribution would
@@ -978,8 +985,9 @@ subjects' data being generated from a random set. The very small
 percentage of similarity shows that the four appraisal algorithms predicted the
 human judgments.
 
-\vspace{-3mm}
+\vspace{-2mm}
 \section{Conclusion}
+\vspace{-1mm}
 While these results support our hypothesis, they are not a perfect prediction.
 We believe the difference between these two results could be due to several
 reasons, including: a) the fact that we conducted our study online and had
@@ -995,6 +1003,7 @@ verify the behavior of a collaborative robot using our architecture.
 
 \vspace*{-3mm}
 \section*{Acknowledgments}
+\vspace{-2mm}
 {\fontsize{8.2}{9}\selectfont This work is supported by the National Science
 Foundation under award IIS-1012083. Any opinions, findings, and conclusions
 expressed in this material are those of the authors and do not necessarily

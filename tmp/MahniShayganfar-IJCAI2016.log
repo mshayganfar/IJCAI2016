@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.21)  28 JAN 2016 14:51
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.21)  28 JAN 2016 18:57
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -691,57 +691,53 @@ File: figure/theory-general-croped.pdf Graphic file (type pdf)
 Package pdftex.def Info: figure/theory-general-croped.pdf used on input line 15
 2.
 (pdftex.def)             Requested size: 227.64894pt x 156.51054pt.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 171.
+
+
+LaTeX Warning: Reference `fig:cs' on page 2 undefined on input line 171.
+
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 185.
+<figure/taskModel-croped.pdf, id=16, 553.06625pt x 182.6825pt>
+File: figure/taskModel-croped.pdf Graphic file (type pdf)
+
+<use figure/taskModel-croped.pdf>
+Package pdftex.def Info: figure/taskModel-croped.pdf used on input line 256.
+(pdftex.def)             Requested size: 455.23883pt x 149.38527pt.
  [2 <./figure/theory-general-croped.pdf>]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 262.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 262.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 272.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 262.
-<figure/collaborationStructure-croped.pdf, id=31, 343.2825pt x 184.69pt>
-File: figure/collaborationStructure-croped.pdf Graphic file (type pdf)
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 272.
 
-<use figure/collaborationStructure-croped.pdf>
-Package pdftex.def Info: figure/collaborationStructure-croped.pdf used on input
- line 294.
-(pdftex.def)             Requested size: 239.79135pt x 129.00874pt.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 308.
 
+LaTeX Warning: Reference `fig:cs' on page 3 undefined on input line 292.
+
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 318.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 308.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 318.
 
-Underfull \hbox (badness 1354) in paragraph at lines 344--348
+Underfull \hbox (badness 1354) in paragraph at lines 354--358
 [][]\OT1/ptm/m/it/10 doesContribute($\OML/cmm/m/it/10 g[]$\OT1/ptm/m/it/10 ) \O
 T1/ptm/m/n/10 re-turns whether the given goal con-
  []
 
 
-Underfull \hbox (badness 1715) in paragraph at lines 349--353
+Underfull \hbox (badness 1715) in paragraph at lines 359--363
 [][]\OT1/ptm/m/it/10 extractContributingGoals($\OML/cmm/m/it/10 g[]$\OT1/ptm/m/
 it/10 ) \OT1/ptm/m/n/10 re-turns all the con-tribut-ing
  []
 
-
-Underfull \vbox (badness 1231) has occurred while \output is active []
-
- [3 <./figure/collaborationStructure-croped.pdf>]
-
-LaTeX Warning: Reference `sec:belief' on page 4 undefined on input line 451.
-
-
-LaTeX Warning: Reference `sec:motive' on page 4 undefined on input line 471.
-
-[4]
+[3 <./figure/taskModel-croped.pdf>] [4]
 ! Undefined control sequence.
 <argument> ...ize {7}{8}\selectfont BLOCKED}) \OR 
                                                   \\ \hspace {1mm}{\fontsize...
-l.576 ...fontsize{7}{8}\selectfont INAPPLICABLE)}}
+l.590 ...fontsize{7}{8}\selectfont INAPPLICABLE)}}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -752,7 +748,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> ...ize {7}{8}\selectfont PENDING}) \OR 
                                                   \\ \hspace {1mm}{\fontsize...
-l.582 			{\fontsize{7}{8}\selectfont INPROGRESS})}
+l.596 			{\fontsize{7}{8}\selectfont INPROGRESS})}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -763,7 +759,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> ...ize {7}{8}\selectfont BLOCKED}) \OR 
                                                   \\ \hspace {1mm}{\fontsize...
-l.594 ...fontsize{7}{8}\selectfont INAPPLICABLE})}
+l.608 ...fontsize{7}{8}\selectfont INAPPLICABLE})}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -774,7 +770,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> ...ize {7}{8}\selectfont PENDING}) \OR 
                                                   \\ \hspace {1mm} \hspace *...
-l.599 ...{\fontsize{7}{8}\selectfont INPROGRESS})}
+l.613 ...{\fontsize{7}{8}\selectfont INPROGRESS})}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -785,7 +781,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> ...(\mathit {g}_{t})}\hspace *{2mm}\OR 
                                                   $ \\ \hspace *{13mm}$\text...
-l.634 ...eccessaryFocusShift}{(\mathit{g}_{t})})$}
+l.648 ...eccessaryFocusShift}{(\mathit{g}_{t})})$}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -793,50 +789,29 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[5] [6] <figure/taskModel-croped.pdf, id=75, 553.06625pt x 182.6825pt>
-File: figure/taskModel-croped.pdf Graphic file (type pdf)
-
-<use figure/taskModel-croped.pdf>
-Package pdftex.def Info: figure/taskModel-croped.pdf used on input line 810.
-(pdftex.def)             Requested size: 455.23883pt x 149.38527pt.
+[5] [6]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 821.
+(Font)              <9> on input line 825.
+LaTeX Font Info:    Try loading font information for OML+ptm on input line 852.
 
-<figure/question-sample-croped.pdf, id=76, 303.1325pt x 95.35625pt>
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlptm.fd
+File: omlptm.fd 
+)
+LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <7.5> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 852.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <7.5> not available
+(Font)              size <7> substituted on input line 852.
+
+<figure/question-sample-croped.pdf, id=70, 303.1325pt x 95.35625pt>
 File: figure/question-sample-croped.pdf Graphic file (type pdf)
 
 <use figure/question-sample-croped.pdf>
-Package pdftex.def Info: figure/question-sample-croped.pdf used on input line 8
-97.
+Package pdftex.def Info: figure/question-sample-croped.pdf used on input line 9
+01.
 (pdftex.def)             Requested size: 242.82503pt x 76.38693pt.
-
-<figure/question-sample2-croped.pdf, id=77, 308.15125pt x 105.39375pt>
-File: figure/question-sample2-croped.pdf Graphic file (type pdf)
-
-<use figure/question-sample2-croped.pdf>
-Package pdftex.def Info: figure/question-sample2-croped.pdf used on input line 
-921.
-(pdftex.def)             Requested size: 242.82503pt x 83.05267pt.
- [7 <./figure/question-sample-croped.pdf>] <figure/question-sample3-croped.pdf,
- id=99, 303.1325pt x 119.44624pt>
-File: figure/question-sample3-croped.pdf Graphic file (type pdf)
-
-<use figure/question-sample3-croped.pdf>
-Package pdftex.def Info: figure/question-sample3-croped.pdf used on input line 
-942.
-(pdftex.def)             Requested size: 242.82503pt x 95.6847pt.
- (./MahniShayganfar-IJCAI2016.bbl
-Underfull \vbox (badness 1635) has occurred while \output is active []
-
- [8 <./figure/taskModel-croped.pdf> <./figure/question-sample2-croped.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./figure/question-sample2-croped.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
-> <./figure/question-sample3-croped.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./figure/question-sample3-croped.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
->]
+ [7] (./MahniShayganfar-IJCAI2016.bbl
 Underfull \hbox (badness 1796) in paragraph at lines 11--14
 [][]\OT1/ptm/m/n/10 Philip Co-hen and Hec-tor J.
  []
@@ -861,7 +836,7 @@ Underfull \hbox (badness 3179) in paragraph at lines 79--83
 [][]\OT1/ptm/m/n/10 Scott W. Mc-Quig-gan and
  []
 
-
+[8 <./figure/question-sample-croped.pdf>]
 Underfull \hbox (badness 1931) in paragraph at lines 95--99
 [][]\OT1/ptm/m/n/10 Matthijs Pon-tier and Jo-han F.
  []
@@ -877,16 +852,22 @@ Underfull \hbox (badness 1394) in paragraph at lines 133--136
 n/10 , 7:83--124,
  []
 
-) [9] (./MahniShayganfar-IJCAI2016.aux)
+) [9
+
+] (./MahniShayganfar-IJCAI2016.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.5pt have occurred.
+
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 17070 strings out of 493304
- 342852 string characters out of 6139871
+ 17067 strings out of 493304
+ 342509 string characters out of 6139871
  731532 words of memory out of 5000000
- 20175 multiletter control sequences out of 15000+600000
+ 20172 multiletter control sequences out of 15000+600000
  40158 words of font info for 71 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,11n,59p,10430b,309s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -905,10 +886,10 @@ live/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
 rw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8
 a.pfb>
-Output written on MahniShayganfar-IJCAI2016.pdf (9 pages, 331906 bytes).
+Output written on MahniShayganfar-IJCAI2016.pdf (9 pages, 246304 bytes).
 PDF statistics:
- 205 PDF objects out of 1000 (max. 8388607)
- 135 compressed objects within 2 object streams
+ 148 PDF objects out of 1000 (max. 8388607)
+ 101 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 43 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 
