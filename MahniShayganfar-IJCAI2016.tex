@@ -255,48 +255,50 @@ Mind mechanism.
   \vspace*{-5mm}
   \includegraphics[width=16.5cm,height=6cm]{figure/taskModel-croped.pdf}
   \vspace*{-3mm}
-  \caption{Collaboration Task Model for the Evaluation.}
+  \caption{Collaboration structure (also used as task model for
+  the evaluation).}
   \label{fig:taskModel}
   \vspace*{-4mm}
 \end{figure*}
 
-\section{Example Scenario}
-
-The example scenario is part of a much larger interaction we are implementing to
-test our theory. This example shows a very short part of an interaction between
-a robot and an astronaut during their collaboration. Their mission is to finish
-installing a few solar panels together. However, the astronaut encounters a
-measurement tool problem:
-
-\begin{description}
-  \item \textit{\textbf{\fontsize{9pt}{12pt}\selectfont Astronaut [turn t-1]:}}
-  Oh no! Finishing the quality check of our installation with this measurement
-  problem is so frustrating. I think we should stop now!
-
-  \item \textit{\textbf{\fontsize{9pt}{12pt}\selectfont{Robot [turn t]:}}}
-  I see. This is frustrating. But, I can help you with the measurement tool and
-  we can finish the task as originally planned.
-\end{description}
-
-\vspace*{-1mm}
-In this scenario, the robot appraises the problem with the measurement tool as
-a \textit{relevant, undesirable, unexpected}, but \textit{controllable} event.
-Consequently, the coping mechanism first acknowledges the astronaut's negative
-valenced emotion (i.e., frustration), then provides a new plan to continue the
-collaboration.
+% \section{Example Scenario}
+% 
+% The example scenario is part of a much larger interaction we are implementing to
+% test our theory. This example shows a very short part of an interaction between
+% a robot and an astronaut during their collaboration. Their mission is to finish
+% installing a few solar panels together. However, the astronaut encounters a
+% measurement tool problem:
+% 
+% \begin{description}
+%   \item \textit{\textbf{\fontsize{9pt}{12pt}\selectfont Astronaut [turn t-1]:}}
+%   Oh no! Finishing the quality check of our installation with this measurement
+%   problem is so frustrating. I think we should stop now!
+% 
+%   \item \textit{\textbf{\fontsize{9pt}{12pt}\selectfont{Robot [turn t]:}}}
+%   I see. This is frustrating. But, I can help you with the measurement tool and
+%   we can finish the task as originally planned.
+% \end{description}
+% 
+% \vspace*{-1mm}
+% In this scenario, the robot appraises the problem with the measurement tool as
+% a \textit{relevant, undesirable, unexpected}, but \textit{controllable} event.
+% Consequently, the coping mechanism first acknowledges the astronaut's negative
+% valenced emotion (i.e., frustration), then provides a new plan to continue the
+% collaboration.
 
 \vspace*{-3mm}
 \section{Collaboration}
 
 The Collaboration mechanism constructs a hierarchy of goals associated with
-tasks in the form of a hierarchical task network (see Figure \ref{fig:cs}), and
-also manages and maintains the constraints and other required details of the
-collaboration including the inputs and outputs of individual tasks, the
-\textit{preconditions} (specifying whether it is appropriate to perform a task),
-and the \textit{postconditions} (specifying whether a just-completed task was
-successful). Collaboration also keeps track of the focus of attention, which
-determines the salient objects, properties and relations at each point, and
-shifts the focus of attention during the interaction.
+tasks in the form of a hierarchical task network (see Figure
+\ref{fig:taskModel}), and also manages and maintains the constraints and other
+required details of the collaboration including the inputs and outputs of
+individual tasks, the \textit{preconditions} (specifying whether it is
+appropriate to perform a task), and the \textit{postconditions} (specifying
+whether a just-completed task was successful). Collaboration also keeps track of
+the focus of attention, which determines the salient objects, properties and
+relations at each point, and shifts the focus of attention during the
+interaction.
 
 % \vspace*{-2mm}
 % \begin{figure}[tbh]
@@ -323,17 +325,17 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
   \item \textit{topLevelGoalStatus($g_t$)} returns the status of the top level
   goal whether it is \textsc{achieved, failed, blocked, inapplicable, pending,}
   or \textsc{in progress}.
-  In our example, ``Install Solar Panels'' is the top level goal.
+  In our example, ``Prepare Two Sandwiches'' is the top level goal.
   
   \item \textit{currGoalStatus($g_t$)} returns the current goal status whether
   it is \textsc{achieved, failed, blocked, inapplicable, pending,} or \textsc{in
-  progress}. In our example, ``Prepare Measurement Tool'' is the current
+  progress}. In our example, ``Add Pickles'' is the current
   (focused) goal.
   
   \item \textit{precondStatus($g_t$)} returns the status of the precondition for
   the given goal whether it is \textsc{satisfied, unsatisfied} or
-  \textsc{unknown}. For instance, the precondition for fixing a panel is whether
-  the panel is appropriately located on its frame.
+  \textsc{unknown}. For instance, the precondition for slicing the eggs is
+  whether the eggs are boiled appropriately.
   
   \item \textit{isLive($g_t$)} returns \textit{true} if all the predecessors of
   the given goal are \textsc{achieved} and all the preconditions of the goal are
@@ -353,56 +355,57 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
   
   \item \textit{doesContribute($g_t$)} returns whether the given goal
   contributes to another goal in the higher level of the plan hierarchy. For
-  instance, an abstract (nonprimitive) goal of ``Bring Panels'' contributes to
-  the higher level goal of ``Install Solar Panels''.
+  instance, an abstract (nonprimitive) goal of ``Prepare Peanut Butter
+  Sandwich'' contributes to the higher level goal of ``Prepare Two Sandwiches''.
   
   \item \textit{extractContributingGoals($g_t$)} returns all the contributing
-  goals of the given goal. For instance, ``Prepare Measurement Tool'' and
-  ``Measure Quality'' are two goals contributing to the ``Check Panels''
-  nonprimitive goal.
+  goals of the given goal. For instance, ``Boil Water'', ``Boil Two Eggs'',
+  ``Slice Eggs'' and other goals in this level are multiple goals contributing
+  to the ``Prepare Boiled Egg Sandwich'' nonprimitive goal.
   
   \item \textit{extractPredecessors($g_t$)} returns the predecessors of the
-  given goal. For instance, the ``Fix Panels'' goal is the predecessor of
-  another goal called ``Check Panels''.
+  given goal. For instance, the ``Spread Peanut Butter'' and ``Spread
+  Strawberry Jam'' goals are the predecessors of another goal called ``Press
+  Bread Slices''.
   
   \item \textit{extractInputs($g_t$)} returns all the required inputs for
-  the given goal. For example, the goal ``Fix Panels'' requires inputs such as
-  the \textit{welding tool} and the \textit{panel}.
+  the given goal. For example, the goal ``Boil Water'' requires inputs such as
+  the \textit{Pot} and the \textit{Stove}.
   
   \item \textit{isAvailable($g_t$)} returns whether the given input is
-  available. For instance, if the \textit{welding tool} is required for the goal
-  ``Fix Panels'', is it available now?
+  available. For instance, if the \textit{Pot} is required for the goal
+  ``Boil Water'', is it available now?
   
   \item \textit{isAchieved($g_t$)} returns whether the given goal is achieved,
   i.e., whether all the postconditions of the given goal are \textsc{satisfied}.
   
   \item \textit{isFocused($g_t$)} returns whether the focus is on given
-  goal now. In this example, the focus is on the goal ``Prepare Measurement
-  Tool''. The focused goal is the goal that the robot is currently pursuing.
+  goal now. In this example, the focus is on the goal ``Add Pickles''. The
+  focused goal is the goal that the robot is currently pursuing.
   
   \item \textit{getResponsible($g_t$)} returns responsible agents of the given
   goal. In a dyadic collaboration, both of the agents can be partly responsible
   for a nonprimitive goal, while each is responsible for one or more primitive
-  goals. For instance, both the robot and the astronaut are responsible for the
-  nonprimitive goal of ``Install Solar Panels'', whereas it is only the
-  astronaut who is responsible for the primitive goal of ``Prepare Measurement
-  Tool''.
+  goals. For instance, both Mary and the subject are responsible for the
+  nonprimitive goal of ``Prepare Peanut Butter Sandwich'', whereas it is only
+  Mary who is responsible for the primitive goal of ``Spread Peanut Butter''.
 \end{itemize}
 
+\vspace*{-3mm}
 \section{Appraisal Processes}
 \label{sec:appraisal-process}
 
 We consider four appraisal variables to be the most important appraisal
 variables in a collaboration context, i.e., \textit{Relevance} (since other
 appraisals are only derived for relevant events), \textit{Desirability}
-(since it categorically separates certain emotions and can be used as an intensity
-variable), \textit{Expectedness} (since it captures causality based on the past
-knowledge of the tasks), and \textit{Controllability} (since it is associated
-with the agent's coping ability). There are other appraisal variables introduced
-in psychological \cite{scherer:appraisal-processes} and computational literature
-\cite{gratch:domain-independent}. We believe most of these variables can be
-straightforwardly added to our appraisal mechanism later. All of the algorithms
-in this section use mental states of the robot (see Section
+(since it categorically separates certain emotions and can be used as an
+intensity variable), \textit{Expectedness} (since it captures causality based on
+the past knowledge of the tasks), and \textit{Controllability} (since it is
+associated with the agent's coping ability). There are other appraisal variables
+introduced in psychological \cite{scherer:appraisal-processes} and computational
+literature \cite{gratch:domain-independent}. We believe most of these variables
+can be straightforwardly added to our appraisal mechanism later. All of the
+algorithms in this section use mental states of the robot (see Section
 \ref{sec:mental-states}) which are formed based on the collaboration structure.
 These algorithms use the corresponding recognized goal of the most recent event
 at each turn.
@@ -619,7 +622,7 @@ events as \textsc{neutral}.
 	\end{algorithmic}
 \end{algorithm}
 
-\vspace*{-5mm}
+\vspace*{-1mm}
 \subsection{Expectedness}
 
 Expectedness is the extent to which the truth value of a state could have been
