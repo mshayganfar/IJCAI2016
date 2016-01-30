@@ -19,6 +19,8 @@
 % Use the postscript times font!
 \usepackage{times}
 
+\usepackage{mathtools}
+
 % the following package is optional:
 %\usepackage{latexsym} 
 
@@ -498,6 +500,15 @@ goal. We use three of the belief attributes discussed in Section
   goal causes an impasse in the shared plan (i.e., no further goal is available
   to achieve), or achievement of the directing goal removes an existing impasse.
 \end{itemize}
+
+\vspace*{-3mm}
+\begin{equation}
+    U(\varepsilon_t)= 
+\begin{dcases}
+    (P+\upsilon)\cdot S^{(T + \eta)} & T \textgreater 0 \\
+    0            & T = 0
+\end{dcases}
+\end{equation}
 
 We compute the utility of an event based on these five attributes. The value of
 each attribute is between -1 and 1, and we consider the same weight for each

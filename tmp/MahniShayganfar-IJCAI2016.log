@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.11.24)  30 JAN 2016 00:11
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.11.24)  30 JAN 2016 00:49
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -582,22 +582,111 @@ Package: xparse 2013/12/31 v4634 L3 Experimental document command parser
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
+(/usr/share/texlive/texmf-dist/tex/latex/mh/mathtools.sty
+Package: mathtools 2013/02/12 v1.13 mathematical typesetting tools
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count149
+\calc@Bcount=\count150
+\calc@Adimen=\dimen181
+\calc@Bdimen=\dimen182
+\calc@Askip=\skip54
+\calc@Bskip=\skip55
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count151
+\calc@Cskip=\skip56
+)
+(/usr/share/texlive/texmf-dist/tex/latex/mh/mhsetup.sty
+Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip57
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks28
+\ex@=\dimen183
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen184
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count152
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count153
+\leftroot@=\count154
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count155
+\DOTSCASE@=\count156
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box73
+\strutbox@=\box74
+\big@size=\dimen185
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count157
+\c@MaxMatrixCols=\count158
+\dotsspace@=\muskip16
+\c@parentequation=\count159
+\dspbrk@lvl=\count160
+\tag@help=\toks29
+\row@=\count161
+\column@=\count162
+\maxfields@=\count163
+\andhelp@=\toks30
+\eqnshift@=\dimen186
+\alignsep@=\dimen187
+\tagshift@=\dimen188
+\tagwidth@=\dimen189
+\totwidth@=\dimen190
+\lineht@=\dimen191
+\@envbody=\toks31
+\multlinegap=\skip58
+\multlinetaggap=\skip59
+\mathdisplay@stack=\toks32
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
+\g_MT_multlinerow_int=\count164
+\l_MT_multwidth_dim=\dimen192
+\origjot=\skip60
+\l_MT_shortvdotswithinadjustabove_dim=\dimen193
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen194
+\l_MT_above_intertext_sep=\dimen195
+\l_MT_below_intertext_sep=\dimen196
+\l_MT_above_shortintertext_sep=\dimen197
+\l_MT_below_shortintertext_sep=\dimen198
+)
 (./MahniShayganfar-IJCAI2016.aux)
 \openout1 = `MahniShayganfar-IJCAI2016.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 52.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 54.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -605,17 +694,17 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count149
-\scratchdimen=\dimen181
-\scratchbox=\box73
-\nofMPsegments=\count150
-\nofMParguments=\count151
-\everyMPshowfont=\toks28
-\MPscratchCnt=\count152
-\MPscratchDim=\dimen182
-\MPnumerator=\count153
-\makeMPintoPDFobject=\count154
-\everyMPtoPDFconversion=\toks29
+\scratchcounter=\count165
+\scratchdimen=\dimen199
+\scratchbox=\box75
+\nofMPsegments=\count166
+\nofMParguments=\count167
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count168
+\MPscratchDim=\dimen200
+\MPnumerator=\count169
+\makeMPintoPDFobject=\count170
+\everyMPtoPDFconversion=\toks34
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -661,21 +750,11 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 54.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 54.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 54.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 54.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 56.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 54.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 114.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 114.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 56.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <11.85> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 131.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 133.
 
 Underfull \vbox (badness 1762) has occurred while \output is active []
 
@@ -689,68 +768,75 @@ File: figure/theory-general-croped.pdf Graphic file (type pdf)
 
 <use figure/theory-general-croped.pdf>
 Package pdftex.def Info: figure/theory-general-croped.pdf used on input line 15
-2.
+4.
 (pdftex.def)             Requested size: 227.64894pt x 156.51054pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 171.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 173.
 
 
-LaTeX Warning: Reference `fig:cs' on page 2 undefined on input line 171.
+LaTeX Warning: Reference `fig:cs' on page 2 undefined on input line 173.
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 185.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 187.
 <figure/taskModel-croped.pdf, id=16, 556.0775pt x 221.82875pt>
 File: figure/taskModel-croped.pdf Graphic file (type pdf)
 
 <use figure/taskModel-croped.pdf>
-Package pdftex.def Info: figure/taskModel-croped.pdf used on input line 256.
+Package pdftex.def Info: figure/taskModel-croped.pdf used on input line 258.
 (pdftex.def)             Requested size: 469.47772pt x 170.71387pt.
  [2 <./figure/theory-general-croped.pdf>]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 320.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 322.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 320.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 322.
 
-Underfull \hbox (badness 1354) in paragraph at lines 356--360
+Underfull \hbox (badness 1354) in paragraph at lines 358--362
 [][]\OT1/ptm/m/it/10 doesContribute($\OML/cmm/m/it/10 g[]$\OT1/ptm/m/it/10 ) \O
 T1/ptm/m/n/10 re-turns whether the given goal con-
  []
 
 
-Underfull \hbox (badness 1715) in paragraph at lines 361--365
+Underfull \hbox (badness 1715) in paragraph at lines 363--367
 [][]\OT1/ptm/m/it/10 extractContributingGoals($\OML/cmm/m/it/10 g[]$\OT1/ptm/m/
 it/10 ) \OT1/ptm/m/n/10 re-turns all the con-tribut-ing
  []
 
-[3 <./figure/taskModel-croped.pdf>] [4]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 760.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 829.
- [5]
-LaTeX Font Info:    Try loading font information for OML+ptm on input line 856.
+[3 <./figure/taskModel-croped.pdf>]
 
+LaTeX Warning: Command \textgreater invalid in math mode on input line 508.
+
+LaTeX Font Info:    Try loading font information for OML+ptm on input line 508.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlptm.fd
 File: omlptm.fd 
 )
+LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 508.
+
+
+LaTeX Warning: Command \textgreater invalid in math mode on input line 508.
+
+[4]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 771.
+ [5]
 LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <7.5> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 856.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 867.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <7.5> not available
-(Font)              size <7> substituted on input line 856.
+(Font)              size <7> substituted on input line 867.
 
-<figure/question-sample-croped.pdf, id=69, 303.1325pt x 95.35625pt>
+<figure/question-sample-croped.pdf, id=70, 303.1325pt x 95.35625pt>
 File: figure/question-sample-croped.pdf Graphic file (type pdf)
 
 <use figure/question-sample-croped.pdf>
 Package pdftex.def Info: figure/question-sample-croped.pdf used on input line 9
-05.
+16.
 (pdftex.def)             Requested size: 242.82503pt x 76.38693pt.
  [6 <./figure/question-sample-croped.pdf>] (./MahniShayganfar-IJCAI2016.bbl
 Underfull \hbox (badness 1796) in paragraph at lines 11--14
@@ -793,7 +879,9 @@ Underfull \hbox (badness 1394) in paragraph at lines 133--136
 n/10 , 7:83--124,
  []
 
-) [7] (./MahniShayganfar-IJCAI2016.aux)
+[7]) [8
+
+] (./MahniShayganfar-IJCAI2016.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
@@ -803,29 +891,30 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 17048 strings out of 493304
- 342233 string characters out of 6139870
+ 18183 strings out of 493304
+ 358363 string characters out of 6139870
  728530 words of memory out of 5000000
- 20156 multiletter control sequences out of 15000+600000
- 36493 words of font info for 66 fonts, out of 8000000 for 9000
+ 21261 multiletter control sequences out of 15000+600000
+ 40741 words of font info for 77 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,11n,59p,10430b,284s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,11n,59p,10430b,286s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/urw/times/utmri8a.pfb>
-Output written on MahniShayganfar-IJCAI2016.pdf (7 pages, 221301 bytes).
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/times/utmri8a.pfb>
+Output written on MahniShayganfar-IJCAI2016.pdf (8 pages, 231195 bytes).
 PDF statistics:
- 134 PDF objects out of 1000 (max. 8388607)
- 91 compressed objects within 1 object stream
+ 141 PDF objects out of 1000 (max. 8388607)
+ 96 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  28 words of extra memory for PDF output out of 10000 (max. 10000000)
 
