@@ -20,6 +20,7 @@
 \usepackage{times}
 
 \usepackage{mathtools}
+\usepackage{amssymb}
 
 % the following package is optional:
 %\usepackage{latexsym} 
@@ -525,7 +526,7 @@ goal. We use three of the belief attributes discussed in Section
   the one to remove the impasse on the shared plan.
 \end{itemize}
 
-\vspace*{-3mm}
+\vspace*{-4mm}
 \begin{equation}
     \Psi = \frac{\alpha_{_k} + \beta_{_k} + \lambda_{_k} +
     \mu_{_k}}{\alpha_{_{all}} + \beta_{_{all}} + \lambda_{_{all}} +
@@ -533,39 +534,53 @@ goal. We use three of the belief attributes discussed in Section
     \label{eqn:power}
 \end{equation}
 
+\vspace*{1mm}
+\begin{center} 
+    $\eta, \gamma \in \mathbb{N} \qquad,\qquad \eta, \gamma \geq 0$\\
+    $\alpha_{_k}, \beta_{_k}, \lambda_{_k}, \mu_{_k} \in \mathbb{N}
+    \qquad,\qquad \alpha_{_k}, \beta_{_k}, \lambda_{_k}, \mu_{_k} \geq 0$\\
+    $\alpha_{_{all}}, \lambda_{_{all}}, \mu_{_{all}} \in \mathbb{N}
+    \qquad,\qquad \alpha_{_{all}}, \lambda_{_{all}}, \mu_{_{all}} \geq 0$\\
+    $\beta_{_{all}} \in \mathbb{N} \qquad,\qquad \beta_{_{all}} \geq 1$
+\end{center}
+
 In equation \ref{eqn:power}, the subscript \textit{k} of the components of
 the first term refers to the \textit{known} (\textsc{satisfied} or
 \textsc{unsatisfied}) goal-related factors; whereas the subscript \textit{all}
-includes both \textit{known} and \textit{unknown} goal-related factors.
+includes both \textit{known} and \textit{unknown} goal-related factors. In this
+equation, both urgency ($\gamma$) and importance ($\eta$) attributes of motives
+can impact the outcome of the goal-related belief attributes' ratio, and
+ultimately the $\Psi$ value.
 
 \vspace*{-3mm}
 \begin{equation}
     U(\varepsilon_t)= 
     \begin{dcases}
-       P\cdot S^{\Psi} & \Psi \textgreater 0 \\
-       0               & \Psi = 0
+       \upsilon\!P\cdot S^{\Psi} & \Psi \textgreater 0 \\
+       0               			 & \Psi = 0
     \end{dcases}
     \label{eqn:utility}
 \end{equation}
 
-We compute the utility of an event based on these five attributes. The value of
-each attribute is between -1 and 1, and we consider the same weight for each
-attribute. These weights can be learned or modified when our framework is fully
-implemented. The value of the overall utility is computed using a simple
-weighted averaging function which results in an overall value between -1 and 1.
+We compute the utility of an event based on the above five attributes. The
+$\upsilon$'s value becomes +1 if the status of the corresponding goal is
+\textsc{achieved}, \textsc{pending} or \textsc{in progress}, and $\upsilon$'s
+value becomes -1 if the status of the corresponding goal is \textsc{failed,
+blocked, inapplicable}. Therefore, the value of the overall utility can be
+positive, negative or zero.
 
 The significance of an event in a collaborative environment is based not
 only on the utility of the event, but it is also influenced by the perceived
 emotion of the human collaborator. The human's emotion influences the decision
-about the utility of the event in the form of a threshold value $\tau_{t}$ (see
-Algorithm \ref{alg:relevance}). For instance, a positively expressed emotion of
-the human reduces the threshold value which consequently makes the robot find an
-event relevant with even a slightly positive utility. This threshold value
-($\tau_{t}$) is currently determined based on whether the valence of the
-human's perceived emotion is positive (e.g., happiness) or negative (e.g.,
-anger). Consequently, an event can be considered \textsc{irrelevant} even though
-the utility has a relatively positive value, because relevance is influenced by
-the human's perceived emotional state.
+based on the utility of the event in the form of a threshold value $\tau_{t}$
+(see Algorithm \ref{alg:relevance}). For instance, a positively expressed
+emotion of the human reduces the threshold value which consequently makes the
+robot find an event relevant with even a slightly positive utility. This
+threshold value ($\tau_{t}$) is currently determined based on whether the
+valence of the human's perceived emotion is positive (e.g., happiness) or
+negative (e.g., anger). Therefore, an event can be considered
+\textsc{irrelevant} even though the utility has a relatively positive value,
+because relevance is influenced by the human's perceived negative emotion.
 
 % \vspace*{-1mm}
 % \subsection{Desirability}
