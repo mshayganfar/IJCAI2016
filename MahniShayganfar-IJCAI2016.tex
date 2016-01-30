@@ -324,10 +324,10 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
   contributes, or \textit{ambiguous} if this method does not recognize a goal in
   the plan.
   
-  \item \textit{topLevelGoalStatus($g_t$)} returns the status of the top level
-  goal whether it is \textsc{achieved, failed, blocked, inapplicable, pending,}
-  or \textsc{in progress}.
-  In our example, ``Prepare Two Sandwiches'' is the top level goal.
+%   \item \textit{topLevelGoalStatus($g_t$)} returns the status of the top level
+%   goal whether it is \textsc{achieved, failed, blocked, inapplicable, pending,}
+%   or \textsc{in progress}. In our example, ``Prepare Two Sandwiches'' is the top
+%   level goal.
   
   \item \textit{currGoalStatus($g_t$)} returns the current goal status whether
   it is \textsc{achieved, failed, blocked, inapplicable, pending,} or \textsc{in
@@ -339,26 +339,26 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
   \textsc{unknown}. For instance, the precondition for slicing the eggs is
   whether the eggs are boiled appropriately.
   
-  \item \textit{isLive($g_t$)} returns \textit{true} if all the predecessors of
-  the given goal are \textsc{achieved} and all the preconditions of the goal are
-  \textsc{satisfied}; otherwise returns \textit{false}.
+%   \item \textit{isLive($g_t$)} returns \textit{true} if all the predecessors of
+%   the given goal are \textsc{achieved} and all the preconditions of the goal are
+%   \textsc{satisfied}; otherwise returns \textit{false}.
   
-  \item \textit{isFocusShift($g_t$)} returns \textit{true} if the given
-  goal is not the previous focus (top of the stack); otherwise returns
-  \textit{false}.
+%   \item \textit{isFocusShift($g_t$)} returns \textit{true} if the given
+%   goal is not the previous focus (top of the stack); otherwise returns
+%   \textit{false}.
   
-  \item \textit{isNecessaryFocusShift($g_t$)} returns \textit{true} if the
-  status of the previous focus was \textsc{achieved}; otherwise returns
-  \textit{false} \cite{rich:focused-unfocused-users}.
+%   \item \textit{isNecessaryFocusShift($g_t$)} returns \textit{true} if the
+%   status of the previous focus was \textsc{achieved}; otherwise returns
+%   \textit{false} \cite{rich:focused-unfocused-users}.
   
-  \item \textit{isPath($g_1$, $g_2$)} returns \textit{true} if there is a path
-  between $g_1$ and $g_2$ in a plan tree structure; otherwise returns
-  \textit{false}.
+%   \item \textit{isPath($g_1$, $g_2$)} returns \textit{true} if there is a path
+%   between $g_1$ and $g_2$ in a plan tree structure; otherwise returns
+%   \textit{false}.
   
-  \item \textit{doesContribute($g_t$)} returns whether the given goal
-  contributes to another goal in the higher level of the plan hierarchy. For
-  instance, an abstract (nonprimitive) goal of ``Prepare Peanut Butter
-  Sandwich'' contributes to the higher level goal of ``Prepare Two Sandwiches''.
+%   \item \textit{doesContribute($g_t$)} returns whether the given goal
+%   contributes to another goal in the higher level of the plan hierarchy. For
+%   instance, an abstract (nonprimitive) goal of ``Prepare Peanut Butter
+%   Sandwich'' contributes to the higher level goal of ``Prepare Two Sandwiches''.
   
   \item \textit{extractContributingGoals($g_t$)} returns all the contributing
   goals of the given goal. For instance, ``Boil Water'', ``Boil Two Eggs'',
@@ -378,12 +378,11 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
   available. For instance, if the \textit{Pot} is required for the goal
   ``Boil Water'', is it available now?
   
-  \item \textit{isAchieved($g_t$)} returns whether the given goal is achieved,
-  i.e., whether all the postconditions of the given goal are \textsc{satisfied}.
+%   \item \textit{isAchieved($g_t$)} returns whether the given goal is achieved,
+%   i.e., whether all the postconditions of the given goal are \textsc{satisfied}.
   
   \item \textit{isFocused($g_t$)} returns whether the focus is on given
-  goal now. In this example, the focus is on the goal ``Add Pickles''. The
-  focused goal is the goal that the robot is currently pursuing.
+  goal now. The focused goal is the goal that the robot is currently pursuing.
   
   \item \textit{getResponsible($g_t$)} returns responsible agents of the given
   goal. In a dyadic collaboration, both of the agents can be partly responsible
