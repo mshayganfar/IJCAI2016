@@ -46,7 +46,7 @@
 % \thanks{These match the formatting instructions of IJCAI-07. The support of
 % IJCAI, Inc. is acknowledged.}
 
-\title{Appraisal in Human-Robot Collaboration}
+\title{Relevance and Controllability Appraisals in Human-Robot Collaboration}
 \author{Mahni Shayganfar, Charles Rich, Candace L. Sidner \\ 
 Worcester Polytechnic Institute, Worcester Massachusetts  \\
 mshayganfar $|$ rich $|$ sidner @wpi.edu}
@@ -448,7 +448,7 @@ the shared goal, without dedicating all resources to every single event.
 			\State $\mathcal{U} \gets \Call{getEventUtility}{\mathit{g}_{t}}$ 
 			\State $\tau_{t} \gets \Call{getEmotionalThreshold}{\mathit{g}_{t}}$
 % 			\Statex
-			\If {$( |\mathcal{U}| \geq \tau_{t} )$}
+			\If {$(  \tau_{t} \leq |\mathcal{U}| )$}
 				\State \Return {{\fontsize{7}{8}\selectfont RELEVANT}}
 			\Else
 				\State \Return {{\fontsize{7}{8}\selectfont IRRELEVANT}}
@@ -471,43 +471,82 @@ goal. We use three of the belief attributes discussed in Section
 \vspace*{-1mm}
 \begin{itemize}[leftmargin=2pt]
   \setlength\itemsep{0.2mm}
-  \item \textit{Strength}: The extent to which the pre and postconditions of a
-  goal and its predecessors and/or contributing goals are \textsc{satisfied} or
-  \textsc{unsatisfied} makes a belief about the goal stronger.
-  Respectively, an \textsc{unknown} pre and postcondition status of a goal and
-  its predecessors and/or contributing goals forms beliefs with lower strength.
-  \item \textit{Saliency}: Beliefs related to the goal at the top of the focus
-  stack are more salient than beliefs related to any other goal in the plan,
-  whether those goals are already \textsc{achieved} or \textsc{failed}, or they
-  will be pursued in the future.
-  \item \textit{Persistence}: The recurrence of a belief over the passage of
-  time (turns) increases the persistence of the belief. Beliefs occurring only
-  in one turn have the lowest value of persistence.
+  \item \textit{Strength (T)}: The extent to which the preconditions ($\alpha$)
+  and postconditions ($\beta$) of a goal and its predecessors ($\lambda$) and
+  contributing goals ($\mu$) are \textsc{satisfied} or \textsc{unsatisfied}
+  makes a belief about the goal stronger. Respectively, an \textsc{unknown}
+  pre and postcondition status of a goal and its predecessors and contributing
+  goals forms beliefs with lower strength. For instance, if one knows all
+  predecessors of a pursuing goal (e.g., ``Press Bread Slices'' to make peanut
+  butter sandwich) are \textsc{satisfied} (i.e., ``Spread Peanut Butter'' and
+  ``Spread Strawberry Jam''), failure of the corresponding goal will elicit
+  one's negative emotion (due to the strong beliefs related to the goal);
+  whereas not knowing about the goal-related factors and status of a goal
+  (e.g., whether Mary could find the knife to cut the sandwich in half) does not
+  cause one to form strong beliefs about the goal.
+  \item \textit{Saliency (S)}: Beliefs related to the goal at the top of the
+  focus stack are more salient than beliefs related to any other goal in the
+  plan, whether those goals are already \textsc{achieved} or \textsc{failed}, or
+  they will be pursued in the future. For example, according to Figure
+  \ref{fig:taskModel}, if one is making a peanut butter sandwich, some or all
+  of the contributing goals to the ``Prepare Peanut Butter Sandwich'' (e.g.
+  Spread Peanut Butter) will be in the focus stack (depending on the current
+  goal), and consequently are more salient. Therefore, other goals in the other
+  branches of the shared plan (e.g. Slice Egg) will not be salient.
+  \item \textit{Persistence (P)}: The recurrence of a
+  belief over the passage of time (turns) increases the persistence of the
+  belief. Beliefs occurring only in one turn have the lowest value of
+  persistence. For instance, if Mary keeps saying that she can not find the
+  knife to cut the sandwich in half, although it is not part of the shared plan,
+  one could pursue a new goal to acknowledge Mary's concern that can mitigate or
+  prevent negative emotions.
 \end{itemize}
 
-\noindent We also use two of the motive attributes discussed in Section
+\noindent We also use two motive attributes discussed in Section
 \ref{sec:mental-states} to compute the motive related part of the utility
 ($\mathcal{U}$):
 
 \begin{itemize}[leftmargin=2pt]
   \setlength\itemsep{1mm}
-  \item \textit{Urgency}: There are two factors impacting the urgency of
-  a motive: a) whether the goal directing the given motive is the predecessor of
+  \item \textit{Urgency ($\gamma$)}: There are two factors impacting the urgency
+  of a motive: a) whether the goal directing the given motive is the predecessor of
   another goal for which the other collaborator is responsible, and b) whether
   achieving the goal directing the given motive can mitigate the other
-  collaborator's negative valenced emotion.
-  \item \textit{Importance}: A motive is important if failure of the directing
-  goal causes an impasse in the shared plan (i.e., no further goal is available
-  to achieve), or achievement of the directing goal removes an existing impasse.
+  collaborator's negative valenced emotion. For instance, if one has a private
+  goal to prepare (e.g. grabbing the eggs from the fridge) making the second
+  sandwich while Mary is waiting to get the first sandwich and cut it in half,
+  pressing bread slices and passing them to Mary will be more urgent than one's
+  private goal.
+  \item \textit{Importance ($\eta$)}: A motive is important if failure of the
+  directing goal causes an impasse in the shared plan (i.e., no further goal is
+  available to achieve), or achievement of the directing goal removes an
+  existing impasse. For example, if one cannot find white bread to spread peanut
+  butter (an impasse to make the peanut butter sandwich), and Mary offers to use
+  wheat bread instead (external motive), the new motive becomes important for
+  the one to remove the impasse on the shared plan.
 \end{itemize}
 
 \vspace*{-3mm}
 \begin{equation}
+    \Psi = \frac{\alpha_{_k} + \beta_{_k} + \lambda_{_k} +
+    \mu_{_k}}{\alpha_{_{all}} + \beta_{_{all}} + \lambda_{_{all}} +
+    \mu_{_{all}}} + \eta + \gamma
+    \label{eqn:power}
+\end{equation}
+
+In equation \ref{eqn:power}, the subscript \textit{k} of the components of
+the first term refers to the \textit{known} (\textsc{satisfied} or
+\textsc{unsatisfied}) goal-related factors; whereas the subscript \textit{all}
+includes both \textit{known} and \textit{unknown} goal-related factors.
+
+\vspace*{-3mm}
+\begin{equation}
     U(\varepsilon_t)= 
-\begin{dcases}
-    (P+\upsilon)\cdot S^{(T + \eta)} & T \textgreater 0 \\
-    0            & T = 0
-\end{dcases}
+    \begin{dcases}
+       P\cdot S^{\Psi} & \Psi \textgreater 0 \\
+       0               & \Psi = 0
+    \end{dcases}
+    \label{eqn:utility}
 \end{equation}
 
 We compute the utility of an event based on these five attributes. The value of
