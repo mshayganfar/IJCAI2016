@@ -291,6 +291,7 @@ Mind mechanism.
 
 \vspace*{-3mm}
 \section{Collaboration}
+\label{sec:collaboration}
 
 The Collaboration mechanism constructs a hierarchy of goals associated with
 tasks in the form of a hierarchical task network (see Figure
@@ -322,8 +323,11 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
   \setlength\itemsep{0.2mm}
   \item \textit{recognizeGoal($\varepsilon_t$)} returns the unique goal to which
   the given event (action, utterance, or emotional expression) directly
-  contributes, or \textit{ambiguous} if this method does not recognize a goal in
-  the plan.
+  contributes, and it is only one goal since in our collaboration model the
+  robot can only be doing one primitive action at a time. However, in the
+  complete goal tree, a given primitive action can contribute to more than one
+  (parent) higher level goal. The method returns \textit{ambiguous} if this
+  method does not recognize a goal in the plan.
   
 %   \item \textit{topLevelGoalStatus($g_t$)} returns the status of the top level
 %   goal whether it is \textsc{achieved, failed, blocked, inapplicable, pending,}
@@ -340,9 +344,9 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
   \textsc{unknown}. For instance, the precondition for slicing the eggs is
   whether the eggs are boiled appropriately.
   
-%   \item \textit{isLive($g_t$)} returns \textit{true} if all the predecessors of
-%   the given goal are \textsc{achieved} and all the preconditions of the goal are
-%   \textsc{satisfied}; otherwise returns \textit{false}.
+  \item \textit{isLive($g_t$)} returns \textit{true} if all the predecessors of
+  the given goal are \textsc{achieved} and all the preconditions of the goal are
+  \textsc{satisfied}; otherwise returns \textit{false}.
   
 %   \item \textit{isFocusShift($g_t$)} returns \textit{true} if the given
 %   goal is not the previous focus (top of the stack); otherwise returns
@@ -448,7 +452,7 @@ the shared goal, without dedicating all resources to every single event.
 			\State $\mathcal{U} \gets \Call{getEventUtility}{\mathit{g}_{t}}$ 
 			\State $\tau_{t} \gets \Call{getEmotionalThreshold}{\mathit{g}_{t}}$
 % 			\Statex
-			\If {$(  \tau_{t} \leq |\mathcal{U}| )$}
+			\If {$(\tau_{t} \leq |\mathcal{U}|)$}
 				\State \Return {{\fontsize{7}{8}\selectfont RELEVANT}}
 			\Else
 				\State \Return {{\fontsize{7}{8}\selectfont IRRELEVANT}}
@@ -488,18 +492,18 @@ goal. We use three of the belief attributes discussed in Section
   focus stack are more salient than beliefs related to any other goal in the
   plan, whether those goals are already \textsc{achieved} or \textsc{failed}, or
   they will be pursued in the future. For example, according to Figure
-  \ref{fig:taskModel}, if one is making a peanut butter sandwich, some or all
-  of the contributing goals to the ``Prepare Peanut Butter Sandwich'' (e.g.
-  Spread Peanut Butter) will be in the focus stack (depending on the current
-  goal), and consequently are more salient. Therefore, other goals in the other
-  branches of the shared plan (e.g. Slice Egg) will not be salient.
-  \item \textit{Persistence (P)}: The recurrence of a
-  belief over the passage of time (turns) increases the persistence of the
-  belief. Beliefs occurring only in one turn have the lowest value of
-  persistence. For instance, if Mary keeps saying that she can not find the
-  knife to cut the sandwich in half, although it is not part of the shared plan,
-  one could pursue a new goal to acknowledge Mary's concern that can mitigate or
-  prevent negative emotions.
+  \ref{fig:taskModel}, if one is making a peanut butter sandwich, all of the
+  \textit{live} (see Section \ref{sec:collaboration}) contributing goals to the
+  ``Prepare Peanut Butter Sandwich'' (e.g. Spread Peanut Butter) will be in
+  the focus stack, and consequently are more salient. Therefore,
+  \textit{non-live} goals in the shared plan (e.g. Slice Egg) will not be
+  salient.
+  \item \textit{Persistence (P)}: The recurrence of a belief over the passage
+  of time (turns) increases the persistence of the belief. Beliefs occurring
+  only in one turn have the lowest value of persistence. For instance, if Mary
+  keeps saying that she can not find the knife to cut the sandwich in half,
+  although it is not part of the shared plan, one could pursue a new goal to
+  acknowledge Mary's concern that can mitigate or prevent negative emotions.
 \end{itemize}
 
 \noindent We also use two motive attributes discussed in Section
@@ -765,21 +769,25 @@ event.
 	\label{alg:controllability}
 	\begin{algorithmic}[1]
 		\Function{IsEventControllable}{Event $\varepsilon_t$}
+ 			\State $\mathit{g}_{t} \gets \textit{recognizeGoal}{(\varepsilon_t)}$
+ 			\Statex
+			\State $\mathcal{M} \gets \Call{GetAgencyRatio}{\mathit{g}_{t}}$ 
+			\State $\mathcal{R} \gets \Call{GetAutonomyRatio}{\mathit{g}_{t}}$
 % 			\Statex
-			\State $\alpha \gets \Call{GetAgencyRatio}{\varepsilon_t}$ 
-			\State $\beta \gets \Call{GetAutonomyRatio}{\varepsilon_t}$
+			\State $\mathcal{P} \gets \Call{GetSucPredecessorsRatio}{\mathit{g}_{t}}$
+			\State $\mathcal{I} \gets \Call{GetAvailableInput}{\mathit{g}_{t}}$
+%  			\Statex
+			\State $\mathcal{V}_{e_h} \gets \Call{getEmotionValence}{\mathit{g}_{t}}$ 
+			\State $\omega \gets \Call{getWeights}{\mathit{g}_{t}}$
+			\Statex
+			\State $\mathcal{X} \gets
+			\frac{\omega_{0}\cdot \mathcal{M} + \omega_{1}\cdot \mathcal{R} +
+			\omega_{2}\cdot \mathcal{P} + \omega_{3}\cdot \mathcal{I}}{\omega_{0} +
+			\omega_{1} + \omega_{2} + \omega_{3}} + \mathcal{V}_{e_h}$
+  			\Statex
+% 			\State $\tau_{t} \gets \Call{getEmotionalThreshold}{\mathit{g}_{t}}$
 % 			\Statex
-			\State $\lambda \gets \Call{GetSucPredecessorsRatio}{\varepsilon_t}$
-			\State $\mu \gets \Call{GetAvailableInput}{\varepsilon_t}$
-% 			\Statex
-			\State $\mathcal{U} \gets
-			\frac{\omega_{0}\cdot \alpha + \omega_{1}\cdot \beta + \omega_{2}\cdot
-			\lambda + \omega_{3}\cdot \mu}{\omega_{0} + \omega_{1} + \omega_{2} +
-			\omega_{3}}$
-% 			\Statex
-			\State $\tau_{t} \gets \Call{getEmotionalThreshold}{ }$
-% 			\Statex
-			\If {$(\mathcal{U} \geq \tau_t)$}
+			\If {$(\mathcal{X} > 0)$}
 				\State \Return {{\fontsize{7}{8}\selectfont CONTROLLABLE}}
 			\Else
 				\State \Return {{\fontsize{7}{8}\selectfont UNCONTROLLABLE}}
@@ -789,11 +797,11 @@ event.
 \end{algorithm}
 
 \vspace*{-3mm}
-Controllability is also important for the overall architecture. For instance,
-the robot can choose to ask or negotiate about a collaborative task which is
-not controllable, or the robot can interpret or predict the other's emotional
-state (e.g., anger if the task is blocked, i.e., uncontrollable for the other),
-or form a new motive to establish an alternative goal for the current
+Controllability is important for the overall architecture. For instance, the
+robot can choose to ask or negotiate about a collaborative task which is not
+controllable, or the robot can interpret or predict the other's emotional state
+(e.g., anger if the task is blocked, i.e., uncontrollable for the other), or
+form a new motive to establish an alternative goal for the current
 uncontrollable event. In general, other mechanisms in the architecture use the
 appraisal process of controllability in their decision making processes;
 meanwhile controllability uses the information from the collaboration structure,
@@ -810,16 +818,20 @@ predecessors}, and d) the \textit{available inputs} of a given goal
 (i.e., $\mathit{g}_{t}$) in the shared plan.
 
 In Algorithm \ref{alg:controllability}, we compute the controllability of an
-event based on these four factors (lines 2 to 5). We use weighted averaging over
-these four factors to compute the utility of an event in terms of
-controllability of the event. The value of all these weights are set to 1.0 for
-the purpose of simplicity at this stage of the project. We will adjust these
-weights after further investigating the influence of these factors, and
-implementing other mechanisms in the overall architecture. After computing the
-value of the utility, we compare this value to an emotional threshold similar to
-what we discussed in Algorithm \ref{alg:relevance}. This comparison leads to our
-decision about the controllability of an event (lines 8 to 11 in Algorithm
-\ref{alg:controllability}).
+event based on the above four factors (lines 3 to 6). We use weighted averaging
+over these four factors to compute the aggregated value of the controllability of an
+event. The value of all these weights are set to \textit{1.0} for the purpose of
+simplicity at this stage of the project. We will adjust these weights after
+further investigating the influence of these factors, and implementing other
+mechanisms in the overall architecture. We believe that the human's perceived
+emotion can also impact the aggregated value of controllability of an event
+($\mathcal{V}_{e_h}$ in line 9). The ($-1.0 \leq \mathcal{V}_{e_h} \leq 1.0$) is
+the valenced value of the human's perceived emotion. Positive emotion, e.g.,
+happiness, possess positive valence value, and negative emotions, e.g.,
+anger, have negative value of valence. The magnitude of this value can change
+with respect to the intensity of the perceived emotion. Furthermore, the overall
+aggregated value indicates whether the current event is controllable, if
+positive; otherwise the event will be considered as uncontrollable.
 
 \textit{\textbf{Agency}} is the capacity of an individual to act independently
 in any given environment. In a collaborative environment collaborators are
@@ -828,41 +840,41 @@ some internal motives that are formed based on their own mental states rather
 than motives that are reinforced by the other collaborator. These internal
 motives will lead the collaborators to acquire new intentions towards new goals
 whenever it is required. We extract the motive associated with the current goal
-in the mental state. We consider a maximum agency value denoted as $\alpha$ in
-Algorithm \ref{alg:controllability} (i.e., $\alpha=1.0$) if the robot's mental
-state possesses an internal motive towards the recognized goal; otherwise we
-consider the minimum agency value (i.e., $\alpha=0.0$) for no motives or
-external motives only. Note that the process of forming new internal motives is
-beyond scope of this paper.
+in the mental state. We consider a maximum agency value denoted as $\mathcal{M}$
+in Algorithm \ref{alg:controllability} (i.e., $\mathcal{M}=1.0$) if the
+robot's mental state possesses an internal motive towards the recognized goal;
+otherwise we consider the minimum agency value (i.e., $\mathcal{M}=0.0$) for no
+motives or external motives only. Note that the process of forming new internal
+motives is beyond scope of this paper.
 
 \textit{\textbf{Autonomy}} is the ability to make decisions without the
 influence of others. Autonomy implies acting on one's own and being responsible
 for that. In a collaborative environment, tasks are delegated to the
 collaborators based on their capabilities. Therefore, each collaborator is
 responsible for the delegated task and the corresponding goal. In Algorithm
-\ref{alg:controllability}, $\beta$ denotes the value of autonomy with regard to
-the event ($\varepsilon_t$). This value is the ratio of the number of the goals
-contributing to $\mathit{g}_{t}$ for which the robot is responsible over the
-total number of contributing goals to $\mathit{g}_{t}$. If the goal associated
-with the current event corresponds to a nonprimitive goal, the algorithm checks
-the responsible agent for each primitive goal contributing to the nonprimitive
-one and returns a value of which $(0 \leq \beta \leq 1)$. However, if the
-associated goal of the current event corresponds to a primitive goal the value
-of $\beta$ would be 0 or 1. In general, higher autonomy leads to a more positive
-value of controllability.
+\ref{alg:controllability}, $\mathcal{R}$ denotes the value of autonomy with
+regard to the event ($\varepsilon_t$). This value is the ratio of the number of
+the goals contributing to $\mathit{g}_{t}$ for which the robot is responsible
+over the total number of contributing goals to $\mathit{g}_{t}$. If the goal
+associated with the current event corresponds to a nonprimitive goal, the
+algorithm checks the responsible agent for each primitive goal contributing to
+the nonprimitive one and returns a value of which $(0 \leq \mathcal{R} \leq 1)$.
+However, if the associated goal of the current event corresponds to a primitive
+goal the value of $\mathcal{M}$ would be 0.0 or 1.0. In general, higher autonomy
+leads to a more positive value of controllability.
 
 The structure of a shared plan accommodates the order of the required
-\textit{\textbf{predecessors}} of a goal. Predecessors of a goal, $g$, are other
-goals that the collaborators should achieve before trying to achieve goal $g$.
-We use the ratio of successfully achieved predecessors of the recognized goal
-($\mathit{g}_{t}$) associated with the current event over the total number of
-predecessors of the same goal. This ratio (denoted as $\lambda$ in Algorithm
-\ref{alg:controllability}) is the third factor used to compute the
+\textit{\textbf{predecessors}} of a goal. Predecessors of a goal, $g_t$, are
+other goals that the collaborators should achieve before trying to achieve goal
+$g_t$. We use the ratio of successfully achieved predecessors of the recognized
+goal ($\mathit{g}_{t}$) associated with the current event over the total number
+of predecessors of the same goal. This ratio (denoted as $\mathcal{P}$ in
+Algorithm \ref{alg:controllability}) is the third factor used to compute the
 controllability of an event. If all of the predecessors of the given goal are
-already achieved, then $\lambda=1$ which is the maximum value for $\lambda$. On
-the contrary, failure of all of the predecessors will lead to $\lambda=0$.
-Therefore, a higher $\lambda$ value positively impacts the value of
-controllability for the current event.
+already achieved, then $\mathcal{P}=1.0$ which is the maximum value for
+$\mathcal{P}$. On the contrary, failure of all of the predecessors will lead to
+$\mathcal{P}=0.0$. Therefore, a higher $\mathcal{P}$ value positively impacts
+the value of controllability for the current event.
 
 Finally, \textit{\textbf{inputs}} of a task are the required elements that the
 collaborators use to achieve the specified goal of the task. These inputs are
@@ -870,14 +882,17 @@ also part of the structure of a shared plan. We extract the required inputs of
 the associated goal with the current event, and check whether all the required
 inputs are available for the goal $\mathit{g}_{t}$. The outcome will be the
 ratio of the available required inputs over the total required inputs of the
-goal associated with the current event. This value (denoted as $\mu$ in
-Algorithm \ref{alg:controllability}) will be bound to 0 and 1. Similar to the
-other factors in the controllability process, the closer the value of $\mu$ gets
-to 1, the more positive impact it has on the overall controllability value of
-the event.
+goal associated with the current event. This value (denoted as $\mathcal{I}$ in
+Algorithm \ref{alg:controllability}) will be bound to 0.0 and 1.0. Similar to
+the other factors in the controllability process, the closer the value of
+$\mathcal{P}$ gets to 1.0, the more positive impact it has on the overall
+controllability value of the event.
 
-In summary, the output of these four appraisal processes serves as critical
-input for the other mechanisms of the Affective Motivational Collaboration
+In summary, the output of these two and other appraisal processes such as
+\textit{desirability} \cite{shayganfar:emotional-awareness} and
+\textit{expectedness} \cite{shayganfar:appraisal-short} serves as critical input
+for the other mechanisms and processes (e.g., goal management
+\cite{shayganfar:goal-management}) of the Affective Motivational Collaboration
 Framework, shown in Figure \ref{fig:cpm}. By providing adequate interpretation
 of events in the collaborative environment, the appraisal mechanism enables the
 robot to carry out proper collaborative behaviors.

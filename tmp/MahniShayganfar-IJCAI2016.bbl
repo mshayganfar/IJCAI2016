@@ -109,7 +109,21 @@ Klaus~R. Scherer.
 \newblock {\em Cognition \& Emotion}, 13(6):763--793, 1999.
 
 \bibitem[\protect\citeauthoryear{Shayganfar \bgroup \em et al.\egroup
-  }{2016}]{shayganfar:appraisal-short}
+  }{2016a}]{shayganfar:emotional-awareness}
+Mahni Shayganfar, Charles Rich, and Candace Sidner.
+\newblock Toward improving human-robot collaboration with emotional awareness.
+\newblock {\em Under Review}, 2016.
+
+\bibitem[\protect\citeauthoryear{Shayganfar \bgroup \em et al.\egroup
+  }{2016b}]{shayganfar:goal-management}
+Mahni Shayganfar, Charles Rich, and Candace~L. Sidner.
+\newblock Impact of affective appraisal on collaborative goal management: My
+  robot shares my worries.
+\newblock In {\em Proceedings of 11th ACM-IEEE International Conference on
+  Human-Robot Interaction (LBR)}, 2016.
+
+\bibitem[\protect\citeauthoryear{Shayganfar \bgroup \em et al.\egroup
+  }{2016c}]{shayganfar:appraisal-short}
 Mahni Shayganfar, Charles Rich, and Candace~L. Sidner.
 \newblock An overview of appraisal in human-robot collaboration.
 \newblock In {\em Proceedings of International Conference on Autonomous Agents
