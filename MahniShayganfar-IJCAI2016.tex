@@ -909,28 +909,26 @@ of events in the collaborative environment, the appraisal mechanism enables the
 robot to carry out proper collaborative behaviors.
 
 \vspace{-2mm}
-\section{Evaluation}
+\section{Evaluation and Discussion}
 \label{sec:user-study}
 
 We developed our user study to test our hypothesis that humans will provide
 similar answers as our algorithms to questions related to different factors used
-to compute four appraisal variables. We conducted a between subject user study
+to compute two appraisal variables. We conducted a between subject user study
 using an online crowdsourcing website --
 CrowdFlower\footnote{http://www.crowdflower.com}. We had one group of
-subjects for each questionnaire corresponding to an appraisal variable.
-There were 12 questions (including 2 test questions) in the controllability and
-expectedness questionnaires, 14 questions (including 2 test questions) in
-the desirability questionnaire, and 22 questions (including 3 test questions) in
-the relevance questionnaire. Each group originally had 40 subjects. To increase
-the quality of our subjects' answers, we limited the visibility of our
-questionnaires to a few English speaking countries, i.e., United States,
-Britain, and Australia. We also limited our subject pools to those that have
-acquired the highest confidence level on the crowdsourcing website. Our
-questionnaires included 2 or 3 test questions (depending on the length) to check
-the sanity of the answers. We eliminated subjects providing wrong answers to our
-sanity questions. We also eliminated subjects with an answering time less than 2
-minutes. The number of accepted subjects in each group is provided in Table
-\ref{tbl:statistics}.
+subjects for each questionnaire corresponding to each appraisal variable.
+There were 12 questions (including 2 test questions) in the controllability, and
+22 questions (including 3 test questions) in the relevance questionnaire. Each
+group originally had 40 subjects. To increase the quality of our subjects'
+answers, we limited the visibility of our questionnaires to a few English
+speaking countries, i.e., United States, Britain, and Australia. We also limited
+our subject pools to those that have acquired the highest confidence level on
+the crowdsourcing website. Our questionnaires included 2 or 3 test questions
+(depending on the length) to check the sanity of the answers. We eliminated
+subjects providing wrong answers to our sanity questions. We also eliminated
+subjects with an answering time less than 2 minutes. The number of accepted
+subjects in each group is provided in Table \ref{tbl:statistics}.
 
 \begin{table}[htbp]
 \centering
@@ -943,15 +941,7 @@ mean} & {\fontsize{7.5}{8}\selectfont stdev} &
 {\fontsize{7.5}{8}\selectfont\textit{p}-value}\\ \hline 
 {\fontsize{7.5}{8}\selectfont Relevance} & {\fontsize{7.5}{8}\selectfont 29} &
 {\fontsize{7.5}{8}\selectfont 0.713} & {\fontsize{7.5}{8}\selectfont 0.107} &
-{\fontsize{7.5}{8}\selectfont \textless0.001}\\ \hline {\fontsize{7.5}{8}\selectfont
-Desirability} & {\fontsize{7.5}{8}\selectfont 35} &
-{\fontsize{7.5}{8}\selectfont 0.778} & {\fontsize{7.5}{8}\selectfont 0.150} &
-{\fontsize{7.5}{8}\selectfont \textless0.001}\\
-\hline 
-{\fontsize{7.5}{8}\selectfont Expectedness} & {\fontsize{7.5}{8}\selectfont 33}
-& {\fontsize{7.5}{8}\selectfont 0.785} & {\fontsize{7.5}{8}\selectfont 0.120} &
-{\fontsize{7.5}{8}\selectfont \textless0.001}\\
-\hline 
+{\fontsize{7.5}{8}\selectfont \textless0.001}\\ \hline 
 {\fontsize{7.5}{8}\selectfont Controllability} & {\fontsize{7.5}{8}\selectfont
 33} & {\fontsize{7.5}{8}\selectfont 0.743} & {\fontsize{7.5}{8}\selectfont
 0.158} & {\fontsize{7.5}{8}\selectfont \textless0.001}\\
@@ -962,25 +952,23 @@ Desirability} & {\fontsize{7.5}{8}\selectfont 35} &
 \end{table}
 
 To minimize the background knowledge necessary for our test subjects, we used a
-simple domestic example of preparing a peanut butter and jelly sandwich, and a
-hard boiled egg sandwich for a hiking trip. We provided clear textual and
-graphical instructions for all four questionnaires. The instructions presented
-a sequence of hypothetical collaborative tasks to be carried out by the test
-subject and an imaginary friend, Mary, in order to accomplish their goal of
-preparing two sandwiches. Figure \ref{fig:taskModel} shows the corresponding
-task model for these instructions. Test questions introduced specific situations
-related to the shared plan; these situations included, among others, blocked
-tasks, and failure or achievement of a shared goal provided in the instruction.
-Each question provided three possible answers (which were counterbalanced in
-the questionnaire). One option provided a distinct alternative; another option
-was used to provide a dichotomy with the first alternative, and a third option
-was used to check whether the subjects perceived the other two options as equal.
+simple example of preparing a peanut butter and jelly sandwich, and a hard
+boiled egg sandwich for a hiking trip. We provided clear textual and graphical
+instructions for both questionnaires. The instructions presented a sequence of
+hypothetical collaborative tasks to be carried out by the test subject and an
+imaginary friend, Mary, in order to accomplish their goal of preparing two
+sandwiches. Figure \ref{fig:taskModel} shows the corresponding task model for
+these instructions. Test questions introduced specific situations related to the
+shared plan; these situations included, among others, blocked tasks, and failure
+or achievement of a shared goal provided in the instruction. Each question
+provided three possible answers (which were counterbalanced in the
+questionnaire). One option provided a distinct alternative; another option was
+used to provide a dichotomy with the first alternative, and a third option was
+used to check whether the subjects perceived the other two options as equal.
 We also provided a brief description as well as a simple example for each
 appraisal variable, e.g., \textit{relevance}, at the end of the corresponding
-instructions. Using this approach, we prepared four different online
-questionnaires for the appraisal variables: \textit{relevance, desirability,
-expectedness} and \textit{controllability}. Note that the collaboration
-structure and the instructions were the same for all four questionnaires.
+instructions. Note that the collaboration structure and the instructions were
+the same for both questionnaires.
 
 Each question was designed based on different factors that we use in our
 algorithms (see Section \ref{sec:appraisal-process}). Here, we present one
@@ -999,7 +987,7 @@ input for our algorithms was the task model depicted in Figure
   \vspace{-2mm}
 \end{figure}
 
-Figure \ref{fig:qs1} shows the example question from the relevance
+Figure \ref{fig:qs1} shows an example question from the relevance
 questionnaire. In this example, with respect to Algorithm \ref{alg:relevance}
 (line 6), option A is relevant because {\color{red}the task related to this
 option provides the next available task in the focus stack (see the task model in
@@ -1010,8 +998,8 @@ subjects will similarly differentiate between these two options. This question
 was presented to the human subjects to determine whether their decision for the
 relevance of this event is similar to the output of the relevance algorithm. For
 this question, the human decision was {\color{red}97\%} similar to the
-algorithm's output. Average results for the relevance questionnaire are
-presented in Table \ref{tbl:statistics}.
+algorithm's output. Average results for both questionnaires are presented in
+Table \ref{tbl:statistics}.
 
 % \begin{figure}[tbh]
 %   \vspace{-1mm}
@@ -1051,32 +1039,26 @@ presented in Table \ref{tbl:statistics}.
 % are desirable. The humans decision was 77\% in agreement with the algorithm's
 % output in this question.
 
-\vspace{-3mm}
-\section{Discussion}
-\vspace{-1mm}
 We conducted the user study to compare the results with the implemented
 algorithms discussed in Section \ref{sec:appraisal-process}. As we mentioned,
 each question had 3 answers. Therefore, a totally random distribution would
-result in 33\% agreement with our algorithms results. However, the average
-ratio indicating similarity between human subjects decisions and the output of
-our algorithms is significantly higher than 33\%. The total number of subjects'
+result in 33\% agreement with our algorithms' results. However, the average
+agreement ratio is significantly higher than 33\%. The total number of subjects'
 answers similar to a) the \textit{relevance} algorithm (n=29) averaged 71.3\%
-(s=10.7\%), b) the \textit{desirability} algorithm (n=35) averaged 77.8\%
-(s=15.0\%), c) the \textit{expectedness} algorithm (n=33) averaged 78.5\%
-(s=12.0\%), and d) the \textit{controllability} algorithm (n=33) averaged 74.3\%
+(s=10.7\%), b) the \textit{controllability} algorithm (n=33) averaged 74.3\%
 (s=15.8\%). It is worth noting that the human subjects agreed 100\% on some
 questions, while one some other questions there was a much lower level of
 agreement.
 
 The results indicate that our algorithms provide appraisal variable outputs
 sufficiently similar to the decisions of human's appraisal. Our hypothesis in
-our evaluation was that our algorithms would correctly predict the judgements of
-humans on doing these tasks. Our results indicate that people largely performed
+our evaluation was that our algorithms would correctly predict the judgments of
+humans doing these tasks. Our results indicate that people largely performed
 as our hypothesis predicted. The \textit{p}-values obtained based on a
 one-tailed z-test (see Table \ref{tbl:statistics}) show the probability of human
 subjects' data being generated from a random set. The very small
 \textit{p}-values indicate that the data set is not random; in fact, the high
-percentage of similarity shows that the four appraisal algorithms predicted the
+percentage of similarity shows that the two appraisal algorithms predicted the
 human judgments.
 
 \vspace{-2mm}
