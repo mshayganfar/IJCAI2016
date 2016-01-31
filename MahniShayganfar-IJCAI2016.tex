@@ -48,15 +48,17 @@
 % IJCAI, Inc. is acknowledged.}
 
 \title{Relevance and Controllability Appraisals in Human-Robot Collaboration}
-\author{Mahni Shayganfar, Charles Rich, Candace L. Sidner \\ 
-Worcester Polytechnic Institute, Worcester Massachusetts  \\
-mshayganfar $|$ rich $|$ sidner @wpi.edu}
+% \author{Mahni Shayganfar, Charles Rich, Candace L. Sidner \\ 
+% Worcester Polytechnic Institute, Worcester Massachusetts  \\
+% mshayganfar $|$ rich $|$ sidner @wpi.edu}
 
 \begin{document}
 
 \maketitle
 
+\vspace*{-10mm}
 \begin{abstract}
+\vspace*{-2mm}
 We have investigated the mutual influence of affective and collaborative
 processes in a cognitive theory to support interaction between humans and robots
 or virtual agents. We have developed new algorithms for appraisal processes, as
@@ -67,6 +69,7 @@ structure, fundamental processes and functions of emotions in a collaboration.
 We have evaluated our implemented algorithms by conducting an online user study.
 \end{abstract}
 
+\vspace*{-7mm}
 \section{Introduction}
 
 Sousa in The Rationality of Emotion \cite{sousa:rationality-emotion}
@@ -83,23 +86,39 @@ abilities and mental states.
 
 This work is implemented as part of a larger effort to build robots capable of
 generating and recognizing emotions in order to be better collaborators. In this
-paper, we report on the specific problem of appraising events within a
-collaborative interaction. Our contribution is to ground general appraisal
-concepts in the specific context and structure of collaboration. This work is
-part of the development of \textit{Affective Motivational Collaboration Theory}
-which is built on the foundations of the \textit{SharedPlans} theory of
-collaboration \cite{grosz:plans-discourse} and the \textit{cognitive appraisal}
-theory of emotions \cite{gratch:domain-independent}.
+paper, we report on the specific problem of appraising the relevance and
+controllability of events within a collaborative interaction. Our contribution
+is to ground general appraisal concepts in the specific context and structure of
+collaboration. This work is part of the development of \textit{Affective
+Motivational Collaboration Theory} which is built on the foundations of the
+\textit{SharedPlans} theory of collaboration \cite{grosz:plans-discourse} and
+the \textit{cognitive appraisal} theory of emotions
+\cite{gratch:domain-independent}.
 
-After discussing related works, we briefly introduce the Affective Motivational
-Collaboration Theory, focusing on the collaboration and appraisal mechanisms as
-well as mental states. We then provide more details about the graph
-representation of the robot's mental state. Next, we describe the algorithms we
-developed to compute the value of four crucial appraisal variables. To compare
-the results from our algorithms with humans' decisions we have conducted a user
-study using crowd sourcing; the results are provided in Section
-\ref{sec:user-study}.
+There are several appraisal models contributing in different applications such
+as robotics, virtual agents and social sciences. However, non of these models
+have focused on the appraisal processes during collaboration. We believe
+appraisal plays a key role in collaboration due to its regulatory and evaluative
+nature. On the other hand, collaboration induces some differences to underlying
+appraisal processes due to its own nature. For instance, although the major
+appraisal models use utility to compute the relevance of an event, we have found
+new cognitive components involved because of the influence of the collaboration.
+These components such as recurrence of a belief by the human collaborator, or
+influence of human collaborator's peceived emotion on robot's decisions put more
+emphasis on the fact that collaboration creates demands for different procedures
+in appraisal processes. In this paper, we provide the relevance and
+controllability appraisals of an event within the collaboration context.
 
+% After discussing related works, we briefly introduce the Affective Motivational
+% Collaboration Theory, focusing on the collaboration and appraisal mechanisms as
+% well as mental states. We then provide more details about the graph
+% representation of the robot's mental state. Next, we describe the algorithms we
+% developed to compute the value of four crucial appraisal variables. To compare
+% the results from our algorithms with humans' decisions we have conducted a user
+% study using crowd sourcing; the results are provided in Section
+% \ref{sec:user-study}.
+
+\vspace*{-4mm}
 \section{Related Work}
 
 Our work builds on the general notions of appraisal theory
