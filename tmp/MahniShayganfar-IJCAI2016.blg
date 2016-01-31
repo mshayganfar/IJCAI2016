@@ -4,45 +4,45 @@ The top-level auxiliary file: MahniShayganfar-IJCAI2016.aux
 The style file: named.bst
 Database file #1: mshayganfar.bib
 Warning--can't use both volume and number fields in hudlicka:emotinos-reasons
-You've used 22 entries,
+You've used 21 entries,
             2439 wiz_defined-function locations,
-            686 strings with 8552 characters,
-and the built_in function-call counts, 9100 in all, are:
-= -- 929
-> -- 347
+            683 strings with 8486 characters,
+and the built_in function-call counts, 8835 in all, are:
+= -- 905
+> -- 340
 < -- 10
-+ -- 118
-- -- 111
-* -- 702
-:= -- 1425
-add.period$ -- 71
-call.type$ -- 22
-change.case$ -- 137
-chr.to.int$ -- 20
-cite$ -- 23
-duplicate$ -- 403
-empty$ -- 727
-format.name$ -- 142
-if$ -- 1934
++ -- 115
+- -- 109
+* -- 686
+:= -- 1380
+add.period$ -- 68
+call.type$ -- 21
+change.case$ -- 133
+chr.to.int$ -- 19
+cite$ -- 22
+duplicate$ -- 388
+empty$ -- 702
+format.name$ -- 139
+if$ -- 1880
 int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 25
-newline$ -- 113
-num.names$ -- 72
-pop$ -- 146
+missing$ -- 23
+newline$ -- 108
+num.names$ -- 69
+pop$ -- 138
 preamble$ -- 1
-purify$ -- 162
+purify$ -- 156
 quote$ -- 0
-skip$ -- 318
+skip$ -- 308
 stack$ -- 0
-substring$ -- 460
-swap$ -- 111
+substring$ -- 454
+swap$ -- 109
 text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 164
+type$ -- 160
 warning$ -- 1
-while$ -- 78
-width$ -- 25
-write$ -- 290
+while$ -- 76
+width$ -- 24
+write$ -- 278
 (There was 1 warning)

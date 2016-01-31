@@ -56,9 +56,9 @@
 
 \maketitle
 
-\vspace*{-11mm}
+\vspace*{-5mm}
 \begin{abstract}
-\vspace*{-2mm}
+\vspace*{-1mm}
 We have investigated the mutual influence of affective and collaborative
 processes in a cognitive theory to support interaction between humans and robots
 or virtual agents. We have developed new algorithms for appraisal processes, as
@@ -69,20 +69,20 @@ structure, fundamental processes and functions of emotions in a collaboration.
 We have evaluated our implemented algorithms by conducting an online user study.
 \end{abstract}
 
-\vspace*{-7mm}
+\vspace*{-6mm}
 \section{Introduction}
 \vspace*{-1mm}
-Sousa in The Rationality of Emotion \cite{sousa:rationality-emotion}
-makes the case for claiming that humans are capable of rationality largely
-because they are creatures with emotions. The idea of having robots or other
-intelligent agents living in a human environment has been a persistent dream
-from science fiction books to artificial intelligence and robotics laboratories.
-Collaborative robots are expected to become an integral part of humans'
-environment to accomplish their industrial and household tasks. In these
-environments humans will be involved in robots' operations and decision-making
-processes. The involvement of humans influences the efficiency of robots'
-interaction and performance, and makes them dependent on humans' cognitive
-abilities and mental states.
+% Sousa in The Rationality of Emotion \cite{sousa:rationality-emotion}
+% makes the case for claiming that humans are capable of rationality largely
+% because they are creatures with emotions. 
+The idea of having robots or other intelligent agents living in a human
+environment has been a persistent dream from science fiction books to artificial
+intelligence and robotics laboratories. Collaborative robots are expected to
+become an integral part of humans' environment to accomplish their industrial
+and household tasks. In these environments humans will be involved in robots'
+operations and decision-making processes. The involvement of humans influences
+the efficiency of robots' interaction and performance, and makes them dependent
+on humans' cognitive abilities and mental states.
 
 This work is implemented as part of a larger effort to build robots capable of
 generating and recognizing emotions in order to be better collaborators. In this
@@ -96,18 +96,19 @@ the \textit{cognitive appraisal} theory of emotions
 \cite{gratch:domain-independent}.
 
 There are several appraisal models contributing in different applications such
-as robotics, virtual agents and social sciences. However, non of these models
+as robotics, virtual agents and social sciences. However, none of these models
 have focused on the appraisal processes during collaboration. We believe
 appraisal plays a key role in collaboration due to its regulatory and evaluative
-nature. On the other hand, collaboration induces some differences to underlying
-appraisal processes due to its own nature. For instance, although the major
-appraisal models use utility to compute the relevance of an event, we have found
-new cognitive components involved because of the influence of the collaboration.
-These components such as recurrence of a belief by the human collaborator, or
-influence of human collaborator's peceived emotion on robot's decisions put more
-emphasis on the fact that collaboration creates demands for different procedures
-in appraisal processes. In this paper, we provide the relevance and
-controllability appraisals of an event within the collaboration context.
+nature. Also, collaboration induces some differences to underlying appraisal
+processes due to its unique nature. For instance, although the major appraisal
+models use utility to compute the relevance of an event, we have found new
+cognitive components involved in determining utility because of the influence of
+the collaboration. These components, such as recurrence of a belief by the human
+collaborator or influence of the human collaborator's peceived emotion on the 
+robot's decisions emphasize the fact that collaboration creates demands for
+different procedures in appraisal processes. In this paper, we provide the
+relevance and controllability appraisals of an event within the collaboration
+context.
 
 % After discussing related works, we briefly introduce the Affective Motivational
 % Collaboration Theory, focusing on the collaboration and appraisal mechanisms as
@@ -118,9 +119,9 @@ controllability appraisals of an event within the collaboration context.
 % study using crowd sourcing; the results are provided in Section
 % \ref{sec:user-study}.
 
-\vspace*{-4mm}
-\section{Related Work}
 \vspace*{-2mm}
+\section{Related Work}
+\vspace*{-1mm}
 Our work builds on the general notions of appraisal theory
 \cite{gratch:domain-independent,marsella:computational,scherer:sequential-appraisal-process,scherer:appraisal-processes},
 but is focused on its application in human-robot collaboration. Computational
@@ -128,7 +129,7 @@ appraisal models have been applied to a variety of uses including psychology,
 robotics, AI, and cognitive science. For instance, in
 \cite{marsella:ema-process-model} EMA is used to generate specific predictions
 about how human subjects will appraise and cope with emotional situations.
-Furthermore, appraisal theory has also been used in robots' decision making
+Furthermore, appraisal theory has been used in robots' decision making
 \cite{castro:autonomous-robot-fear}, or in their cognitive systems
 \cite{hudlicka:emotinos-reasons,marinier:emotion-reinforcement}. Additionally,
 in the virtual agents community, empathy and affective decision-making is a
@@ -146,7 +147,7 @@ also compatible with other collaboration theories, e.g., Joint Intentions theory
 have been extensively used to examine and describe teamwork and collaboration.
 Yet, collaboration and emotion theories have never been combined, as they are in
 our work. We believe a systematic integration of collaboration theories and
-appraisal theory can help us describe the underlying collaboration processes
+appraisal theory can help describe the underlying collaboration processes
 leading to the existing collaboration structures.
 
 \section{{\fontsize{11.85}{12}\selectfont Affective Motivational Collaboration
@@ -190,23 +191,23 @@ to compute the values for different appraisal variables. The \textit{mental
 states} includes self's (robot's) beliefs, intentions, motives, goals and
 emotion instances as well as the anticipated mental states of the other (human).
 The \textit{Collaboration} mechanism maintains constraints on actions, including
-task states and the ordering of tasks (see Figure \ref{fig:cs}). The
-\textit{Collaboration} mechanism also provides processes to update and monitor
-the shared plan. The \textit{Appraisal} mechanism is responsible for evaluating
-changes in the self's mental states, the anticipated mental states of the other,
-and the state of the collaboration environment. The \textit{Coping} mechanism
-provides the self with different coping strategies associated with changes in
-the self's mental states with respect to the state of the collaboration. The
-\textit{Motivation} mechanism operates whenever the self a) requires a new
-motive to overcome an internal impasse in an ongoing task, or b) wants to
-provide an external motive to the other when the other faces a problem in a
-task. The \textit{Theory of Mind} mechanism infers a model of the other's
+task states and the ordering of tasks, and provides processes to update and
+monitor the shared plan. The \textit{Appraisal} mechanism is responsible for
+evaluating changes in the self's mental states, the anticipated mental states of
+the other, and the state of the collaboration environment. The \textit{Coping}
+mechanism provides the self with different coping strategies associated with
+changes in the self's mental states with respect to the state of the
+collaboration. The \textit{Motivation} mechanism operates whenever the self a)
+requires a new motive to overcome an internal impasse in an ongoing task, or b)
+wants to provide an external motive to the other when the other faces a problem
+in a task. The \textit{Theory of Mind} mechanism infers a model of the other's
 anticipated mental state. The self progressively updates this model during the
 collaboration.
 
+\vspace*{-2mm}
 \subsection{Mental States}
 \label{sec:mental-states}
-
+\vspace*{-2mm}
 A brief description of mental states is provided as prerequisite knowledge for
 understanding the appraisal processes. The mental states shown in Figure
 \ref{fig:cpm} comprise the knowledge base required for all the mechanisms in the
@@ -220,7 +221,7 @@ this paper, since they are used in our appraisal algorithms.
 \textit{Beliefs} are a crucial part of the mental states. Beliefs have
 attributes and they impact different processes of the framework such as the
 evaluation of an external event by the Appraisal mechanism, and updates to the
-collaboration plan. We use three belief attributes in in Appraisal mechanism.
+collaboration plan. We use three belief attributes in the Appraisal mechanism.
 Belief \textit{strength} is about how strongly the self holds salient beliefs
 about an object, an entity, or an anticipated behavior. The \textit{saliency} of
 a belief is a cognitive attribute that pertains to how easily the self becomes
@@ -313,15 +314,14 @@ Mind mechanism.
 \label{sec:collaboration}
 
 The Collaboration mechanism constructs a hierarchy of goals associated with
-tasks in the form of a hierarchical task network (see Figure
-\ref{fig:taskModel}), and also manages and maintains the constraints and other
-required details of the collaboration including the inputs and outputs of
-individual tasks, the \textit{preconditions} (specifying whether it is
-appropriate to perform a task), and the \textit{postconditions} (specifying
-whether a just-completed task was successful). Collaboration also keeps track of
-the focus of attention, which determines the salient objects, properties and
-relations at each point, and shifts the focus of attention during the
-interaction.
+tasks in a hierarchical task network (see Figure \ref{fig:taskModel}), and also
+maintains the constraints and other required details of the collaboration
+including the inputs and outputs of individual tasks, the \textit{preconditions}
+(specifying whether it is appropriate to perform a task), and the
+\textit{postconditions} (specifying whether a just-completed task was
+successful). Collaboration also monitors the focus of attention, which
+determines the salient objects, properties and relations at each point, and
+shifts the focus of attention during the interaction.
 
 % \vspace*{-2mm}
 % \begin{figure}[tbh]
@@ -333,28 +333,28 @@ interaction.
 %   \vspace*{-2mm}
 % \end{figure}
 
-Here, we briefly describe the methods which retrieve information about the
-collaboration structure, and are used in our algorithms to compute the values of
-appraisal variables. In these methods, $\varepsilon_t$ is the event
-corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
+Here, we describe the methods which retrieve information about the collaboration
+structure, and are used to compute the values of appraisal variables. In these
+methods, $\varepsilon_t$ is the event corresponding to time \textit{t}, and
+$g_t$ is a given goal at time \textit{t}.
 
 \begin{itemize}[leftmargin=2pt]
   \setlength\itemsep{0.2mm}
   \item \textit{recognizeGoal($\varepsilon_t$)} returns the unique goal to which
   the given event (action, utterance, or emotional expression) directly
-  contributes, and it is only one goal since in our collaboration model the
-  robot can only be doing one primitive action at a time. However, in the
-  complete goal tree, a given primitive action can contribute to more than one
-  (parent) higher level goal. The method returns \textit{ambiguous} if this
-  method does not recognize a goal in the plan.
+  contributes; it is only one goal since the robot can only do one primitive
+  action at a time in our collaboration model. However, in the goal tree, a
+  given primitive action can contribute to more than one higher level (parent)
+  goal. The method returns \textit{ambiguous} if it does not recognize a goal in
+  the plan.
   
 %   \item \textit{topLevelGoalStatus($g_t$)} returns the status of the top level
 %   goal whether it is \textsc{achieved, failed, blocked, inapplicable, pending,}
 %   or \textsc{in progress}. In our example, ``Prepare Two Sandwiches'' is the top
 %   level goal.
   
-  \item \textit{currGoalStatus($g_t$)} returns the current goal status whether
-  it is \textsc{achieved, failed, blocked, inapplicable, pending,} or \textsc{in
+  \item \textit{currGoalStatus($g_t$)} returns whether the current goal status 
+  is \textsc{achieved, failed, blocked, inapplicable, pending,} or \textsc{in
   progress}. In our example, ``Add Pickles'' is the current
   (focused) goal.
   
@@ -384,19 +384,19 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
 %   instance, an abstract (nonprimitive) goal of ``Prepare Peanut Butter
 %   Sandwich'' contributes to the higher level goal of ``Prepare Two Sandwiches''.
   
-  \item \textit{extractContributingGoals($g_t$)} returns all the contributing
-  goals of the given goal. For instance, ``Boil Water'', ``Boil Two Eggs'',
-  ``Slice Eggs'' and other goals in this level are multiple goals contributing
-  to the ``Prepare Boiled Egg Sandwich'' nonprimitive goal.
+  \item \textit{extractContributingGoals($g_t$)} returns all contributing goals
+  of the given goal. For instance, ``Boil Water'', ``Slice Egg'' and other goals
+  in this level are multiple goals contributing to the ``Prepare Boiled Egg
+  Sandwich'' nonprimitive goal.
   
   \item \textit{extractPredecessors($g_t$)} returns the predecessors of the
   given goal. For instance, the ``Spread Peanut Butter'' and ``Spread
   Strawberry Jam'' goals are the predecessors of another goal called ``Press
   Bread Slices''.
   
-  \item \textit{extractInputs($g_t$)} returns all the required inputs for
-  the given goal. For example, the goal ``Boil Water'' requires inputs such as
-  the \textit{Pot} and the \textit{Stove}.
+  \item \textit{extractInputs($g_t$)} returns all required inputs for the given
+  goal. For example, the goal ``Boil Water'' requires inputs such as
+  \textit{Pot} and \textit{Stove}.
   
   \item \textit{isAvailable($g_t$)} returns whether the given input is
   available. For instance, if the \textit{Pot} is required for the goal
@@ -405,15 +405,15 @@ corresponding to time \textit{t}, and $g_t$ is a given goal at time \textit{t}.
 %   \item \textit{isAchieved($g_t$)} returns whether the given goal is achieved,
 %   i.e., whether all the postconditions of the given goal are \textsc{satisfied}.
   
-  \item \textit{isFocused($g_t$)} returns whether the focus is on given
-  goal now. The focused goal is the goal that the robot is currently pursuing.
+  \item \textit{isFocused($g_t$)} returns whether the focus is on the given
+  goal. The focused goal is the goal that the robot currently pursues.
   
   \item \textit{getResponsible($g_t$)} returns responsible agents of the given
   goal. In a dyadic collaboration, both of the agents can be partly responsible
   for a nonprimitive goal, while each is responsible for one or more primitive
   goals. For instance, both Mary and the subject are responsible for the
-  nonprimitive goal of ``Prepare Peanut Butter Sandwich'', whereas it is only
-  Mary who is responsible for the primitive goal of ``Spread Peanut Butter''.
+  nonprimitive goal ``Prepare Peanut Butter Sandwich'', whereas only Mary is
+  responsible for the primitive goal ``Spread Peanut Butter''.
 \end{itemize}
 
 \vspace*{-3mm}
@@ -427,11 +427,10 @@ coping ability). There are other appraisal variables introduced in psychological
 \cite{scherer:appraisal-processes} and computational literature
 \cite{gratch:domain-independent}. We have implemented other appraisal variables
 such as \textit{expectedness} \cite{shayganfar:appraisal-short} and
-\textit{desirability} which do not appear in this paper due to the lack of
-space. All of the algorithms in this section use mental states of the robot (see
-Section \ref{sec:mental-states}) which are formed based on the collaboration
-structure. All these algorithms use the corresponding recognized goal of the
-most recent event at each turn.
+\textit{desirability} \cite{shayganfar:emotional-awareness} which do not appear
+in this paper due to space limitations. The algorithms in this section use
+mental states of the robot (see Section \ref{sec:mental-states}) which are
+formed based on the collaboration structure.
 
 \subsection{Relevance}
 
@@ -440,25 +439,24 @@ robot. An event can be evaluated to be relevant if it has a non-zero utility
 \cite{marsella:ema-process-model}. Relevance is an important appraisal variable
 since the other appraisal variables are more meaningful only for relevant
 events. However, the utility of an event during collaboration is influenced by
-the other collaborator's actions and mental states while there is a commitment
-between collaborators to achieve the shared goal based on the shared plan.
-Whereas, other appraisal models only consider the utlity of an event only based
-on the self's (robot's) goal and plan. 
+the other collaborator's actions and mental states because there is a commitment
+between collaborators to achieve the shared goal based on the shared plan. Other
+appraisal models only consider the utlity of an event based on the self's
+(robot's) goal and plan.
 
 Algorithm \ref{alg:relevance} determines the relevance of the given event with
 respect to the current mental state. The relevance of the event depends on the
-significance of the event with respect to the current collaboration status.
-The significance of an event is determined based on the utility of the event as
-it is also presented in
+significance of the event with respect to the collaboration status, which is
+determined based on the utility of the event as presented in
 \cite{gratch:domain-independent,marsella:ema-process-model}. We believe
-computing relevance of an event during collaboration involves some other factors
-of which other appraisal models do not consider. For instance, the human's
-perceived emotion (whether it is positive or negative), recurrence of a belief,
-or occurrance of a belief about an unrelated goal by human also play an
-important role by influencing the utility of an event during collaboration. As a
-result, evaluating the relevance of the events can cause a collaborative robot
-to respond effectively to the events which can positively impact the status of
-the shared goal, without dedicating all resources to every single event.
+computing the relevance of an event during collaboration involves other factors
+which other appraisal models do not consider. For instance, the human's
+perceived emotion, recurrence of a belief, or occurrence of a belief about an
+unrelated goal by the human also play important roles by influencing the utility
+of an event during collaboration. As a result, evaluating the relevance of the
+events can cause a collaborative robot to respond effectively which can
+positively impact the status of the shared goal, without dedicating all
+resources to every event.
 
 \begin{algorithm}
 	\caption{(Relevance)}
@@ -481,48 +479,44 @@ the shared goal, without dedicating all resources to every single event.
 \end{algorithm}
 
 \vspace*{-3mm}
-After perceiving an event, it is the belief about that event which represents
-the event in the robot's mental state. Also, \textit{recognizeGoal} returns
-the goal ($g_{t}$) to which the current event contributes, unless it is
-\textit{ambiguous}; $g_{t}$ represents the shared goal at time (turn) $t$ within
-the shared plan. We compute the utility ($-1 \leq \mathcal{U} \leq 1$) of the
-event based on the values of the attributes associated with the existing
-beliefs, as well as the attributes of the motive associated with the recognized
-goal. We use three of the belief attributes discussed in Section
-\ref{sec:mental-states} to compute the belief related part of the utility:
+After perceiving an event, the belief about that event represents the event in
+the robot's mental state. \textit{recognizeGoal} returns the goal ($g_{t}$) to
+which the current event contributes, unless it is \textit{ambiguous}; $g_{t}$
+is the shared goal at time (turn) $t$ within the shared plan. We compute the
+utility ($-1 \leq \mathcal{U} \leq 1$) of the event using the values of the
+attributes associated with the existing beliefs, and the attributes of the
+motive associated with the recognized goal. We use three belief attributes (see
+Section \ref{sec:mental-states}) to compute the belief-related part of the
+utility:
 
 \vspace*{-1mm}
 \begin{itemize}[leftmargin=2pt]
   \setlength\itemsep{0.2mm}
-  \item \textit{Strength (T)}: The extent to which the preconditions ($\alpha$)
-  and postconditions ($\beta$) of a goal and its predecessors ($\lambda$) and
-  contributing goals ($\mu$) are \textsc{satisfied} or \textsc{unsatisfied}
-  makes a belief about the goal stronger. Respectively, an \textsc{unknown}
-  pre and postcondition status of a goal and its predecessors and contributing
-  goals forms beliefs with lower strength. For instance, if one knows all
-  predecessors of a pursuing goal (e.g., ``Press Bread Slices'' to make peanut
-  butter sandwich) are \textsc{satisfied} (i.e., ``Spread Peanut Butter'' and
-  ``Spread Strawberry Jam''), failure of the corresponding goal will elicit
-  one's negative emotion (due to the strong beliefs related to the goal);
-  whereas not knowing about the goal-related factors and status of a goal
-  (e.g., whether Mary could find the knife to cut the sandwich in half) does not
-  cause one to form strong beliefs about the goal.
+  \item \textit{Strength (T)}: The extent to which the preconditions ($\alpha$),
+  postconditions ($\beta$), predecessors ($\lambda$), and contributing goals
+  ($\mu$) of a goal are \textsc{satisfied} or \textsc{unsatisfied} makes beliefs
+  about the goal stronger. An \textsc{unknown} pre/postcondition status of a
+  goal and its predecessors and contributing goals forms weaker beliefs. For
+  instance, if one knows all predecessors of a pursued goal (e.g., ``Press Bread
+  Slices'') are \textsc{satisfied} (i.e., ``Spread Peanut Butter'' and ``Spread
+  Strawberry Jam''), failure of the pursued goal will elicit one's negative
+  emotion (due to the strong beliefs related to the goal); whereas not knowing
+  the status of the goal-related factors (e.g., whether Mary could find the
+  knife to cut the sandwich in half) causes one to form weaker beliefs about the
+  goal.
   \item \textit{Saliency (S)}: Beliefs related to the goal at the top of the
   focus stack are more salient than beliefs related to any other goal in the
-  plan, whether those goals are already \textsc{achieved} or \textsc{failed}, or
-  they will be pursued in the future. For example, according to Figure
-  \ref{fig:taskModel}, if one is making a peanut butter sandwich, all of the
-  \textit{live} (see Section \ref{sec:collaboration}) contributing goals to the
-  ``Prepare Peanut Butter Sandwich'' (e.g. Spread Peanut Butter) will be in
-  the focus stack, and consequently are more salient. Therefore,
-  \textit{non-live} goals in the shared plan (e.g. Slice Egg) will not be
-  salient.
-  \item \textit{Persistence (P)}: The recurrence of a belief over the passage
-  of time (turns) increases the persistence of the belief. Beliefs occurring
-  only in one turn have the lowest value of persistence. For instance, if Mary
-  keeps saying that she can not find the knife to cut the sandwich in half,
-  although it is not part of the shared plan, one could pursue a new goal to
-  acknowledge Mary's concern that can mitigate or prevent negative emotions.
+  plan. For example, according to Figure \ref{fig:taskModel}, if one is making a
+  peanut butter sandwich, all of the \textit{live} (see Section
+  \ref{sec:collaboration}) contributing goals to ``Prepare Peanut Butter
+  Sandwich'' (e.g. Spread Peanut Butter) will be in the focus stack, and
+  consequently are more salient. \textit{Non-live} goals in the shared plan
+  (e.g. Slice Egg) will not be salient.
+  \item \textit{Persistence (P)}: The recurrence of a belief over time (turns)
+  increases the persistence of the belief. Beliefs occurring only once have the
+  lowest value of persistence. For instance, if Mary keeps saying that she can
+  not find the knife to cut the sandwich in half, one could pursue a new goal
+  outside of the shared plan to acknowledge Mary's concern.
 \end{itemize}
 
 \noindent We also use two motive attributes discussed in Section
@@ -536,17 +530,16 @@ goal. We use three of the belief attributes discussed in Section
   another goal for which the other collaborator is responsible, and b) whether
   achieving the goal directing the given motive can mitigate the other
   collaborator's negative valenced emotion. For instance, if one has a private
-  goal to prepare (e.g. grabbing the eggs from the fridge) making the second
-  sandwich while Mary is waiting to get the first sandwich and cut it in half,
-  pressing bread slices and passing them to Mary will be more urgent than one's
-  private goal.
+  goal to prepare for making the second sandwich (e.g. get the eggs) while Mary
+  is waiting to get the first sandwich and cut it in half, pressing bread slices
+  and passing them to Mary will be more urgent than one's private goal.
   \item \textit{Importance ($\eta$)}: A motive is important if failure of the
   directing goal causes an impasse in the shared plan (i.e., no further goal is
   available to achieve), or achievement of the directing goal removes an
-  existing impasse. For example, if one cannot find white bread to spread peanut
-  butter (an impasse to make the peanut butter sandwich), and Mary offers to use
-  wheat bread instead (external motive), the new motive becomes important for
-  the one to remove the impasse on the shared plan.
+  existing impasse. For example, if one cannot find white bread on which to
+  spread peanut butter (an impasse to make the peanut butter sandwich), and Mary
+  offers to use wheat bread instead (external motive), the new motive becomes
+  important to remove the impasse in the shared plan.
 \end{itemize}
 
 \vspace*{-4mm}
@@ -559,21 +552,21 @@ goal. We use three of the belief attributes discussed in Section
 
 \vspace*{1mm}
 \begin{center} 
-    $\eta, \gamma \in \mathbb{N} \qquad,\qquad \eta, \gamma \geq 0$\\
-    $\alpha_{_k}, \beta_{_k}, \lambda_{_k}, \mu_{_k} \in \mathbb{N}
-    \qquad,\qquad \alpha_{_k}, \beta_{_k}, \lambda_{_k}, \mu_{_k} \geq 0$\\
-    $\alpha_{_{all}}, \lambda_{_{all}}, \mu_{_{all}} \in \mathbb{N}
-    \qquad,\qquad \alpha_{_{all}}, \lambda_{_{all}}, \mu_{_{all}} \geq 0$\\
-    $\beta_{_{all}} \in \mathbb{N} \qquad,\qquad \beta_{_{all}} \geq 1$
+    $\eta, \gamma \in \mathbb{N}, \qquad\qquad \eta, \gamma \geq 0$\\
+    $\alpha_{_k}, \beta_{_k}, \lambda_{_k}, \mu_{_k} \in \mathbb{N},
+    \qquad\qquad \alpha_{_k}, \beta_{_k}, \lambda_{_k}, \mu_{_k} \geq 0$\\
+    $\alpha_{_{all}}, \lambda_{_{all}}, \mu_{_{all}} \in \mathbb{N},
+    \qquad\qquad \alpha_{_{all}}, \lambda_{_{all}}, \mu_{_{all}} \geq 0$\\
+    $\beta_{_{all}} \in \mathbb{N}, \qquad\qquad \beta_{_{all}} \geq 1$
 \end{center}
 
-In equation \ref{eqn:power}, the subscript \textit{k} of the components of
-the first term refers to the \textit{known} (\textsc{satisfied} or
-\textsc{unsatisfied}) goal-related factors; whereas the subscript \textit{all}
-includes both \textit{known} and \textit{unknown} goal-related factors. In this
-equation, both urgency ($\gamma$) and importance ($\eta$) attributes of motives
-can impact the outcome of the goal-related belief attributes' ratio, and
-ultimately the $\Psi$ value.
+In equation \ref{eqn:power}, the subscript \textit{k} refers to the
+\textit{known} goal-related factors (\textsc{satisfied} or
+\textsc{unsatisfied}); whereas the subscript \textit{all} includes both
+\textit{known} and \textit{unknown} goal-related factors. In this equation, both
+urgency ($\gamma$) and importance ($\eta$) attributes of motives can impact the
+outcome of the goal-related belief attributes' ratio, and ultimately the $\Psi$
+value.
 
 \vspace*{-3mm}
 \begin{equation}
@@ -587,23 +580,22 @@ ultimately the $\Psi$ value.
 
 We compute the utility of an event based on the above five attributes. The
 $\upsilon$'s value becomes +1 if the status of the corresponding goal is
-\textsc{achieved}, \textsc{pending} or \textsc{in progress}, and $\upsilon$'s
+\textsc{achieved}, \textsc{pending}, or \textsc{in progress}, and $\upsilon$'s
 value becomes -1 if the status of the corresponding goal is \textsc{failed,
 blocked, inapplicable}. Therefore, the value of the overall utility can be
 positive, negative or zero.
 
-The significance of an event in a collaborative environment is based not
-only on the utility of the event, but it is also influenced by the perceived
-emotion of the human collaborator. The human's emotion influences the decision
-based on the utility of the event in the form of a threshold value $\tau_{t}$
-(see Algorithm \ref{alg:relevance}). For instance, a positively expressed
-emotion of the human reduces the threshold value which consequently makes the
-robot find an event relevant with even a slightly positive utility. This
-threshold value ($\tau_{t}$) is currently determined based on whether the
-valence of the human's perceived emotion is positive (e.g., happiness) or
-negative (e.g., anger). Therefore, an event can be considered
-\textsc{irrelevant} even though the utility has a relatively positive value,
-because relevance is influenced by the human's perceived negative emotion.
+The significance of an event in a collaborative environment is based on the
+utility of the event and the perceived emotion of the human collaborator. The
+human's emotion influences the relevance the event in the form of a threshold
+value $\tau_{t}$ (see Algorithm \ref{alg:relevance}). For instance, a positively
+expressed emotion of the human reduces the threshold value which makes the robot
+find an event relevant with even a slightly positive utility. This threshold
+value is currently determined based on whether the valence of the human's
+perceived emotion is positive (e.g., happiness) or negative (e.g., anger).
+Therefore, an event can be considered \textsc{irrelevant} even though the
+utility has a relatively positive value, because relevance is influenced by the
+human's perceived negative emotion.
 
 % \vspace*{-1mm}
 % \subsection{Desirability}
@@ -1106,10 +1098,13 @@ verify the behavior of a collaborative robot using our architecture.
 \vspace*{-3mm}
 \section*{Acknowledgments}
 \vspace{-2mm}
-{\fontsize{8.2}{9}\selectfont This work is supported by the National Science
-Foundation under award IIS-1012083. Any opinions, findings, and conclusions
-expressed in this material are those of the authors and do not necessarily
-reflect the views of the National Science Foundation.}
+Acknowledgment is suppressed for anonymity.
+\vspace{-4mm}
+% {\fontsize{8.2}{9}\selectfont This work is supported by the National Science
+% Foundation under award IIS-1012083.}
+% Any opinions, findings, and conclusions
+% expressed in this material are those of the authors and do not necessarily
+% reflect the views of the National Science Foundation.
 
 %% The file named.bst is a bibliography style file for BibTeX 0.99c
 \bibliographystyle{named}
