@@ -274,7 +274,7 @@ Mind mechanism.
 \begin{figure*}
   \centering
   \vspace*{-5mm}
-  \includegraphics[width=16.5cm,height=6cm]{figure/taskModel-croped.pdf}
+  \includegraphics[width=14.5cm,height=5cm]{figure/taskModel-croped.pdf}
   \vspace*{-3mm}
   \caption{Example of collaboration structure (also used as task model for
   the evaluation).}
@@ -337,7 +337,7 @@ methods, $\varepsilon_t$ is the event corresponding to time \textit{t}, and
 $g_t$ is a given goal at time \textit{t}.
 
 \begin{itemize}[leftmargin=2pt]
-  \setlength\itemsep{0.2mm}
+  \setlength\itemsep{0.02mm}
   \item \textit{recognizeGoal($\varepsilon_t$)} returns the unique goal to which
   the given event (action, utterance, or emotional expression) directly
   contributes; it is only one goal since the robot can only do one primitive
@@ -352,22 +352,21 @@ $g_t$ is a given goal at time \textit{t}.
 %   or \textsc{in progress}. In our example, ``Prepare Two Sandwiches'' is the top
 %   level goal.
   
-  \item \textit{currGoalStatus($g_t$)} returns whether the current goal status 
-  is \textsc{achieved, failed, blocked, inapplicable, pending,} or \textsc{in
-  progress}. In our example, ``Add Pickles'' is the current (focused) goal, and
-  the ``Prepare Boiled Egg Sandwich'' and ``Prepare Two Sandwiches'' are in
-  \textsc{in progress}. The focused goal is the goal that the robot currently
-  pursues.
+  \item \textit{getGoalStatus($g_t$)} returns whether $g_t$'s status is
+  \textsc{achieved, failed, blocked, inapplicable, pending,} or \textsc{in
+  progress}. In our example, ``Add Pickles'' is the current (focused) goal and
+  it is \textsc{pending}, and the ``Prepare Boiled Egg Sandwich'' and ``Prepare
+  Two Sandwiches'' are in \textsc{in progress}. The focused goal is the goal
+  that the robot currently pursues.
   
-  \item \textit{precondStatus($g_t$)} returns the status of the precondition,
-  i.e., whether it is \textsc{satisfied, unsatisfied} or \textsc{unknown}. For
-  instance, the precondition for ``Slice Egg'' is whether the eggs are boiled
-  appropriately, i.e., \textsc{satisfied}.
+  \item \textit{precondStatus($g_t$)} returns the status of the $g_t$'s
+  precondition, i.e., whether it is \textsc{satisfied, unsatisfied} or
+  \textsc{unknown}. For instance, the precondition for ``Slice Egg'' can
+  indicate whether the eggs are boiled appropriately, i.e., \textsc{satisfied}.
   
   \item \textit{isLive($g_t$)} returns \textit{true} if all the predecessors of
-  the given goal are \textsc{achieved} and all the preconditions are
-  \textsc{satisfied}, i.e., \textsc{pending} or \textsc{in progress} goals;
-  otherwise returns \textit{false}.
+  $g_t$ are \textsc{achieved} and all the preconditions are \textsc{satisfied},
+  i.e., \textsc{pending} or \textsc{in progress} goals; otherwise returns \textit{false}.
   
 %   \item \textit{isFocusShift($g_t$)} returns \textit{true} if the given
 %   goal is not the previous focus (top of the stack); otherwise returns
@@ -388,7 +387,7 @@ $g_t$ is a given goal at time \textit{t}.
   
   \item \textit{getContributingGoals($g_t$)} returns $g_t$'s children.
     
-  \item \textit{getPredecessors($g_t$)} returns the predecessors of $g_t$.
+  \item \textit{getPredecessors($g_t$)} returns $g_t$'s predecessors.
   
   \item \textit{getInputs($g_t$)} returns all required inputs for $g_t$. For
   example, the goal ``Boil Water'' requires inputs such as \textit{Pot} and
@@ -403,15 +402,15 @@ $g_t$ is a given goal at time \textit{t}.
   
   \item \textit{isFocused($g_t$)} returns whether the focus is on $g_t$.
   
-  \item \textit{getResponsible($g_t$)} returns responsible agent(s) of $g_t$. In
-  a dyadic collaboration, both of the agents (joint) can be partly responsible
+  \item \textit{getResponsible($g_t$)} returns responsible agent(s) for $g_t$.
+  In a dyadic collaboration, both of the agents (joint) can be partly responsible
   for a nonprimitive goal, while each (self or other) is responsible for one or
   more primitive goals. For instance, both Mary and the subject are responsible
-  for the nonprimitive goal ``Prepare Peanut Butter Sandwich'', whereas only
-  Mary is responsible for the primitive goal ``Spread Peanut Butter''.
+  for the nonprimitive goal ``Prepare Boiled Egg Sandwich'', whereas only Mary
+  is responsible for the primitive goal ``Add Pickles''.
 \end{itemize}
 
-\vspace*{-3mm}
+\vspace*{-5mm}
 \section{Appraisal Processes}
 \label{sec:appraisal-process}
 
@@ -427,6 +426,7 @@ in this paper due to space limitations. The algorithms in this section use
 mental states of the robot (see Section \ref{sec:mental-states}) which are
 formed based on the collaboration structure.
 
+\vspace*{-2mm}
 \subsection{Relevance}
 
 Relevance as an appraisal variable measures the significance of an event for the
@@ -450,9 +450,10 @@ perceived emotion, recurrence of a belief, or occurrence of a belief about an
 unrelated goal by the human play important roles by influencing the utility
 of an event during collaboration. As a result, evaluating the relevance of
 events can cause a collaborative robot to respond effectively which can
-positively impact the status of the shared goal, without dedicating all
+positively impact the status of the shared goal, without dedicating all its
 resources to every event.
 
+\vspace*{-3mm}
 \begin{algorithm}
 	\caption{(Relevance)}
 	\label{alg:relevance}
@@ -464,10 +465,11 @@ resources to every event.
 			\State $\mathcal{U} \gets \Call{getEventUtility}{\mathit{g}_{t}}$ 
 			\State $\tau_{t} \gets \Call{getEmotionalThreshold}{\mathit{g}_{t}}$
 % 			\Statex
-			\If {$(\tau_{t} \leq |\mathcal{U}|)$}
-				\State \Return {{\fontsize{7}{8}\selectfont RELEVANT}}
-			\Else
-				\State \Return {{\fontsize{7}{8}\selectfont IRRELEVANT}}
+			\If {$(\tau_{t} \leq |\mathcal{U}|)$} \quad \Return
+			{{\fontsize{7}{8}\selectfont RELEVANT}} 
+% 				\State \Return {{\fontsize{7}{8}\selectfont RELEVANT}}
+			\Else \quad \Return {{\fontsize{7}{8}\selectfont IRRELEVANT}}
+% 				\State \Return {{\fontsize{7}{8}\selectfont IRRELEVANT}}
 			\EndIf
 		\EndFunction
 	\end{algorithmic}
@@ -475,38 +477,37 @@ resources to every event.
 
 \vspace*{-3mm}
 After perceiving an event, the belief about that event represents the event in
-the robot's mental state. \textit{recognizeGoal} returns the goal ($g_{t}$) to
-which the current event contributes, unless it is \textit{ambiguous}; $g_{t}$
-is the shared goal at time (turn) $t$ within the shared plan. We compute the
-utility ($-1 \leq \mathcal{U} \leq 1$) of the event using the values of the
-attributes associated with the existing beliefs, and the attributes of the
-motive associated with the recognized goal. We use three belief attributes (see
-Section \ref{sec:mental-states}) to compute the belief-related part of the
-utility:
+the robot's mental state. \textit{recognizeGoal} returns the goal to which the
+current event contributes. We compute the utility ($-1 \leq \mathcal{U} \leq 1$)
+of the event using the values of the attributes associated with the existing
+beliefs, and the attributes of the motive associated with the recognized goal
+(see details below). We use three belief attributes (see Section
+\ref{sec:mental-states}) to compute the belief-related part of the utility:
 
 \vspace*{-1mm}
 \begin{itemize}[leftmargin=2pt]
-  \setlength\itemsep{0.2mm}
+  \setlength\itemsep{0.025mm}
   \item \textit{Strength (T)}: The extent to which the preconditions ($\alpha$),
   postconditions ($\beta$), predecessors ($\lambda$), and contributing goals
-  ($\mu$) of a goal are \textsc{satisfied} or \textsc{unsatisfied} makes beliefs
-  about the goal stronger. An \textsc{unknown} pre/postcondition status of a
-  goal and its predecessors and contributing goals forms weaker beliefs. For
-  instance, if one knows all predecessors of a pursued goal (e.g., ``Press Bread
-  Slices'') are \textsc{satisfied} (i.e., ``Spread Peanut Butter'' and ``Spread
-  Strawberry Jam''), failure of the pursued goal will elicit one's negative
-  emotion (due to the strong beliefs related to the goal); whereas not knowing
-  the status of the goal-related factors (e.g., whether Mary could find the
-  knife to cut the sandwich in half) causes one to form weaker beliefs about the
-  goal.
-  \item \textit{Saliency (S)}: Beliefs related to the goal at the top of the
-  focus stack are more salient than beliefs related to any other goal in the
-  plan. For example, according to Figure \ref{fig:taskModel}, if one is making a
-  peanut butter sandwich, all of the \textit{live} (see Section
-  \ref{sec:collaboration}) contributing goals to ``Prepare Peanut Butter
-  Sandwich'' (e.g. Spread Peanut Butter) will be in the focus stack, and
-  consequently are more salient. \textit{Non-live} goals in the shared plan
-  (e.g. Slice Egg) will not be salient.
+  ($\mu$) of a goal are known (\textsc{satisfied} or \textsc{unsatisfied}) makes
+  beliefs about the goal stronger. An \textsc{unknown} pre/postcondition status
+  of a goal and its predecessors and contributing goals forms weaker beliefs.
+  For instance, if one knows all predecessors of a pursued goal (e.g., ``Press
+  Bread Slices'') are \textsc{satisfied} (i.e., ``Spread Peanut Butter'' and
+  ``Spread Strawberry Jam''), failure of the pursued goal will elicit one's
+  negative emotion (due to the strong beliefs related to the goal); whereas not
+  knowing the status of the goal-related factors (e.g., whether Mary could find
+  the knife to cut the sandwich in half) causes one to form weaker beliefs about
+  the goal.
+  \item \textit{Saliency (S)}: Beliefs related to the focused goal are more
+  salient than beliefs related to any other goal in the plan. For example,
+  according to Figure \ref{fig:taskModel}, if one is making a boiled egg
+  sandwich, beliefs related to all of the \textit{live} (\textsc{pending} or
+  \textsc{in progress}) goals (e.g. ``Pack Sandwich'') will be less salient
+  than beliefs related to the focused goal, i.e., ``Add Pickles''. Beliefs'
+  saliency decreases according to their corresponding \textit{live} goal's
+  distance from the focused goal in the shared plan. \textit{Non-live} goals
+  will not be salient.
   \item \textit{Persistence (P)}: The recurrence of a belief over time (turns)
   increases the persistence of the belief. Beliefs occurring only once have the
   lowest value of persistence. For instance, if Mary keeps saying that she can
@@ -519,7 +520,7 @@ utility:
 ($\mathcal{U}$):
 
 \begin{itemize}[leftmargin=2pt]
-  \setlength\itemsep{1mm}
+  \setlength\itemsep{0.05mm}
   \item \textit{Urgency ($\gamma$)}: There are two factors impacting the urgency
   of a motive: a) whether the goal directing the given motive is the predecessor of
   another goal for which the other collaborator is responsible, and b) whether
@@ -537,31 +538,11 @@ utility:
   important to remove the impasse in the shared plan.
 \end{itemize}
 
-\vspace*{-2mm}
-\begin{equation}
-    \Psi = \frac{\alpha_{_k} + \beta_{_k} + \lambda_{_k} +
-    \mu_{_k}}{\alpha_{_{all}} + \beta_{_{all}} + \lambda_{_{all}} +
-    \mu_{_{all}}} + \eta + \gamma
-    \label{eqn:power}
-\end{equation}
-
-\vspace*{1mm}
-\begin{center} 
-    $\eta, \gamma \in \mathbb{N}, \qquad\qquad \eta, \gamma \geq 0$\\
-    $\alpha_{_k}, \beta_{_k}, \lambda_{_k}, \mu_{_k} \in \mathbb{N},
-    \qquad\qquad \alpha_{_k}, \beta_{_k}, \lambda_{_k}, \mu_{_k} \geq 0$\\
-    $\alpha_{_{all}}, \lambda_{_{all}}, \mu_{_{all}} \in \mathbb{N},
-    \qquad\qquad \alpha_{_{all}}, \lambda_{_{all}}, \mu_{_{all}} \geq 0$\\
-    $\beta_{_{all}} \in \mathbb{N}, \qquad\qquad \beta_{_{all}} \geq 1$
-\end{center}
-
-In equation \ref{eqn:power}, the subscript \textit{k} refers to the
-\textit{known} goal-related factors (\textsc{satisfied} or
-\textsc{unsatisfied}); whereas the subscript \textit{all} includes both
-\textit{known} and \textit{unknown} goal-related factors. In this equation, both
-urgency ($\gamma$) and importance ($\eta$) attributes of motives can impact the
-outcome of the goal-related belief attributes' ratio, and ultimately the $\Psi$
-value.
+We provide the utility function in Equation \ref{eqn:utility}. This function is
+comprised of: a) saliency (\textit{S}) and b) persistence (\textit{P}) of the
+belief(s) related to the recognized goal, c) the recognized goal's status
+($\upsilon$), and d) aggregation of belief and motive attributes ($\Psi$) using
+the function in Equation \ref{eqn:power}.
 
 \vspace*{-3mm}
 \begin{equation}
@@ -573,12 +554,41 @@ value.
     \label{eqn:utility}
 \end{equation}
 
-We compute the utility of an event based on the above five attributes. The
-$\upsilon$'s value becomes +1 if the status of the corresponding goal is
-\textsc{achieved}, \textsc{pending}, or \textsc{in progress}, and $\upsilon$'s
-value becomes -1 if the status of the corresponding goal is \textsc{failed,
-blocked, inapplicable}. Therefore, the value of the overall utility can be
-positive, negative or zero.
+In equation \ref{eqn:power}, the subscript \textit{k} refers to the
+\textit{known} goal-related factors (\textsc{satisfied} or
+\textsc{unsatisfied}); whereas the subscript \textit{all} includes both
+\textit{known} and \textit{unknown} goal-related factors. In this equation, both
+urgency ($\gamma$) and importance ($\eta$) attributes of motives can impact the
+outcome of the goal-related belief attributes' ratio, and ultimately the $\Psi$
+value.
+
+\vspace*{-3mm}
+\begin{equation}
+    \Psi = \frac{\alpha_{_k} + \beta_{_k} + \lambda_{_k} +
+    \mu_{_k}}{\alpha_{_{all}} + \beta_{_{all}} + \lambda_{_{all}} +
+    \mu_{_{all}}} + \eta + \gamma
+    \label{eqn:power}
+\end{equation}
+
+\vspace*{-1mm}
+\begin{center} 
+    $\eta, \gamma \in \mathbb{N}, \qquad\qquad \eta, \gamma \geq 0$\\
+    $\alpha_{_k}, \beta_{_k}, \lambda_{_k}, \mu_{_k} \in \mathbb{N},
+    \qquad\qquad \alpha_{_k}, \beta_{_k}, \lambda_{_k}, \mu_{_k} \geq 0$\\
+    $\alpha_{_{all}}, \lambda_{_{all}}, \mu_{_{all}} \in \mathbb{N},
+    \qquad\qquad \alpha_{_{all}}, \lambda_{_{all}}, \mu_{_{all}} \geq 0$\\
+    $\beta_{_{all}} \in \mathbb{N}, \qquad\qquad \beta_{_{all}} \geq 1$
+\end{center}
+
+Intuitively, $\Psi$ value indicates the quality of beliefs and motives using
+their attributes. Hence, the $\Psi$ value impacts the saliency value of
+beliefs exponentially helping to differentiate between beliefs. Similarly,
+\textit{P} influences the value of utility only as a coefficient since recurrent
+beliefs are not formed frequently during collaboration. We use $\upsilon$ to
+generate positive and negative utility values. The $\upsilon$'s value becomes +1
+if the status of the corresponding goal is \textsc{achieved}, \textsc{pending},
+or \textsc{in progress}, and $\upsilon$'s value becomes -1 if the status of the
+corresponding goal is \textsc{failed, blocked, inapplicable}.
 
 The significance of an event in a collaborative environment is based on the
 utility of the event and the perceived emotion of the human collaborator. The
