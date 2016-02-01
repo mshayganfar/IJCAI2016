@@ -47,7 +47,8 @@
 % \thanks{These match the formatting instructions of IJCAI-07. The support of
 % IJCAI, Inc. is acknowledged.}
 
-\title{Relevance and Controllability Appraisals in Human-Robot Collaboration}
+\title{Appraisal Algorithms for Relevance and Controllability in\\
+Human-Robot Collaboration}
 % \author{Mahni Shayganfar, Charles Rich, Candace L. Sidner \\ 
 % Worcester Polytechnic Institute, Worcester Massachusetts  \\
 % mshayganfar $|$ rich $|$ sidner @wpi.edu}
@@ -56,33 +57,31 @@
 
 \maketitle
 
-\vspace*{-5mm}
 \begin{abstract}
 \vspace*{-1mm}
-We have investigated the mutual influence of affective and collaborative
+We have investigated the mutual influences of affective and collaborative
 processes in a cognitive theory to support interaction between humans and robots
-or virtual agents. We have developed new algorithms for appraisal processes, as
-part of a new overall computational model for implementing collaborative robots
-and agents. We build primarily on the \textit{cognitive appraisal} theory of
+or virtual agents. We build primarily on the \textit{cognitive appraisal} theory of
 emotions and the \textit{SharedPlans} theory of collaboration to investigate the
 structure, fundamental processes and functions of emotions in a collaboration.
-We have evaluated our implemented algorithms by conducting an online user study.
+We have developed new algorithms for appraisal processes as part of a new
+overall computational model. We have evaluated our implemented algorithms by
+conducting an online user study.
 \end{abstract}
 
-\vspace*{-6mm}
+\vspace*{-3mm}
 \section{Introduction}
-\vspace*{-1mm}
 % Sousa in The Rationality of Emotion \cite{sousa:rationality-emotion}
 % makes the case for claiming that humans are capable of rationality largely
 % because they are creatures with emotions. 
-The idea of having robots or other intelligent agents living in a human
-environment has been a persistent dream from science fiction books to artificial
-intelligence and robotics laboratories. Collaborative robots are expected to
-become an integral part of humans' environment to accomplish their industrial
-and household tasks. In these environments humans will be involved in robots'
+The idea of robots or other intelligent agents living in a human environment has
+been a persistent dream from science fiction books to artificial intelligence
+and robotic laboratories. Collaborative robots are expected to become an
+integral part of humans' environment to accomplish their industrial and
+household tasks. In these environments, humans will be involved in robots'
 operations and decision-making processes. The involvement of humans influences
-the efficiency of robots' interaction and performance, and makes them dependent
-on humans' cognitive abilities and mental states.
+the efficiency of robots' interaction and performance, and makes the robots
+sensitive to humans' cognitive abilities and behaviors.
 
 This work is implemented as part of a larger effort to build robots capable of
 generating and recognizing emotions in order to be better collaborators. In this
@@ -95,20 +94,20 @@ Motivational Collaboration Theory} which is built on the foundations of the
 the \textit{cognitive appraisal} theory of emotions
 \cite{gratch:domain-independent}.
 
-There are several appraisal models contributing in different applications such
-as robotics, virtual agents and social sciences. However, none of these models
-have focused on the appraisal processes during collaboration. We believe
-appraisal plays a key role in collaboration due to its regulatory and evaluative
-nature. Also, collaboration induces some differences to underlying appraisal
-processes due to its unique nature. For instance, although the major appraisal
-models use utility to compute the relevance of an event, we have found new
-cognitive components involved in determining utility because of the influence of
-the collaboration. These components, such as recurrence of a belief by the human
-collaborator or influence of the human collaborator's perceived emotion on the 
-robot's decisions emphasize the fact that collaboration creates demands for
-different procedures in appraisal processes. In this paper, we provide the
-relevance and controllability appraisals of an event in the collaboration
-context.
+There are several appraisal models (e.g., EMA \cite{marsella:ema-process-model})
+contributing in different applications such as social sciences, virtual agents,
+and robotics. However, none of these models have focused on the appraisal
+processes during collaboration. We believe appraisal plays a key role in
+collaboration due to its regulatory and evaluative nature. Also, collaboration
+induces some changes to underlying appraisal processes due to its unique nature.
+For instance, although the appraisal models mostly use utility to compute the
+relevance of an event, we have found new cognitive components involved in
+determining utility because of the influence of the collaboration. These
+components, such as the recurrence of a belief by the human collaborator or the
+influence of the human collaborator's perceived emotion on the robot's decisions
+emphasize the fact that collaboration requires different procedures in appraisal
+processes. In this paper, we provide the relevance and controllability
+appraisals of an event in the collaboration context.
 
 % After discussing related works, we briefly introduce the Affective Motivational
 % Collaboration Theory, focusing on the collaboration and appraisal mechanisms as
@@ -125,19 +124,18 @@ context.
 Our work builds on the general notions of appraisal theory
 \cite{gratch:domain-independent,marsella:computational,scherer:sequential-appraisal-process,scherer:appraisal-processes},
 but is focused on its application in human-robot collaboration. Computational
-appraisal models have been applied to a variety of uses including psychology,
-robotics, AI, and cognitive science. For instance, in
-\cite{marsella:ema-process-model} EMA is used to generate specific predictions
-about how human subjects will appraise and cope with emotional situations.
-Furthermore, appraisal theory has been used in robots' decision making
-\cite{castro:autonomous-robot-fear}, or in their cognitive systems
-\cite{hudlicka:emotinos-reasons,marinier:emotion-reinforcement}. Additionally,
-in the virtual agents community, empathy and affective decision-making is a
-research topic that has received much attention in the last two decades
+appraisal models have been applied to a variety of uses in psychology, robotics,
+AI, and cognitive science. For instance, in \cite{marsella:ema-process-model}
+EMA is used to generate specific predictions about how human subjects will
+appraise and cope with emotional situations. Furthermore, appraisal theory has
+been used in robots' decision making \cite{castro:autonomous-robot-fear}, or in
+their cognitive systems
+\cite{hudlicka:emotinos-reasons,marinier:emotion-reinforcement}. In the virtual
+agents community, empathy and affective decision-making is a research topic that
+has received much attention in the last two decades
 \cite{scott:modeling-empathy-agent,paiva:agent-care,pontier:women-robot-men,velasquez:emotions-motivations-agents}.
-However, EMA and several other examples in artificial intelligence and robotics
-which apply appraisal theory do not focus on the dynamics of collaborative
-contexts
+However, EMA and other work in artificial intelligence and robotics which apply
+appraisal theory do not focus on the dynamics of collaborative contexts
 \cite{adam:bdi-emotional-companion,kim:model-hri-appraisal,marsella:ema-process-model,rosenbloom:sigma-appraisal}.
 
 The computational collaboration model in our work is strongly influenced by the
@@ -147,8 +145,8 @@ also compatible with other collaboration theories, e.g., Joint Intentions theory
 have been extensively used to examine and describe teamwork and collaboration.
 Yet, collaboration and emotion theories have never been combined, as they are in
 our work. We believe a systematic integration of collaboration theories and
-appraisal theory can help describe the underlying collaboration processes
-leading to the existing collaboration structures.
+appraisal theory can help explain the underlying processes OF collaboration
+structure.
 
 \section{{\fontsize{11.85}{12}\selectfont Affective Motivational Collaboration
 Theory}}
@@ -278,7 +276,7 @@ Mind mechanism.
   \vspace*{-5mm}
   \includegraphics[width=16.5cm,height=6cm]{figure/taskModel-croped.pdf}
   \vspace*{-3mm}
-  \caption{Collaboration structure (also used as task model for
+  \caption{Example of collaboration structure (also used as task model for
   the evaluation).}
   \label{fig:taskModel}
   \vspace*{-4mm}
@@ -421,8 +419,8 @@ $g_t$ is a given goal at time \textit{t}.
 \label{sec:appraisal-process}
 
 We discuss two appraisal variables in a collaboration context, i.e.,
-\textit{Relevance} (since other appraisals are only derived for relevant
-events), and \textit{Controllability} (since it is associated with the agent's
+\textit{relevance} (since other appraisals are only computed for relevant
+events), and \textit{controllability} (since it is associated with the agent's
 coping ability). There are other appraisal variables introduced in psychological
 \cite{scherer:appraisal-processes} and computational literature
 \cite{gratch:domain-independent}. We have implemented other appraisal variables
@@ -435,12 +433,12 @@ formed based on the collaboration structure.
 \subsection{Relevance}
 
 Relevance as an appraisal variable measures the significance of an event for the
-robot. An event can be evaluated to be relevant if it has a non-zero utility
+self. An event can be evaluated to be relevant if it has a non-zero utility
 \cite{marsella:ema-process-model}. Relevance is an important appraisal variable
-since the other appraisal variables are more meaningful only for relevant
-events. However, the utility of an event during collaboration is influenced by
-the other collaborator's actions and mental states because there is a commitment
-between collaborators to achieve the shared goal based on the shared plan. Other
+since the other appraisal variables are meaningful only for relevant events.
+However, the utility of an event during collaboration is influenced by the other
+collaborator's actions and mental states, because there is a commitment between
+collaborators to achieve the shared goal based on the shared plan. Other
 appraisal models only consider the utility of an event based on the self's
 (robot's) goal and plan.
 
@@ -448,12 +446,12 @@ Algorithm \ref{alg:relevance} determines the relevance of the given event with
 respect to the current mental state. The relevance of the event depends on the
 significance of the event with respect to the collaboration status, which is
 determined based on the utility of the event as presented in
-\cite{gratch:domain-independent,marsella:ema-process-model}. We believe
+\cite{gratch:domain-independent,marsella:ema-process-model}. Our algorithm for
 computing the relevance of an event during collaboration involves other factors
-which other appraisal models do not consider. For instance, the human's
+that other appraisal models do not consider. For instance, the human's
 perceived emotion, recurrence of a belief, or occurrence of a belief about an
-unrelated goal by the human also play important roles by influencing the utility
-of an event during collaboration. As a result, evaluating the relevance of the
+unrelated goal by the human play important roles by influencing the utility
+of an event during collaboration. As a result, evaluating the relevance of
 events can cause a collaborative robot to respond effectively which can
 positively impact the status of the shared goal, without dedicating all
 resources to every event.
