@@ -341,11 +341,12 @@ $g_t$ is a given goal at time \textit{t}.
   \item \textit{recognizeGoal($\varepsilon_t$)} returns the unique goal to which
   the given event (action, utterance, or emotional expression) directly
   contributes; it is only one goal since the robot can only do one primitive
-  action at a time in our collaboration model. However, in the goal tree, a
-  given primitive action can contribute to more than one higher level (parent)
-  goal. The method returns \textit{ambiguous} if it does not recognize a goal in
-  the plan.
-  
+  action at a time in our collaboration model, i.e, in the goal tree, a given
+  primitive action can only directly contribute to one parent goal. The method
+  returns \textit{ambiguous} if it does not recognize a goal in the
+  plan\footnote{Ambiguity introduces some extra complexities which are beyond
+  scope of this paper.}.
+   
 %   \item \textit{topLevelGoalStatus($g_t$)} returns the status of the top level
 %   goal whether it is \textsc{achieved, failed, blocked, inapplicable, pending,}
 %   or \textsc{in progress}. In our example, ``Prepare Two Sandwiches'' is the top
@@ -353,17 +354,20 @@ $g_t$ is a given goal at time \textit{t}.
   
   \item \textit{currGoalStatus($g_t$)} returns whether the current goal status 
   is \textsc{achieved, failed, blocked, inapplicable, pending,} or \textsc{in
-  progress}. In our example, ``Add Pickles'' is the current
-  (focused) goal.
+  progress}. In our example, ``Add Pickles'' is the current (focused) goal, and
+  the ``Prepare Boiled Egg Sandwich'' and ``Prepare Two Sandwiches'' are in
+  \textsc{in progress}. The focused goal is the goal that the robot currently
+  pursues.
   
-  \item \textit{precondStatus($g_t$)} returns the status of the precondition for
-  the given goal whether it is \textsc{satisfied, unsatisfied} or
-  \textsc{unknown}. For instance, the precondition for slicing the eggs is
-  whether the eggs are boiled appropriately.
+  \item \textit{precondStatus($g_t$)} returns the status of the precondition,
+  i.e., whether it is \textsc{satisfied, unsatisfied} or \textsc{unknown}. For
+  instance, the precondition for ``Slice Egg'' is whether the eggs are boiled
+  appropriately, i.e., \textsc{satisfied}.
   
   \item \textit{isLive($g_t$)} returns \textit{true} if all the predecessors of
-  the given goal are \textsc{achieved} and all the preconditions of the goal are
-  \textsc{satisfied}; otherwise returns \textit{false}.
+  the given goal are \textsc{achieved} and all the preconditions are
+  \textsc{satisfied}, i.e., \textsc{pending} or \textsc{in progress} goals;
+  otherwise returns \textit{false}.
   
 %   \item \textit{isFocusShift($g_t$)} returns \textit{true} if the given
 %   goal is not the previous focus (top of the stack); otherwise returns
@@ -382,36 +386,29 @@ $g_t$ is a given goal at time \textit{t}.
 %   instance, an abstract (nonprimitive) goal of ``Prepare Peanut Butter
 %   Sandwich'' contributes to the higher level goal of ``Prepare Two Sandwiches''.
   
-  \item \textit{extractContributingGoals($g_t$)} returns all contributing goals
-  of the given goal. For instance, ``Boil Water'', ``Slice Egg'' and other goals
-  in this level are multiple goals contributing to the ``Prepare Boiled Egg
-  Sandwich'' nonprimitive goal.
+  \item \textit{getContributingGoals($g_t$)} returns $g_t$'s children.
+    
+  \item \textit{getPredecessors($g_t$)} returns the predecessors of $g_t$.
   
-  \item \textit{extractPredecessors($g_t$)} returns the predecessors of the
-  given goal. For instance, the ``Spread Peanut Butter'' and ``Spread
-  Strawberry Jam'' goals are the predecessors of another goal called ``Press
-  Bread Slices''.
+  \item \textit{getInputs($g_t$)} returns all required inputs for $g_t$. For
+  example, the goal ``Boil Water'' requires inputs such as \textit{Pot} and
+  \textit{Stove} (details not shown in Figure \ref{fig:taskModel}).
   
-  \item \textit{extractInputs($g_t$)} returns all required inputs for the given
-  goal. For example, the goal ``Boil Water'' requires inputs such as
-  \textit{Pot} and \textit{Stove}.
-  
-  \item \textit{isAvailable($g_t$)} returns whether the given input is
-  available. For instance, if the \textit{Pot} is required for the goal
-  ``Boil Water'', is it available now?
+  \item \textit{isAvailable($g_t, i_{_k}$)} returns whether the given input
+  ($i_{_k}$) is available for $g_t$. For instance, whether the \textit{Pot} is
+  available for the goal ``Boil Water''.
   
 %   \item \textit{isAchieved($g_t$)} returns whether the given goal is achieved,
 %   i.e., whether all the postconditions of the given goal are \textsc{satisfied}.
   
-  \item \textit{isFocused($g_t$)} returns whether the focus is on the given
-  goal. The focused goal is the goal that the robot currently pursues.
+  \item \textit{isFocused($g_t$)} returns whether the focus is on $g_t$.
   
-  \item \textit{getResponsible($g_t$)} returns responsible agents of the given
-  goal. In a dyadic collaboration, both of the agents can be partly responsible
-  for a nonprimitive goal, while each is responsible for one or more primitive
-  goals. For instance, both Mary and the subject are responsible for the
-  nonprimitive goal ``Prepare Peanut Butter Sandwich'', whereas only Mary is
-  responsible for the primitive goal ``Spread Peanut Butter''.
+  \item \textit{getResponsible($g_t$)} returns responsible agent(s) of $g_t$. In
+  a dyadic collaboration, both of the agents (joint) can be partly responsible
+  for a nonprimitive goal, while each (self or other) is responsible for one or
+  more primitive goals. For instance, both Mary and the subject are responsible
+  for the nonprimitive goal ``Prepare Peanut Butter Sandwich'', whereas only
+  Mary is responsible for the primitive goal ``Spread Peanut Butter''.
 \end{itemize}
 
 \vspace*{-3mm}
