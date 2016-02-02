@@ -146,7 +146,7 @@ also compatible with other collaboration theories, e.g., Joint Intentions theory
 have been extensively used to examine and describe teamwork and collaboration.
 Yet, collaboration and emotion theories have never been combined, as they are in
 our work. We believe a systematic integration of collaboration theories and
-appraisal theory can help explain the underlying processes OF collaboration
+appraisal theory can help explain the underlying processes of collaboration
 structure.
 
 \section{{\fontsize{11.85}{12}\selectfont Affective Motivational Collaboration
@@ -357,7 +357,7 @@ $g_t$ is a given goal at time \textit{t}.
   \textsc{achieved, failed, blocked, inapplicable, pending,} or \textsc{in
   progress}. In our example, ``Add Pickles'' is the current (focused) goal and
   it is \textsc{pending}, and the ``Prepare Boiled Egg Sandwich'' and ``Prepare
-  Two Sandwiches'' are in \textsc{in progress}. The focused goal is the goal
+  Two Sandwiches'' are \textsc{in progress}. The focused goal is the goal
   that the robot currently pursues.
   
   \item \textit{precondStatus($g_t$)} returns the status of the $g_t$'s
@@ -488,7 +488,7 @@ beliefs, and the attributes of the motive associated with the recognized goal
 \vspace*{-1mm}
 \begin{itemize}[leftmargin=2pt]
   \setlength\itemsep{0.025mm}
-  \item \textit{Strength (T)}: The extent to which the preconditions ($\alpha$),
+  \item \textit{Strength}: The extent to which the preconditions ($\alpha$),
   postconditions ($\beta$), predecessors ($\lambda$), and contributing goals
   ($\mu$) of a goal are known (\textsc{satisfied} or \textsc{unsatisfied}) makes
   beliefs about the goal stronger. An \textsc{unknown} pre/postcondition status
@@ -501,14 +501,14 @@ beliefs, and the attributes of the motive associated with the recognized goal
   the knife to cut the sandwich in half) causes one to form weaker beliefs about
   the goal.
   \item \textit{Saliency (S)}: Beliefs related to the focused goal are more
-  salient than beliefs related to any other goal in the plan. For example,
-  according to Figure \ref{fig:taskModel}, if one is making a boiled egg
-  sandwich, beliefs related to all of the \textit{live} (\textsc{pending} or
-  \textsc{in progress}) goals (e.g. ``Pack Sandwich'') will be less salient
-  than beliefs related to the focused goal, i.e., ``Add Pickles''. Beliefs'
-  saliency decreases according to their corresponding \textit{live} goal's
-  distance from the focused goal in the shared plan. \textit{Non-live} goals
-  will not be salient.
+  salient than beliefs related to any other goal in the plan; according to
+  Figure \ref{fig:taskModel}, if one is making a boiled egg sandwich, beliefs
+  related to all of the other \textit{live} (\textsc{pending} or \textsc{in
+  progress}) goals (e.g. ``Pack Sandwich'') will be less salient than beliefs
+  related to the focused goal, i.e., ``Add Pickles''. Beliefs' saliency
+  decreases according to their corresponding \textit{live} goal's distance from
+  the focused goal in the shared plan. \textit{Non-live} goals will not be
+  salient.
   \item \textit{Persistence (P)}: The recurrence of a belief over time (turns)
   increases the persistence of the belief. Beliefs occurring only once have the
   lowest value of persistence. For instance, if Mary keeps saying that she can
@@ -542,8 +542,8 @@ beliefs, and the attributes of the motive associated with the recognized goal
 We provide the utility function in Equation \ref{eqn:utility}. This function is
 comprised of: a) saliency (\textit{S}) and b) persistence (\textit{P}) of the
 belief(s) related to the recognized goal, c) the recognized goal's status
-($\upsilon$), and d) aggregation of belief and motive attributes ($\Psi$) using
-the function in Equation \ref{eqn:power}.
+($\upsilon$), and d) the aggregation of belief and motive attributes ($\Psi$)
+according to Equation \ref{eqn:power}.
 
 \vspace*{-3mm}
 \begin{equation}
@@ -555,6 +555,7 @@ the function in Equation \ref{eqn:power}.
     \label{eqn:utility}
 \end{equation}
 
+\vspace*{-1mm}
 In equation \ref{eqn:power}, the subscript \textit{k} refers to the
 \textit{known} goal-related factors (\textsc{satisfied} or
 \textsc{unsatisfied}); whereas the subscript \textit{all} includes both
@@ -581,15 +582,17 @@ value.
     $\beta_{_{all}} \in \mathbb{N}, \qquad\qquad \beta_{_{all}} \geq 1$
 \end{center}
 
-Intuitively, $\Psi$ value indicates the quality of beliefs and motives using
-their attributes. Hence, the $\Psi$ value impacts the saliency value of
-beliefs exponentially helping to differentiate between beliefs. Similarly,
-\textit{P} influences the value of utility only as a coefficient since recurrent
-beliefs are not formed frequently during collaboration. We use $\upsilon$ to
-generate positive and negative utility values. The $\upsilon$'s value becomes +1
-if the status of the corresponding goal is \textsc{achieved}, \textsc{pending},
-or \textsc{in progress}, and $\upsilon$'s value becomes -1 if the status of the
-corresponding goal is \textsc{failed, blocked, inapplicable}.
+Intuitively, the $\Psi$ value indicates the magnitude of the influence of
+beliefs and motives using their attributes. Hence, the $\Psi$ value impacts the
+saliency value of beliefs exponentially, helping to differentiate between
+beliefs. Similarly, \textit{P} influences the value of utility only as a
+coefficient since recurrent beliefs are not formed frequently during
+collaboration. We use $\upsilon$ to generate positive and negative utility
+values, making an event \textsc{relevant} or \textsc{irrelevant}, respectively.
+The $\upsilon$'s value becomes +1 if the status of the corresponding goal is
+\textsc{achieved}, \textsc{pending}, or \textsc{in progress}, and $\upsilon$'s
+value becomes -1 if the status of the corresponding goal is \textsc{failed,
+blocked}, or \textsc{inapplicable}.
 
 The significance of an event in a collaborative environment is based on the
 utility of the event and the perceived emotion of the human collaborator. The
@@ -834,10 +837,10 @@ predecessors}, and d) the \textit{available inputs} of a given goal
 (i.e., $\mathit{g}_{t}$) in the shared plan.
 
 In Algorithm \ref{alg:controllability}, we partially compute the controllability
-of an event based on the above four factors (lines 3 to 6). We use weighted
-averaging of these factors to determine their impact on the controllability of
-an event. The value of all these weights are set to \textit{1.0} for the purpose
-of simplicity at this stage. We will adjust these weights after further
+of an event based on the above four factors. We use weighted averaging of these
+factors to determine their impact on the controllability of an event (line 9).
+The value of all these weights are set to \textit{1.0} for the purpose of
+simplicity at this stage. We will adjust these weights after further
 investigating the influence of these factors, and implementing other mechanisms
 in the overall architecture. We believe that the human's perceived emotion also
 impacts the controllability of an event ($\mathcal{V}_{e_h}$ in line 9). The
@@ -910,14 +913,11 @@ robot to carry out proper collaborative behaviors.
 \section{Evaluation and Discussion}
 \label{sec:user-study}
 
-We developed our user study to test our hypothesis that humans perceive
-different components in our algorithms including attributes of mental states
-(e.g., belief saliency), perceived emotions of their collaborator (e.g.,
-sadness), and factors related to the shared plan (e.g., satisfied
-pre/postconditions) during collaboration. This study was not designed to verify
+We developed our user study to test our hypothesis that humans will provide
+similar answers as our algorithms to questions related to different factors used
+to compute relevance and controllability. This study was not designed to verify
 the final output of the algorithms because further development of the framework
-is required to properly test our algorithms in producing collaborative
-behaviors.
+is required to properly test our algorithms in producing collaborative behaviors.
 
 We conducted a between subject user study using an online crowdsourcing website
 -- CrowdFlower\footnote{http://www.crowdflower.com}. We had a questionnaire
