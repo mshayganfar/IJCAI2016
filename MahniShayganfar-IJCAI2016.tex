@@ -921,30 +921,76 @@ In summary, the output of these two and other appraisal processes such as
 for the other mechanisms and processes (e.g., goal management
 \cite{shayganfar:goal-management}) of the Affective Motivational Collaboration
 Framework, shown in Figure \ref{fig:cpm}. By providing adequate interpretation
-of events in the collaborative environment, the appraisal mechanism enables the
-robot to carry out proper collaborative behaviors.
+of events in the environment, the appraisal mechanism enables the robot to carry
+out proper collaborative behaviors.
 
 \vspace{-2mm}
 \section{Evaluation and Discussion}
 \label{sec:user-study}
 
-We developed our user study to test our hypothesis that humans will provide
-similar answers as our algorithms to questions related to different factors used
-to compute relevance and controllability. We conducted a between subject user
+We conducted a user study to test our hypothesis that humans and our algorithms
+will provide similar answers to questions related to different factors used
+to compute relevance and controllability. We conducted a between-subject user
 study using an online crowdsourcing website --
-CrowdFlower\footnote{http://www.crowdflower.com}. We had questionnaire for each
-appraisal variable. There were 12 questions (including 2 test questions) in the
-controllability, and 22 questions (including 3 test questions) in the relevance
-questionnaire. Each subject group originally had 40 subjects. We limited the
-subject pools to those with the highest confidence level on the crowdsourcing
-website in the United States, Britain, and Australia. Test questions were
-included to check the sanity of the answers. We eliminated subjects providing
-wrong answers to our sanity questions, and subjects with answering times less
-than 2 minutes.
+CrowdFlower\footnote{http://www.crowdflower.com}. We had a questionnaire for
+each appraisal variable. There were 12 questions (including 2 test questions) in
+the controllability, and 22 questions (including 3 test questions) in the
+relevance questionnaire. Each subject group originally had 40 subjects. We
+limited the subject pools to those with the highest confidence level on the
+crowdsourcing website in the United States, Britain, and Australia. Test
+questions were included to check the sanity of the answers. We eliminated
+subjects providing wrong answers to our sanity questions, and subjects with
+answering times less than 2 minutes.
 
-\begin{table}[htbp]
+To minimize the background knowledge necessary for our test subjects, we used a
+simple example of preparing a peanut butter and jelly sandwich, and a hard
+boiled egg sandwich. We provided textual and graphical instructions for
+both questionnaires; Figure \ref{fig:taskModel} shows the corresponding task
+model. The instructions presented a sequence of hypothetical collaborative tasks
+to be carried out by the test subject and an imaginary friend, Mary. We also
+provided a simple definition and an example of each appraisal variable. The
+collaboration structure and the instructions were the same for both
+questionnaires. The questions introduced specific situations related to the
+shared plan, which included blocked tasks and failure or achievement of a shared
+goal. Each question provided three answers which were counterbalanced in the
+questionnaire. We provided an option like C in all questions, because we did not
+want to force subjects to choose between two options when they did not have a
+good reason. There were two questions designed based on each factor that we use
+in our algorithms (see Section \ref{sec:appraisal-process}). The questions were
+randomly placed in the questionnaire. Figure \ref{fig:qs1} shows an example
+question from the relevance questionnaire which is designed to test whether
+human subjects perceive saliency as a factor in relevance. The input for our
+algorithms was the task model depicted in Figure \ref{fig:taskModel}.
+
+% and describe how this question relates to a specific factor within the
+% corresponding algorithm.
+
+\begin{figure}[tbh]
+  \vspace{-1mm}
+  \centering
+  \includegraphics[width=0.48\textwidth]{figure/question-sample4-croped.pdf}
+  \vspace*{-7mm}
+  \caption{{\fontsize{9}{9}\selectfont Example Relevance Question.}}
+  \label{fig:qs1}
+  \vspace{-2mm}
+\end{figure}
+
+Average results and standard deviation of the fractions of subjects' answers
+agreed with out algorithms output for both questionnaires are presented in Table
+\ref{tbl:statistics}. Each question had 3 answers. Therefore, a random
+distribution would result in 33\% agreement with our algorithms' output.
+However, the average agreement between our algorithms and the human subjects was
+much higher (see Table \ref{tbl:statistics}). Our results indicate that people
+largely performed as our hypothesis predicted. The \textit{p}-values obtained
+based on a one-tailed z-test (see Table \ref{tbl:statistics}) show the
+probability of human subjects' answers being generated from a random set. The
+very small \textit{p}-values indicate that the data set is not random; in fact, the
+high percentage of similarity confirms our hypothesis and shows that the
+algorithms can help us to model appraisal in a collaboration.
+
+\begin{table}[!t]
 \centering
-\vspace*{-6mm}
+\vspace*{-3mm}
 \caption{Evaluation Results}
 \begin{tabular}{|c|c|c|c|c|} \hline
 {\fontsize{7.5}{8}\selectfont appraisal variables} &
@@ -963,57 +1009,31 @@ than 2 minutes.
 \label{tbl:statistics}
 \end{table}
 
-To minimize the background knowledge necessary for our test subjects, we used a
-simple example of preparing a peanut butter and jelly sandwich, and a hard
-boiled egg sandwich. We provided textual and graphical instructions for
-both questionnaires; Figure \ref{fig:taskModel} shows the corresponding task
-model. The instructions presented a sequence of hypothetical collaborative tasks
-to be carried out by the test subject and an imaginary friend, Mary. We also
-provided a simplified definition of each appraisal variable and an example with
-the instructions. Note that the collaboration structure and the instructions
-were the same for both questionnaires. The questions introduced specific
-situations related to the shared plan which included blocked tasks and failure
-or achievement of a shared goal. Each question provided three answers which were
-counterbalanced in the questionnaire (Figure\ref{fig:qs1}). One option provided
-a distinct alternative; another option provided a dichotomy with the first
-alternative, and a third option was used to check if the subjects perceived the
-other two options as equal.
+In the example shown in Figure \ref{fig:qs1}, with respect to Algorithm
+\ref{alg:relevance}, option A is relevant because of Mary's perceived negative
+emotion (see Equation \ref{eqn:utility}). Although option B is relevant (since
+it achieves the next goal in the shared plan), 83\% of subjects consider it as
+less relevant than option A; we believe this is due to the effect of Mary's
+perceived negative emotion which also generates higher utility value in our
+relevance algorithm. Another question also tested belief saliency. However, the
+options provided only related to the shared plan (i.e., no human emotions in the
+options). In this case 87\% of subjects chose the option that accomplished the
+next goal in the shared plan. Interestingly, when confronted with a negative
+emotion from their collaborator, human subjects deviated from the shared plan
+and found their collaborator's emotion more relevant than the original plan. It
+is noteworthy that in both the absence and the presence of emotions the human
+subjects chose the more salient option with respect to our definition of
+saliency, which was not referenced or provided in the questionnaire.
 
-There were two questions designed based on each factor that we use in our
-algorithms (see Section \ref{sec:appraisal-process}). The questions were
-randomly placed in the questionnaire. Here, we present one example question from
-the relevance questionnaire, and describe how this question relates to a
-specific factor within the corresponding algorithm. The input for our algorithms
-was the task model depicted in Figure \ref{fig:taskModel}.
+% Our hypothesis in our evaluation was that our algorithms would correctly predict
+% the judgments of humans in the given situations. 
 
-\begin{figure}[tbh]
-  \vspace{-1mm}
-  \centering
-  \includegraphics[width=0.48\textwidth]{figure/question-sample4-croped.pdf}
-  \vspace*{-7mm}
-  \caption{{\fontsize{9}{9}\selectfont Example Relevance Question.}}
-  \label{fig:qs1}
-  \vspace{-4mm}
-\end{figure}
-
-Figure \ref{fig:qs1} shows an example question from the relevance questionnaire
-designed to test whether human subjects perceive saliency as a factor in
-relevance. In this example, with respect to Algorithm \ref{alg:relevance},
-option A is relevant because of Mary's perceived negative emotion. Although
-option B is relevant (since it achieves the next goal in the shared plan), 83\% of
-subjects consider it as less relevant than option A; we believe this is due to
-the effect of Mary's perceived negative emotion. Option C was provided to
-check whether the subjects perceived the other two options as equal. Another
-question also tested saliency. However, the options provided only related to the
-shared plan (i.e., no human emotions in the options). In this case 87\% of
-subjects chose the option that accomplished the next goal in the shared plan.
-Interestingly, when confronted with a negative emotion from their collaborator,
-human subjects deviated from the shared plan and found their collaborator's
-emotion more relevant than the original plan. It is noteworthy that in both the
-absence and the presence of emotions the human subjects chose the more salient
-option with respect to our definition of saliency, which was not referenced or
-provided in the questionnaire. Average results for both questionnaires are
-presented in Table \ref{tbl:statistics}.
+Furthermore, as we mentioned earlier, there were two questions related to each
+factor in our algorithms. Because each question was asking about a specific
+factor, we were able to perform a sensitivity analysis, similar to the saliency
+example presented above. We observed similar results for other factors of both
+relevance (e.g., persistence) and controllability (e.g., autonomy), but do not
+present them here due to space constraints.
 
 % \begin{figure}[tbh]
 %   \vspace{-1mm}
@@ -1053,33 +1073,15 @@ presented in Table \ref{tbl:statistics}.
 % are desirable. The humans decision was 77\% in agreement with the
 % algorithm's output in this question.
 
-Our hypothesis in our evaluation was that our algorithms would correctly predict
-the judgments of humans in the given situations. As we mentioned previously,
-there were two questions related to each factor in our algorithms. Because
-each question was asking about a specific factor, we were able to perform a
-sensitivity analysis, similar to the saliency example presented above. We
-observed similar results for other factors of both relevance (e.g., persistence)
-and controllability (e.g., autonomy), but do not present them here due to space
-constraints. Each question had 3 answers. Therefore, a random distribution would
-result in 33\% agreement with our algorithms' output. However, the average
-agreement between our algorithms and the human subjects was much higher (see
-Table \ref{tbl:statistics}). Our results indicate that people largely performed
-as our hypothesis predicted. The \textit{p}-values obtained based on a
-one-tailed z-test (see Table \ref{tbl:statistics}) show the probability of human
-subjects' data being generated from a random set. The very small
-\textit{p}-values indicate that the data set is not random; in fact, the high
-percentage of similarity shows that the algorithms' components can help us to
-model appraisal in a collaboration.
-
-\vspace{-2mm}
+\vspace{-3mm}
 \section{Conclusion}
 \vspace{-1mm}
 As shown in this paper, there are factors involved in appraisal processes
 that are not accounted for in existing appraisal models. These factors,
 including the influence of the human collaborator's emotions must be addressed
 to provide proper collaborative behavior in a robot. The SharedPlans theory and
-other computational collaboration theories (e.g., Joint Intentions) present the
-importance of commitment in collaboration. According to these theories
+other computational collaboration theories (e.g., Joint Intentions) emphasize
+the importance of commitment in collaboration. According to these theories
 collaborators are required to commit to their shared plan or intentions to
 successfully collaborate and achieve a shared goal. This commitment requires
 them to appraise their environment based on the shared plan structure, as well
