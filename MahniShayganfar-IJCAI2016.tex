@@ -275,7 +275,7 @@ Mind mechanism. \\
 \begin{figure*}
   \centering
   \vspace*{-5mm}
-  \includegraphics[width=14.75cm,height=5.38cm]{figure/taskModel-croped.pdf}
+  \includegraphics[width=14.5cm,height=5.225cm]{figure/taskModel-croped.pdf}
   \vspace*{-3mm}
   \caption{Example of collaboration structure (also used as task model for
   the evaluation).}
@@ -485,7 +485,7 @@ beliefs, and the attributes of the motive associated with the recognized goal
 (see details below). We use three belief attributes (see Section
 \ref{sec:mental-states}) to compute the belief-related part of the utility:
 
-\vspace*{-1mm}
+\vspace*{-2mm}
 \begin{itemize}[leftmargin=2pt]
   \setlength\itemsep{0.025mm}
   \item \textit{Strength}: The extent to which the preconditions ($\alpha$),
@@ -516,10 +516,12 @@ beliefs, and the attributes of the motive associated with the recognized goal
   outside of the shared plan to acknowledge Mary's concern.
 \end{itemize}
 
+\vspace*{-1mm}
 \noindent We also use two motive attributes discussed in Section
 \ref{sec:mental-states} to compute the motive related part of the utility
 ($\mathcal{U}$):
 
+\vspace*{-1mm}
 \begin{itemize}[leftmargin=2pt]
   \setlength\itemsep{0.05mm}
   \item \textit{Urgency ($\gamma$)}: There are two factors impacting the urgency
@@ -596,15 +598,32 @@ blocked}, or \textsc{inapplicable}.
 
 The significance of an event in a collaborative environment is based on the
 utility of the event and the perceived emotion of the human collaborator. The
-human's emotion influences the relevance the event in the form of a threshold
-value $\tau_{t}$ (see Algorithm \ref{alg:relevance}). For instance, a positively
-expressed emotion of the human reduces the threshold value which makes the robot
-find an event relevant with even a slightly positive utility. This threshold
-value is currently determined based on whether the valence of the human's
-perceived emotion is positive (e.g., happiness) or negative (e.g., anger).
-Therefore, an event can be considered \textsc{irrelevant} even though the
-utility has a relatively positive value, because relevance is influenced by the
-human's perceived negative emotion.
+human's perceived emotion influences the relevance of the event in the form of a
+threshold value $\tau_{t}$. We use the valence of the perceived emotion
+($\mathcal{V}_{e_h}$) to compute $\tau_{t}$.
+
+\vspace*{-5mm}
+\begin{equation}
+    \tau_{t}= 
+    \begin{dcases}
+       1-\mathcal{V}_{e_h} & \mathcal{V}_{e_h} > 0 \\
+       |\mathcal{V}_{e_h}| & \mathcal{V}_{e_h} \leq  0
+    \end{dcases}
+    \label{eqn:utility}
+\end{equation}
+
+\vspace*{-2mm}
+\begin{center} 
+    $\mathcal{V}_{e_h} \in \mathbb{R}, \qquad\qquad -1 \leq \mathcal{V}_{e_h}
+    \leq 1$
+\end{center}
+
+\vspace*{-1mm}
+Hence, perceiving human's positive emotion (e.g., happiness) reduces the
+threshold value which makes the robot find an event \textsc{relevant} with even
+a slightly positive utility. Similarly, an event can be considered
+\textsc{irrelevant} even though the utility has a relatively positive value,
+because of perceiving human's negative emotion.
 
 % \vspace*{-1mm}
 % \subsection{Desirability}
