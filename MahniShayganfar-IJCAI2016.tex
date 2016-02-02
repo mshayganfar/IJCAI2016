@@ -856,65 +856,64 @@ In Algorithm \ref{alg:controllability}, we partially compute the controllability
 of an event based on the above four factors. We use weighted averaging of these
 factors to determine their impact on the controllability of an event (line 9).
 The value of all these weights are set to \textit{1.0} for the purpose of
-simplicity at this stage. We will adjust these weights after further
-investigating the influence of these factors, and implementing other mechanisms
-in the overall architecture. We believe that the human's perceived emotion also
-impacts the controllability of an event ($\mathcal{V}_{e_h}$ in line 9). The
-($-1.0 \leq \mathcal{V}_{e_h} \leq 1.0$) is the valence value of the human's
-perceived emotion. Positive emotions, e.g., happiness, possess positive values,
-and negative emotions, e.g., anger, have negative values. The magnitude of this
-value can change with respect to the intensity of the perceived emotion. Thus, a
-positive controllability value indicates that an event is \textsc{controllable};
-otherwise \textsc{uncontrollable}.
+simplicity at this stage (\textbf{$\Call{getWeights}{}$}). We will adjust these
+weights after further investigating the influence of these factors, and
+implementing other mechanisms in the overall architecture. We believe that the
+human's perceived emotion also impacts the controllability of an event
+(\textbf{$\Call{getEmotionValence}{}$}). The ($-1.0 \leq \mathcal{V}_{e_h} \leq
+1.0$) is the valence value of the human's perceived emotion. Positive emotions,
+e.g., happiness, possess positive values, and negative emotions, e.g., anger,
+have negative values. The magnitude of this value can change with respect to the
+intensity of the perceived emotion. Thus, a positive controllability value
+indicates that an event is \textsc{controllable}; otherwise
+\textsc{uncontrollable}.
 
-$\Call{\textbf{GetAgencyRatio}}{}$$(\mathbf{g_{t}})$: \textit{Agency} is the
-capacity of an individual to act independently in a given environment. In a
-collaborative environment collaborators are sometimes required to act
-independently of each other. Hence, they need to have some internal motives that
-are formed based on their own mental states rather than motives that are
-reinforced by the other. These internal motives will lead the collaborators to
-acquire new intentions when required. If the robot's mental state possesses only
-an internal motive supporting the recognized goal, we consider a maximum agency
-value denoted as $\mathcal{M}$ in Algorithm \ref{alg:controllability} (i.e.,
-$\mathcal{M}=1.0$); otherwise we consider the minimum agency value (i.e.,
-$\mathcal{M}=0.0$). Note that the process of forming new internal motives is
-beyond scope of this paper.
+$\Call{\textbf{GetAgencyRatio}}{}$: \textit{Agency} is the capacity of an
+individual to act independently in a given environment. In a collaborative
+environment collaborators are sometimes required to act independently of each
+other. Hence, they need to have some internal motives that are formed based on
+their own mental states rather than motives that are reinforced by the other.
+These internal motives will lead the collaborators to acquire new intentions
+when required. If the robot's mental state possesses only an internal motive
+supporting the recognized goal, we consider a maximum agency value denoted as
+$\mathcal{M}$ in Algorithm \ref{alg:controllability} (i.e., $\mathcal{M}=1.0$);
+otherwise we consider the minimum agency value (i.e., $\mathcal{M}=0.0$). Note
+that the process of forming new internal motives is beyond scope of this paper.
 
-$\Call{\textbf{GetAutonomyRatio}}{}$$(\mathbf{g_{t}})$: \textit{Autonomy} is the
-ability to make decisions without the influence of others, and implies acting on
-one's own and being responsible for that. In a collaborative environment, tasks
-are delegated to the collaborators based on their capabilities. Therefore, each
-collaborator is responsible for the delegated task and the corresponding goal.
-In Algorithm \ref{alg:controllability}, $\mathcal{R}$ denotes the value of
-autonomy with regard to the goal $\mathit{g}_{t}$. This value $(0.0 \leq
-\mathcal{R} \leq 1.0)$ is the ratio of the number of goals contributing to
-$\mathit{g}_{t}$ for which the robot is responsible over the total number of
-contributing goals, if the goal associated with the current event is a
-nonprimitive goal. However, if the associated goal of the current event
-corresponds to a primitive goal the value of $\mathcal{M}$ would be 0.0 or 1.0.
-In general, higher autonomy leads to a more positive value of controllability.
+$\Call{\textbf{GetAutonomyRatio}}{}$: \textit{Autonomy} is the ability to make
+decisions without the influence of others, and implies acting on one's own and
+being responsible for that. In a collaborative environment, tasks are delegated
+to the collaborators based on their capabilities. Therefore, each collaborator
+is responsible for the delegated task and the corresponding goal. In Algorithm
+\ref{alg:controllability}, $\mathcal{R}$ denotes the value of autonomy with
+regard to the goal $\mathit{g}_{t}$. This value $(0.0 \leq \mathcal{R} \leq
+1.0)$ is the ratio of the number of goals contributing to $\mathit{g}_{t}$ for
+which the robot is responsible over the total number of contributing goals, if
+the goal associated with the current event is a nonprimitive goal. However, if
+the associated goal of the current event corresponds to a primitive goal the
+value of $\mathcal{M}$ would be 0.0 or 1.0. In general, higher autonomy leads to
+a more positive value of controllability.
 
-$\Call{\textbf{GetSuccPredecessorsRatio}}{}$$(\mathbf{g_{t}})$: The structure of
-a shared plan contains the order of the required \textit{predecessors} of a
-goal. Predecessors of a goal, $g_t$, are goals that the collaborators should
-achieve before trying to achieve goal $g_t$. We use the ratio of successfully
-achieved predecessors of the recognized goal over the total number of
-predecessors of the same goal. If all of the predecessors of the given goal are
-achieved, then $\mathcal{P}=1.0$ which is the maximum value for $\mathcal{P}$.
-On the contrary, failure of all of the predecessors will lead to
-$\mathcal{P}=0.0$. Therefore, a higher $\mathcal{P}$ value positively impacts
-the value of controllability for the current event.
+$\Call{\textbf{GetSuccPredecessorsRatio}}{}$: The structure of a shared plan
+contains the order of the required \textit{predecessors} of a goal. Predecessors
+of a goal, $g_t$, are goals that the collaborators should achieve before trying
+to achieve goal $g_t$. We use the ratio of successfully achieved predecessors of
+the recognized goal over the total number of predecessors of the same goal. If
+all of the predecessors of the given goal are achieved, then $\mathcal{P}=1.0$
+which is the maximum value for $\mathcal{P}$. On the contrary, failure of all of
+the predecessors will lead to $\mathcal{P}=0.0$. Therefore, a higher
+$\mathcal{P}$ value positively impacts the value of controllability for the
+current event.
 
-$\Call{\textbf{GetAvailableInputs}}{}$$(\mathbf{g_{t}})$: Finally,
-\textit{inputs} of a task are the required elements that the collaborators use
-to achieve the specified goal of the task. These inputs are also part of the
-structure of a shared plan. We compute the ratio of the available required
-inputs over the total required inputs of the goal associated with the current
-event. This value (denoted as $\mathcal{I}$ in Algorithm
-\ref{alg:controllability}) will be bound between 0.0 and 1.0. Similar to the
-other factors in the controllability process, the closer the value of
-$\mathcal{I}$ gets to 1.0, the more positive impact it has on the overall
-controllability value of the event.
+$\Call{\textbf{GetAvailableInputs}}{}$: Finally, \textit{inputs} of a task are
+the required elements that the collaborators use to achieve the specified goal
+of the task. These inputs are also part of the structure of a shared plan. We
+compute the ratio of the available required inputs over the total required
+inputs of the goal associated with the current event. This value (denoted as
+$\mathcal{I}$ in Algorithm \ref{alg:controllability}) will be bound between 0.0
+and 1.0. Similar to the other factors in the controllability process, the closer
+the value of $\mathcal{I}$ gets to 1.0, the more positive impact it has on the
+overall controllability value of the event.
 
 In summary, the output of these two and other appraisal processes such as
 \textit{desirability} \cite{shayganfar:emotional-awareness} and
