@@ -915,20 +915,17 @@ robot to carry out proper collaborative behaviors.
 
 We developed our user study to test our hypothesis that humans will provide
 similar answers as our algorithms to questions related to different factors used
-to compute relevance and controllability. This study was not designed to verify
-the final output of the algorithms because further development of the framework
-is required to properly test our algorithms in producing collaborative behaviors.
-
-We conducted a between subject user study using an online crowdsourcing website
--- CrowdFlower\footnote{http://www.crowdflower.com}. We had a questionnaire
-for each appraisal variable. There were 12 questions (including 2 test
-questions) in the controllability, and 22 questions (including 3 test questions)
-in the relevance questionnaire. Each subject group originally had 40 subjects.
-We limited the subject pools to those with the highest confidence level on the
-crowdsourcing website in the United States, Britain, and Australia. Test
-questions were included to check the sanity of the answers. We eliminated
-subjects providing wrong answers to our sanity questions, and subjects with
-answering times less than 2 minutes.
+to compute relevance and controllability. We conducted a between subject user
+study using an online crowdsourcing website --
+CrowdFlower\footnote{http://www.crowdflower.com}. We had questionnaire for each
+appraisal variable. There were 12 questions (including 2 test questions) in the
+controllability, and 22 questions (including 3 test questions) in the relevance
+questionnaire. Each subject group originally had 40 subjects. We limited the
+subject pools to those with the highest confidence level on the crowdsourcing
+website in the United States, Britain, and Australia. Test questions were
+included to check the sanity of the answers. We eliminated subjects providing
+wrong answers to our sanity questions, and subjects with answering times less
+than 2 minutes.
 
 \begin{table}[htbp]
 \centering
@@ -967,12 +964,12 @@ a distinct alternative; another option provided a dichotomy with the first
 alternative, and a third option was used to check if the subjects perceived the
 other two options as equal.
 
-Each question was designed based on different factors that we use in our
-algorithms (see Section \ref{sec:appraisal-process}). Here, we present one
-example question from the relevance questionnaire, and describe how this
-question relates to a specific factor within the corresponding algorithm. The
-input for our algorithms was the task model depicted in Figure
-\ref{fig:taskModel}.
+There were two questions designed based on each factor that we use in our
+algorithms (see Section \ref{sec:appraisal-process}). The questions were
+randomly placed in the questionnaire. Here, we present one example question from
+the relevance questionnaire, and describe how this question relates to a
+specific factor within the corresponding algorithm. The input for our algorithms
+was the task model depicted in Figure \ref{fig:taskModel}.
 
 \begin{figure}[tbh]
   \vspace{-1mm}
@@ -987,7 +984,7 @@ input for our algorithms was the task model depicted in Figure
 Figure \ref{fig:qs1} shows an example question from the relevance questionnaire
 designed to test whether human subjects perceive saliency as a factor in
 relevance. In this example, with respect to Algorithm \ref{alg:relevance},
-option A is more relevant because of Mary's perceived negative emotion. Although
+option A is relevant because of Mary's perceived negative emotion. Although
 option B is relevant (since it achieves the next goal in the shared plan), 83\% of
 subjects consider it as less relevant than option A; we believe this is due to
 the effect of Mary's perceived negative emotion. Option C was provided to
@@ -1038,40 +1035,45 @@ presented in Table \ref{tbl:statistics}.
 % questionnaire. The output based on the Algorithm \ref{alg:desirability}
 % (line 14) is option C, since in both option A and option B, the focus goal
 % has been achieved successfully. Therefore, in this example, both options A and B
-% are desirable. The humans decision was 77\% in agreement with the algorithm's
-% output in this question.
+% are desirable. The humans decision was 77\% in agreement with the
+% algorithm's output in this question.
 
-Our hypothesis in our evaluation was that humans perceive the critical
-components used in our algorithms. Each question had 3 answers. Therefore, a
-random distribution would result in 33\% agreement with our algorithms'
-components. However, the total number of subjects' answers supporting a) the
-\textit{relevance} components (n=29) averaged 71.3\% (s=10.7\%), b) the
-\textit{controllability} components (n=33) averaged 74.3\% (s=15.8\%). Our
-results indicate that people largely performed as our hypothesis predicted. The
-\textit{p}-values obtained based on a one-tailed z-test (see Table
-\ref{tbl:statistics}) show the probability of human subjects' data being
-generated from a random set. The very small \textit{p}-values indicate that the
-data set is not random; in fact, the high percentage of similarity shows that
-the algorithms' components can help us to model appraisal in a collaboration.
+Our hypothesis in our evaluation was that our algorithms would correctly predict
+the judgments of humans in the given situations. As we mentioned previously,
+there were two questions related to each factor in our algorithms. Because
+each question was asking about a specific factor, we were able to perform a
+sensitivity analysis, similar to the saliency example presented above. We
+observed similar results for other factors of both relevance (e.g., persistence)
+and controllability (e.g., autonomy), but do not present them here due to space
+constraints. Each question had 3 answers. Therefore, a random distribution would
+result in 33\% agreement with our algorithms' output. However, the average
+agreement between our algorithms and the human subjects was much higher (see
+Table \ref{tbl:statistics}). Our results indicate that people largely performed
+as our hypothesis predicted. The \textit{p}-values obtained based on a
+one-tailed z-test (see Table \ref{tbl:statistics}) show the probability of human
+subjects' data being generated from a random set. The very small
+\textit{p}-values indicate that the data set is not random; in fact, the high
+percentage of similarity shows that the algorithms' components can help us to
+model appraisal in a collaboration.
 
 \vspace{-2mm}
 \section{Conclusion}
 \vspace{-1mm}
 As shown in this paper, there are factors involved in appraisal processes
-that are not accounted for in existing appraisal models. These factors including
-the influence of the human collaborator's emotions must be addressed to provide
-proper collaborative behavior in a robot. The SharedPlans theory and other
-computational collaboration theories (e.g., Joint Intentions) argue the
+that are not accounted for in existing appraisal models. These factors,
+including the influence of the human collaborator's emotions must be addressed
+to provide proper collaborative behavior in a robot. The SharedPlans theory and
+other computational collaboration theories (e.g., Joint Intentions) present the
 importance of commitment in collaboration. According to these theories
 collaborators are required to commit to their shared plan or intentions to
-successfully collaborate and achieve a shared goal. We believe collaborators'
-commitment builds trust. This trust requires them to appraise their environment
-based on the shared plan structure, as well as other information that is induced
-by the collaboration process, such as the recurrence of a belief by the other
-collaborator and the human collaborator's perceived emotion. In our next step,
-we want to test our appraisal algorithms and their reciprocal influence on goal
-management during collaboration. This study will be conducted between a KUKA
-youbot and a human subject on different task model.
+successfully collaborate and achieve a shared goal. This commitment requires
+them to appraise their environment based on the shared plan structure, as well
+as other information that is induced by the collaboration process, such as the
+recurrence of a belief by the other collaborator and the human collaborator's
+perceived emotion. In our next step, we want to test our appraisal algorithms
+and their reciprocal influence on goal management during collaboration. This
+study will be conducted between a KUKA youbot and human subjects on a different
+task model.
 
 % We believe the difference between these two results could be due to several
 % reasons, including: a) the fact that we conducted our study online and had
