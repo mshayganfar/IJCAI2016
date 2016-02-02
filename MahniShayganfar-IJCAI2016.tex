@@ -466,10 +466,10 @@ resources to every event.
 			\State $\mathcal{U} \gets \Call{getEventUtility}{\mathit{g}_{t}}$ 
 			\State $\tau_{t} \gets \Call{getEmotionalThreshold}{\mathit{g}_{t}}$
 % 			\Statex
-			\If {$(\tau_{t} \leq |\mathcal{U}|)$} \quad \Return
+			\If {$(\tau_{t} \leq |\mathcal{U}|)$} \:\Return
 			{{\fontsize{7}{8}\selectfont RELEVANT}} 
 % 				\State \Return {{\fontsize{7}{8}\selectfont RELEVANT}}
-			\Else \quad \Return {{\fontsize{7}{8}\selectfont IRRELEVANT}}
+			\Else \: \Return {{\fontsize{7}{8}\selectfont IRRELEVANT}}
 % 				\State \Return {{\fontsize{7}{8}\selectfont IRRELEVANT}}
 			\EndIf
 		\EndFunction
@@ -485,7 +485,7 @@ beliefs, and the attributes of the motive associated with the recognized goal
 (see details below). We use three belief attributes (see Section
 \ref{sec:mental-states}) to compute the belief-related part of the utility:
 
-\vspace*{-2mm}
+\vspace*{-1mm}
 \begin{itemize}[leftmargin=2pt]
   \setlength\itemsep{0.025mm}
   \item \textit{Strength}: The extent to which the preconditions ($\alpha$),
@@ -541,15 +541,15 @@ beliefs, and the attributes of the motive associated with the recognized goal
   important to remove the impasse in the shared plan.
 \end{itemize}
 
-We provide the utility function in Equation \ref{eqn:utility}. This function is
-comprised of: a) saliency (\textit{S}) and b) persistence (\textit{P}) of the
-belief(s) related to the recognized goal, c) the recognized goal's status
-($\upsilon$), and d) the aggregation of belief and motive attributes ($\Psi$)
+We provide the utility function ($\mathcal{U}$) in Equation \ref{eqn:utility}.
+This function uses: saliency (\textit{S}) and persistence (\textit{P}) of the
+belief(s) related to the recognized goal, the recognized goal's status
+($\upsilon$), and the aggregation of belief and motive attributes ($\Psi$)
 according to Equation \ref{eqn:power}.
 
-\vspace*{-3mm}
+\vspace*{-4mm}
 \begin{equation}
-    U(\varepsilon_t)= 
+    \mathcal{U}(\varepsilon_t)= 
     \begin{dcases}
        \upsilon\!P\cdot S^{\Psi} & \Psi \textgreater 0 \\
        0               			 & \Psi = 0
@@ -557,7 +557,17 @@ according to Equation \ref{eqn:power}.
     \label{eqn:utility}
 \end{equation}
 
-\vspace*{-1mm}
+Intuitively, we use $\upsilon$ to generate positive and negative utility values.
+The $\upsilon$'s value becomes +1 if the status of the corresponding goal is
+\textsc{achieved}, \textsc{pending}, or \textsc{in progress}, and $\upsilon$'s
+value becomes -1 if the status of the corresponding goal is \textsc{failed,
+blocked}, or \textsc{inapplicable}. The \textit{P} influences the value of
+utility only as a coefficient since recurrent beliefs are not formed frequently
+during collaboration. The $\Psi$ value indicates the magnitude of the influence
+of beliefs and motives using their attributes. Hence, the $\Psi$ value impacts
+the saliency value of beliefs exponentially, helping to differentiate between
+beliefs.
+
 In equation \ref{eqn:power}, the subscript \textit{k} refers to the
 \textit{known} goal-related factors (\textsc{satisfied} or
 \textsc{unsatisfied}); whereas the subscript \textit{all} includes both
@@ -584,23 +594,11 @@ value.
     $\beta_{_{all}} \in \mathbb{N}, \qquad\qquad \beta_{_{all}} \geq 1$
 \end{center}
 
-Intuitively, the $\Psi$ value indicates the magnitude of the influence of
-beliefs and motives using their attributes. Hence, the $\Psi$ value impacts the
-saliency value of beliefs exponentially, helping to differentiate between
-beliefs. Similarly, \textit{P} influences the value of utility only as a
-coefficient since recurrent beliefs are not formed frequently during
-collaboration. We use $\upsilon$ to generate positive and negative utility
-values, making an event \textsc{relevant} or \textsc{irrelevant}, respectively.
-The $\upsilon$'s value becomes +1 if the status of the corresponding goal is
-\textsc{achieved}, \textsc{pending}, or \textsc{in progress}, and $\upsilon$'s
-value becomes -1 if the status of the corresponding goal is \textsc{failed,
-blocked}, or \textsc{inapplicable}.
-
 The significance of an event in a collaborative environment is based on the
-utility of the event and the perceived emotion of the human collaborator. The
-human's perceived emotion influences the relevance of the event in the form of a
-threshold value $\tau_{t}$. We use the valence of the perceived emotion
-($\mathcal{V}_{e_h}$) to compute $\tau_{t}$.
+utility of the event and the human's perceived emotion. The human's perceived
+emotion influences the relevance of the event in the form of a threshold value
+$\tau_{t}$. In Equation \ref{eqn:threshold}, we use the valence of the perceived
+emotion ($\mathcal{V}_{e_h}$) to compute $\tau_{t}$.
 
 \vspace*{-5mm}
 \begin{equation}
@@ -609,10 +607,9 @@ threshold value $\tau_{t}$. We use the valence of the perceived emotion
        1-\mathcal{V}_{e_h} & \mathcal{V}_{e_h} > 0 \\
        |\mathcal{V}_{e_h}| & \mathcal{V}_{e_h} \leq  0
     \end{dcases}
-    \label{eqn:utility}
+    \label{eqn:threshold}
 \end{equation}
 
-\vspace*{-2mm}
 \begin{center} 
     $\mathcal{V}_{e_h} \in \mathbb{R}, \qquad\qquad -1 \leq \mathcal{V}_{e_h}
     \leq 1$
@@ -623,7 +620,7 @@ Hence, perceiving human's positive emotion (e.g., happiness) reduces the
 threshold value which makes the robot find an event \textsc{relevant} with even
 a slightly positive utility. Similarly, an event can be considered
 \textsc{irrelevant} even though the utility has a relatively positive value,
-because of perceiving human's negative emotion.
+because of perceiving the human's negative emotion.
 
 % \vspace*{-1mm}
 % \subsection{Desirability}
@@ -826,10 +823,10 @@ change a particular state as a consequence of an event.
   			\Statex
 % 			\State $\tau_{t} \gets \Call{getEmotionalThreshold}{\mathit{g}_{t}}$
 % 			\Statex
-			\If {$(\mathcal{X} > 0)$} \quad \Return {{\fontsize{7}{8}\selectfont
+			\If {$(\mathcal{X} > 0)$} \:\Return {{\fontsize{7}{8}\selectfont
 			CONTROLLABLE}}
 % 				\State \Return {{\fontsize{7}{8}\selectfont CONTROLLABLE}}
-			\Else \quad \Return {{\fontsize{7}{8}\selectfont UNCONTROLLABLE}}
+			\Else \: \Return {{\fontsize{7}{8}\selectfont UNCONTROLLABLE}}
 % 				\State \Return {{\fontsize{7}{8}\selectfont UNCONTROLLABLE}}
 			\EndIf
 		\EndFunction
