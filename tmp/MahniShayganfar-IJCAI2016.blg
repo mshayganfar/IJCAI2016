@@ -6,49 +6,51 @@ Database file #1: mshayganfar.bib
 Warning--can't use both volume and number fields in hudlicka:emotinos-reasons
 Warning--empty title in shayganfar:emotional-awareness
 Warning--empty journal in shayganfar:emotional-awareness
+Warning--empty title in shayganfar:theory-overview
+Warning--empty booktitle in shayganfar:theory-overview
 Warning--empty title in shayganfar:appraisal-short
 Warning--empty booktitle in shayganfar:appraisal-short
 Warning--empty title in shayganfar:goal-management
 Warning--empty booktitle in shayganfar:goal-management
-You've used 21 entries,
+You've used 22 entries,
             2439 wiz_defined-function locations,
-            676 strings with 7985 characters,
-and the built_in function-call counts, 8596 in all, are:
-= -- 878
-> -- 307
+            677 strings with 8011 characters,
+and the built_in function-call counts, 8875 in all, are:
+= -- 902
+> -- 314
 < -- 10
-+ -- 101
-- -- 97
-* -- 666
-:= -- 1338
-add.period$ -- 65
-call.type$ -- 21
-change.case$ -- 124
++ -- 104
+- -- 99
+* -- 685
+:= -- 1382
+add.period$ -- 67
+call.type$ -- 22
+change.case$ -- 128
 chr.to.int$ -- 20
-cite$ -- 28
-duplicate$ -- 386
-empty$ -- 698
-format.name$ -- 127
-if$ -- 1828
-int.to.chr$ -- 2
+cite$ -- 31
+duplicate$ -- 402
+empty$ -- 727
+format.name$ -- 130
+if$ -- 1885
+int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 23
-newline$ -- 105
-num.names$ -- 69
-pop$ -- 142
+missing$ -- 24
+newline$ -- 109
+num.names$ -- 72
+pop$ -- 153
 preamble$ -- 1
-purify$ -- 150
+purify$ -- 156
 quote$ -- 0
-skip$ -- 304
+skip$ -- 313
 stack$ -- 0
-substring$ -- 453
-swap$ -- 106
+substring$ -- 458
+swap$ -- 108
 text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 160
-warning$ -- 7
-while$ -- 76
-width$ -- 25
-write$ -- 269
-(There were 7 warnings)
+type$ -- 168
+warning$ -- 9
+while$ -- 78
+width$ -- 27
+write$ -- 278
+(There were 9 warnings)
