@@ -48,11 +48,19 @@
 % \thanks{These match the formatting instructions of IJCAI-07. The support of
 % IJCAI, Inc. is acknowledged.}
 
+\usepackage{atbegshi,picture}
+\usepackage{lipsum}
+
+\AtBeginShipout{\AtBeginShipoutUpperLeft{%
+  \put(\dimexpr\paperwidth-11.2cm\relax,-1cm){\makebox[0pt][r]{\framebox{UNDER
+  REVIEW. PLEASE DO NOT REDISTRIBUTE.}}}%
+}}
+
 \title{Appraisal Algorithms for Relevance and Controllability in\\
 Human-Robot Collaboration}
-% \author{Mahni Shayganfar, Charles Rich, Candace L. Sidner \\ 
-% Worcester Polytechnic Institute, Worcester Massachusetts  \\
-% mshayganfar $|$ rich $|$ sidner @wpi.edu}
+\author{Mahni Shayganfar, Charles Rich, Candace L. Sidner \\ 
+Worcester Polytechnic Institute, Worcester Massachusetts  \\
+{mshayganfar $|$ rich $|$ sidner}@wpi.edu}
 
 \begin{document}
 

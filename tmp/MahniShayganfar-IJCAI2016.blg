@@ -4,53 +4,45 @@ The top-level auxiliary file: MahniShayganfar-IJCAI2016.aux
 The style file: named.bst
 Database file #1: mshayganfar.bib
 Warning--can't use both volume and number fields in hudlicka:emotinos-reasons
-Warning--empty title in shayganfar:emotional-awareness
-Warning--empty journal in shayganfar:emotional-awareness
-Warning--empty title in shayganfar:theory-overview
-Warning--empty booktitle in shayganfar:theory-overview
-Warning--empty title in shayganfar:appraisal-short
-Warning--empty booktitle in shayganfar:appraisal-short
-Warning--empty title in shayganfar:goal-management
-Warning--empty booktitle in shayganfar:goal-management
 You've used 22 entries,
             2439 wiz_defined-function locations,
-            677 strings with 8011 characters,
-and the built_in function-call counts, 8875 in all, are:
-= -- 902
-> -- 314
+            686 strings with 8647 characters,
+and the built_in function-call counts, 9194 in all, are:
+= -- 938
+> -- 358
 < -- 10
-+ -- 104
-- -- 99
-* -- 685
-:= -- 1382
-add.period$ -- 67
++ -- 123
+- -- 115
+* -- 712
+:= -- 1435
+add.period$ -- 71
 call.type$ -- 22
-change.case$ -- 128
-chr.to.int$ -- 20
-cite$ -- 31
-duplicate$ -- 402
-empty$ -- 727
-format.name$ -- 130
-if$ -- 1885
-int.to.chr$ -- 3
+change.case$ -- 140
+chr.to.int$ -- 19
+cite$ -- 23
+duplicate$ -- 405
+empty$ -- 733
+format.name$ -- 146
+if$ -- 1955
+int.to.chr$ -- 4
 int.to.str$ -- 0
 missing$ -- 24
-newline$ -- 109
+newline$ -- 113
 num.names$ -- 72
-pop$ -- 153
+pop$ -- 148
 preamble$ -- 1
-purify$ -- 156
+purify$ -- 164
 quote$ -- 0
-skip$ -- 313
+skip$ -- 320
 stack$ -- 0
-substring$ -- 458
-swap$ -- 108
+substring$ -- 460
+swap$ -- 112
 text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 168
-warning$ -- 9
+warning$ -- 1
 while$ -- 78
-width$ -- 27
-write$ -- 278
-(There were 9 warnings)
+width$ -- 24
+write$ -- 290
+(There was 1 warning)

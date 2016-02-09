@@ -108,25 +108,33 @@ Klaus~R. Scherer.
   from a recognition task.
 \newblock {\em Cognition \& Emotion}, 13(6):763--793, 1999.
 
-\bibitem[\protect\citeauthoryear{{Suppressed for
-  Anonymity}}{2015}]{shayganfar:emotional-awareness}
-{Suppressed for Anonymity}.
-\newblock 2015.
+\bibitem[\protect\citeauthoryear{Shayganfar \bgroup \em et al.\egroup
+  }{2016a}]{shayganfar:emotional-awareness}
+Mahni Shayganfar, Charles Rich, and Candace Sidner.
+\newblock Toward improving human-robot collaboration with emotional awareness.
+\newblock {\em Under Review}, 2016.
 
-\bibitem[\protect\citeauthoryear{{Suppressed for
-  Anonymity}}{2016a}]{shayganfar:theory-overview}
-{Suppressed for Anonymity}.
-\newblock 2016.
+\bibitem[\protect\citeauthoryear{Shayganfar \bgroup \em et al.\egroup
+  }{2016b}]{shayganfar:goal-management}
+Mahni Shayganfar, Charles Rich, and Candace~L. Sidner.
+\newblock Impact of affective appraisal on collaborative goal management: My
+  robot shares my worries.
+\newblock In {\em Proceedings of 11th ACM-IEEE International Conference on
+  Human-Robot Interaction (LBR)}, 2016.
 
-\bibitem[\protect\citeauthoryear{{Suppressed for
-  Anonymity}}{2016b}]{shayganfar:appraisal-short}
-{Suppressed for Anonymity}.
-\newblock 2016.
+\bibitem[\protect\citeauthoryear{Shayganfar \bgroup \em et al.\egroup
+  }{2016c}]{shayganfar:theory-overview}
+Mahni Shayganfar, Charles Rich, and Candace~L. Sidner.
+\newblock An overview of affective motivational collaboration theory.
+\newblock In {\em Proceedings of AAAI Workshop on Symbiotic Cognitive Systems,
+  Phoenix, Arizona}, 2016.
 
-\bibitem[\protect\citeauthoryear{{Suppressed for
-  Anonymity}}{2016c}]{shayganfar:goal-management}
-{Suppressed for Anonymity}.
-\newblock 2016.
+\bibitem[\protect\citeauthoryear{Shayganfar \bgroup \em et al.\egroup
+  }{2016d}]{shayganfar:appraisal-short}
+Mahni Shayganfar, Charles Rich, and Candace~L. Sidner.
+\newblock An overview of appraisal in human-robot collaboration.
+\newblock In {\em Proceedings of International Conference on Autonomous Agents
+  and Multiagent Systems -- AAMAS (Extended Abstract)}, 2016.
 
 \bibitem[\protect\citeauthoryear{Tambe}{1997}]{tambe:flexible-teamwork}
 Milind Tambe.
